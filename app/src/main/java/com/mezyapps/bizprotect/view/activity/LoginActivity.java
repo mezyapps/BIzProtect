@@ -1,71 +1,64 @@
 package com.mezyapps.bizprotect.view.activity;
 
 import android.content.Intent;
-import android.net.Uri;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
 
-public class LicenseKeyActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
-    private EditText edit_license_number;
-    private Button btn_license;
-    private TextView textTechnicalSupport;
-    private String strLicenseKey,strMakeCall;
+    private TextInputLayout textPhone_Number,textPassword;
+    private EditText edt_phone_number,edt_password;
+    private Button btn_login;
+    private String phone_number,password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_license_key);
+        setContentView(R.layout.activity_login);
 
         find_View_Ids();
         events();
+
     }
 
     private void find_View_Ids() {
-        edit_license_number=findViewById(R.id.edit_license_number);
-        btn_license=findViewById(R.id.btn_license);
-        textTechnicalSupport=findViewById(R.id.textTechnicalSupport);
+        textPhone_Number=findViewById(R.id.textPhone_Number);
+        textPassword=findViewById(R.id.textPassword);
+        edt_phone_number=findViewById(R.id.edt_phone_number);
+        edt_password=findViewById(R.id.edt_password);
+        btn_login=findViewById(R.id.btn_login);
+
     }
 
     private void events() {
 
-        btn_license.setOnClickListener(new View.OnClickListener() {
+        btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(validation())
                 {
-
-                    if (NetworkUtils.isNetworkAvailable(LicenseKeyActivity.this)) {
-                        callSendLicenseKey();
+                    if (NetworkUtils.isNetworkAvailable(LoginActivity.this)) {
+                        callLogin();
                     }
                     else {
-                        NetworkUtils.isNetworkNotAvailable(LicenseKeyActivity.this);
+                        NetworkUtils.isNetworkNotAvailable(LoginActivity.this);
                     }
 
+
                 }
-            }
-        });
-        textTechnicalSupport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                strMakeCall=textTechnicalSupport.getText().toString().trim();
-                Intent callIntent = new Intent(Intent.ACTION_DIAL);
-                callIntent.setData(Uri.parse("tel:"+strMakeCall));
-                startActivity(callIntent);
             }
         });
 
     }
 
-    private void callSendLicenseKey() {
-
+    private void callLogin() {
           /*Call<SuccessModule> call = apiInterface.login(mobile_number,password);
 
         call.enqueue(new Callback<SuccessModule>() {
@@ -113,22 +106,48 @@ public class LicenseKeyActivity extends AppCompatActivity {
             }
         });*/
 
-
-        Intent intent=new Intent(LicenseKeyActivity.this,PortfolioActivity.class);
+        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
         startActivity(intent);
-
 
     }
 
     private boolean validation() {
-        strLicenseKey=edit_license_number.getText().toString().trim();
-        if(strLicenseKey.equalsIgnoreCase(""))
-        {
-            edit_license_number.setError("Enter License Key");
-            edit_license_number.requestFocus();
-            return false;
-        }
-       return  true;
-    }
+        phone_number=edt_phone_number.getText().toString().trim();
+        password=edt_password.getText().toString().trim();
 
+
+        if (phone_number.equalsIgnoreCase("")) {
+            textPhone_Number.setError("Enter Mobile Number");
+            edt_phone_number.requestFocus();
+            return false;
+        } else {
+            textPhone_Number.setError(null);
+            textPhone_Number.setErrorEnabled(false);
+        }
+        if (phone_number.length() != 10) {
+            textPhone_Number.setError("Invalid Mobile Number");
+            edt_phone_number.requestFocus();
+            return false;
+        } else {
+            textPhone_Number.setError(null);
+            textPhone_Number.setErrorEnabled(false);
+        }
+        if (password.equalsIgnoreCase("")) {
+            textPassword.setError("Enter Password");
+            edt_password.requestFocus();
+            return false;
+        } else {
+            textPassword.setErrorEnabled(false);
+            textPassword.setError(null);
+        }
+        if (password.length() < 6) {
+            textPassword.setError("Invalid Mobile Number");
+            edt_password.requestFocus();
+            return false;
+        } else {
+            textPassword.setErrorEnabled(false);
+            textPassword.setError(null);
+        }
+        return true;
+    }
 }
