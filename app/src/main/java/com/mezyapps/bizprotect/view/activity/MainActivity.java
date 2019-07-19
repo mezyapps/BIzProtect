@@ -2,6 +2,8 @@ package com.mezyapps.bizprotect.view.activity;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -9,6 +11,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -17,6 +20,7 @@ import android.widget.Toast;
 
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.view.fragment.HomeFragment;
+import com.mezyapps.bizprotect.view.fragment.OurCustomerFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Fragment fragmentInstance;
     FragmentManager fragmentManager;
     private boolean doubleBackToExitPressedOnce = false;
+    private BottomNavigationView bottom_navigation;
 
 
     @Override
@@ -42,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         loadFragment(new HomeFragment());
         iv_drawer=findViewById(R.id.iv_drawer);
         drawerLayout=findViewById(R.id.drawer_layout);
+        bottom_navigation=findViewById(R.id.bottom_navigation);
     }
 
     private void events() {
@@ -50,6 +56,32 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+        bottom_navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+                switch (menuItem.getItemId())
+                {
+
+                    case R.id.nav_home:
+                        loadFragment(new HomeFragment());
+                        break;
+
+                    case R.id.nav_our_customer:
+                        loadFragment(new OurCustomerFragment());
+                        break;
+
+                    case R.id.nav_logout:
+                        
+                        break;
+
+
+                }
+
+                return true;
             }
         });
 

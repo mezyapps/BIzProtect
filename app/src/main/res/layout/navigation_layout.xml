@@ -108,7 +108,7 @@
                                 android:layout_toEndOf="@+id/iv_dashboard"
                                 android:text="Dashboard"
                                 android:textColor="@color/black"
-                                android:textSize="18sp" />
+                                android:textSize="14sp" />
 
                         </RelativeLayout>
 
@@ -141,7 +141,7 @@
                                 android:layout_toEndOf="@+id/iv_our_customer"
                                 android:text="Our Customer"
                                 android:textColor="@color/black"
-                                android:textSize="18sp" />
+                                android:textSize="14sp" />
 
                         </RelativeLayout>
 
@@ -174,7 +174,7 @@
                                 android:layout_toEndOf="@+id/iv_block_listed"
                                 android:text="Block Listed Customer"
                                 android:textColor="@color/black"
-                                android:textSize="18sp" />
+                                android:textSize="14sp" />
 
                         </RelativeLayout>
 
@@ -208,7 +208,7 @@
                                 android:layout_toEndOf="@+id/iv_logout"
                                 android:text="Logout"
                                 android:textColor="@color/black"
-                                android:textSize="18sp" />
+                                android:textSize="14sp" />
 
                         </RelativeLayout>
 
