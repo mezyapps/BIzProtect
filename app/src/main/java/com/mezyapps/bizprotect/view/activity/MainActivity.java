@@ -16,9 +16,11 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.mezyapps.bizprotect.R;
+import com.mezyapps.bizprotect.view.fragment.BlackListedCustomerFragment;
 import com.mezyapps.bizprotect.view.fragment.HomeFragment;
 import com.mezyapps.bizprotect.view.fragment.OurCustomerFragment;
 
@@ -27,11 +29,12 @@ public class MainActivity extends AppCompatActivity {
     private ImageView iv_drawer;
     private DrawerLayout drawerLayout;
     private FrameLayout frameLayout_main;
-    private String fragmentName=null;
+    private String fragmentName = null;
     Fragment fragmentInstance;
     FragmentManager fragmentManager;
     private boolean doubleBackToExitPressedOnce = false;
     private BottomNavigationView bottom_navigation;
+    private RelativeLayout relativeLayout_Dashboard, relativeLayout_ourCustomer, relativeLayout_blocked_customer, relativeLayout_logout;
 
 
     @Override
@@ -45,9 +48,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void find_View_Ids() {
         loadFragment(new HomeFragment());
-        iv_drawer=findViewById(R.id.iv_drawer);
-        drawerLayout=findViewById(R.id.drawer_layout);
-        bottom_navigation=findViewById(R.id.bottom_navigation);
+        iv_drawer = findViewById(R.id.iv_drawer);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        bottom_navigation = findViewById(R.id.bottom_navigation);
+        relativeLayout_Dashboard = findViewById(R.id.relativeLayout_Dashboard);
+        relativeLayout_ourCustomer = findViewById(R.id.relativeLayout_ourCustomer);
+        relativeLayout_ourCustomer = findViewById(R.id.relativeLayout_ourCustomer);
+        relativeLayout_blocked_customer = findViewById(R.id.relativeLayout_blocked_customer);
+        relativeLayout_logout = findViewById(R.id.relativeLayout_logout);
+
     }
 
     private void events() {
@@ -63,8 +72,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                switch (menuItem.getItemId())
-                {
+                switch (menuItem.getItemId()) {
 
                     case R.id.nav_home:
                         loadFragment(new HomeFragment());
@@ -75,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_logout:
-                        
+
                         break;
 
 
@@ -85,10 +93,51 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        relativeLayout_Dashboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    loadFragment(new HomeFragment());
+                }
+
+            }
+        });
+        relativeLayout_ourCustomer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    loadFragment(new OurCustomerFragment());
+                }
+
+            }
+        });
+        relativeLayout_blocked_customer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    loadFragment(new HomeFragment());
+                }
+
+            }
+        });
+        relativeLayout_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }
+            }
+        });
+
     }
+
     public void loadFragment(Fragment fragment) {
         fragmentInstance = fragment;
-        fragmentName=fragment.getClass().getSimpleName();
+        fragmentName = fragment.getClass().getSimpleName();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.framelayout_main, fragment, fragment.toString());

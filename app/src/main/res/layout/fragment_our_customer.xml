@@ -3,23 +3,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.fragment.OurCustomerFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearlayout_search"
+            android:orientation="horizontal"
+            android:background="@drawable/search_shape">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/search"
+                android:id="@+id/edt_search"
+                android:drawableEnd="@drawable/ic_vector_search"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/white"
+                android:inputType="text" />
 
 
 
+        </LinearLayout>
 
-        <TextView
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:id="@+id/recyclerView_ourCustomer"
+            android:layout_below="@+id/linearlayout_search"/>
+
+
+        <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Our Customer"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
-
-
+            app:fabSize="mini"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_vector_fab_add"
+            android:layout_marginBottom="10dp"
+            />
 
     </RelativeLayout>
 </FrameLayout>

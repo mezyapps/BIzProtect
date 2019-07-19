@@ -106,7 +106,7 @@
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginStart="5dp"
                                 android:layout_toEndOf="@+id/iv_dashboard"
-                                android:text="Dashboard"
+                                android:text="@string/dashboard"
                                 android:textColor="@color/black"
                                 android:textSize="14sp" />
 
@@ -139,7 +139,7 @@
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginStart="5dp"
                                 android:layout_toEndOf="@+id/iv_our_customer"
-                                android:text="Our Customer"
+                                android:text="@string/our_customer"
                                 android:textColor="@color/black"
                                 android:textSize="14sp" />
 
@@ -172,7 +172,7 @@
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginStart="5dp"
                                 android:layout_toEndOf="@+id/iv_block_listed"
-                                android:text="Block Listed Customer"
+                                android:text="@string/black_listed_customer"
                                 android:textColor="@color/black"
                                 android:textSize="14sp" />
 

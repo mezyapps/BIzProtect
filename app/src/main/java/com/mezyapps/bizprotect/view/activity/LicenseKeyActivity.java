@@ -1,9 +1,14 @@
 package com.mezyapps.bizprotect.view.activity;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +22,8 @@ public class LicenseKeyActivity extends AppCompatActivity {
     private EditText edit_license_number;
     private Button btn_license;
     private TextView textTechnicalSupport;
-    private String strLicenseKey,strMakeCall;
+    private String strLicenseKey,strMakeCall,macAddress;
+    private  TelephonyManager telephonyManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,17 @@ public class LicenseKeyActivity extends AppCompatActivity {
         edit_license_number=findViewById(R.id.edit_license_number);
         btn_license=findViewById(R.id.btn_license);
         textTechnicalSupport=findViewById(R.id.textTechnicalSupport);
+
+
+
+        //Take Mac Address
+        telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+
+            return;
+        }
+        macAddress = telephonyManager.getDeviceId();
+
     }
 
     private void events() {
