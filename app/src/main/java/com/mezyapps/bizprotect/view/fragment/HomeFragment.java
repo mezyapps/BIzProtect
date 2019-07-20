@@ -58,6 +58,12 @@ public class HomeFragment extends Fragment {
 
     private void events() {
 
+       edt_search.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               edt_search.setFocusableInTouchMode(true);
+           }
+       });
 
     }
 

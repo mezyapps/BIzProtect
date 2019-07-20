@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
+import com.mezyapps.bizprotect.utils.SharedLoginUtils;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -80,8 +81,8 @@ public class LoginActivity extends AppCompatActivity {
                               //  userDetailsModuleArrayList=successModule.getUserDetailsModuleArrayList();
                                 //successDialog.showDialog("Login Successfully");
 
-                                //SharedUtils.putSharedUtils(LoginActivity.this);
-                               // SharedUtils.addUserUtils(LoginActivity.this,userDetailsModuleArrayList);
+                                //SharedLoginUtils.putSharedUtils(LoginActivity.this);
+                               // SharedLoginUtils.addUserUtils(LoginActivity.this,userDetailsModuleArrayList);
                                 //
                             } else {
                                 //errorDialog.showDialog("User Not Registered");
@@ -105,10 +106,10 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });*/
-
+        SharedLoginUtils.putLoginSharedUtils(LoginActivity.this);
         Intent intent=new Intent(LoginActivity.this,MainActivity.class);
         startActivity(intent);
-
+        finish();
     }
 
     private boolean validation() {

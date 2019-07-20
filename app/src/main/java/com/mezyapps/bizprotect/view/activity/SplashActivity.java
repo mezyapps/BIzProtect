@@ -10,7 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.mezyapps.bizprotect.R;
-import com.mezyapps.bizprotect.utils.SharedUtils;
+import com.mezyapps.bizprotect.utils.SharedLicenseUtils;
+import com.mezyapps.bizprotect.utils.SharedLoginUtils;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
 import rx.functions.Action1;
@@ -18,6 +19,7 @@ import rx.functions.Action1;
 public class SplashActivity extends AppCompatActivity {
 
     private String is_login="";
+    private String is_key_approve="";
     private Handler handler;
 
     @Override
@@ -25,7 +27,8 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        //is_login = SharedUtils.getSharedUtils(getApplicationContext());
+        is_login = SharedLoginUtils.getLoginSharedUtils(getApplicationContext());
+        is_key_approve= SharedLicenseUtils.getLicenseSharedUtils(getApplicationContext());
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkPermissions();
         } else {
@@ -85,14 +88,24 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                if (is_login.equalsIgnoreCase("") || is_login.equalsIgnoreCase("false")) {
-                 Intent intent = new Intent(SplashActivity.this, LicenseKeyActivity.class);
-                 startActivity(intent);
-                } else {
-                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                    startActivity(intent);
+                if(is_key_approve.equalsIgnoreCase("")) {
+                    Intent key_intent = new Intent(SplashActivity.this, LicenseKeyActivity.class);
+                    startActivity(key_intent);
+                    finish();
                 }
-                finish();
+                else
+                {
+                    if (is_login.equalsIgnoreCase("") || is_login.equalsIgnoreCase("false")) {
+                        Intent login_intent = new Intent(SplashActivity.this, LoginActivity.class);
+                        startActivity(login_intent);
+                        finish();
+                    } else {
+                        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    finish();
+                }
             }
         }, 3000);
     }

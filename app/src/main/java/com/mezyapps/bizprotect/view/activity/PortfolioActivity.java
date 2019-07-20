@@ -1,28 +1,17 @@
 package com.mezyapps.bizprotect.view.activity;
 
 import android.content.Intent;
-import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.apicommon.ApiClient;
 import com.mezyapps.bizprotect.apicommon.ApiInterface;
-import com.mezyapps.bizprotect.model.SuccessModule;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
-import com.mezyapps.bizprotect.utils.SharedUtils;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class PortfolioActivity extends AppCompatActivity {
 
@@ -115,8 +104,8 @@ public class PortfolioActivity extends AppCompatActivity {
                               //  userDetailsModuleArrayList=successModule.getUserDetailsModuleArrayList();
                                 //successDialog.showDialog("Login Successfully");
 
-                                //SharedUtils.putSharedUtils(LoginActivity.this);
-                               // SharedUtils.addUserUtils(LoginActivity.this,userDetailsModuleArrayList);
+                                //SharedLoginUtils.putSharedUtils(LoginActivity.this);
+                               // SharedLoginUtils.addUserUtils(LoginActivity.this,userDetailsModuleArrayList);
                                 //
                             } else {
                                 //errorDialog.showDialog("User Not Registered");
@@ -144,6 +133,7 @@ public class PortfolioActivity extends AppCompatActivity {
 
         Intent intent=new Intent(PortfolioActivity.this,LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private boolean validation() {

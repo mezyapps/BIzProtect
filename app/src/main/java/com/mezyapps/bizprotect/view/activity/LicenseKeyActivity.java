@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
+import com.mezyapps.bizprotect.utils.SharedLicenseUtils;
 
 public class LicenseKeyActivity extends AppCompatActivity {
 
@@ -104,8 +105,8 @@ public class LicenseKeyActivity extends AppCompatActivity {
                               //  userDetailsModuleArrayList=successModule.getUserDetailsModuleArrayList();
                                 //successDialog.showDialog("Login Successfully");
 
-                                //SharedUtils.putSharedUtils(LoginActivity.this);
-                               // SharedUtils.addUserUtils(LoginActivity.this,userDetailsModuleArrayList);
+                                //SharedLoginUtils.putSharedUtils(LoginActivity.this);
+                               // SharedLoginUtils.addUserUtils(LoginActivity.this,userDetailsModuleArrayList);
                                 //
                             } else {
                                 //errorDialog.showDialog("User Not Registered");
@@ -129,10 +130,10 @@ public class LicenseKeyActivity extends AppCompatActivity {
 
             }
         });*/
-
-
+        SharedLicenseUtils.putLicenseSharedUtils(LicenseKeyActivity.this);
         Intent intent=new Intent(LicenseKeyActivity.this,PortfolioActivity.class);
         startActivity(intent);
+        finish();
 
 
     }

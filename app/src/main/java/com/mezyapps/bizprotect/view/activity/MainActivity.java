@@ -1,6 +1,9 @@
 package com.mezyapps.bizprotect.view.activity;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,13 +16,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mezyapps.bizprotect.R;
+import com.mezyapps.bizprotect.utils.SharedLoginUtils;
 import com.mezyapps.bizprotect.view.fragment.BlackListedCustomerFragment;
 import com.mezyapps.bizprotect.view.fragment.HomeFragment;
 import com.mezyapps.bizprotect.view.fragment.OurCustomerFragment;
@@ -35,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean doubleBackToExitPressedOnce = false;
     private BottomNavigationView bottom_navigation;
     private RelativeLayout relativeLayout_Dashboard, relativeLayout_ourCustomer, relativeLayout_blocked_customer, relativeLayout_logout;
+    private Dialog dialog_logout;
 
 
     @Override
@@ -83,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_logout:
-
+                        logoutApplication();
                         break;
 
 
@@ -129,10 +136,42 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                     drawerLayout.closeDrawer(GravityCompat.START);
+                    logoutApplication();
                 }
             }
         });
 
+    }
+
+    private void logoutApplication() {
+        dialog_logout = new Dialog(MainActivity.this);
+        dialog_logout.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog_logout.setContentView(R.layout.dialog_logout);
+        TextView txt_cancel =dialog_logout.findViewById(R.id.txt_cancel);
+        TextView txt_logout =dialog_logout.findViewById(R.id.txt_logout);
+        dialog_logout.setCancelable(false);
+        dialog_logout.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        dialog_logout.show();
+
+        Window window = dialog_logout.getWindow();
+        window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        txt_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog_logout.dismiss();
+            }
+        });
+        txt_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedLoginUtils.removeLoginSharedUtils(MainActivity.this);
+                Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     public void loadFragment(Fragment fragment) {
