@@ -17,6 +17,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -72,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 drawerLayout.openDrawer(GravityCompat.START);
+
             }
         });
 
@@ -147,8 +150,8 @@ public class MainActivity extends AppCompatActivity {
         dialog_logout = new Dialog(MainActivity.this);
         dialog_logout.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog_logout.setContentView(R.layout.dialog_logout);
-        TextView txt_cancel =dialog_logout.findViewById(R.id.txt_cancel);
-        TextView txt_logout =dialog_logout.findViewById(R.id.txt_logout);
+        TextView txt_cancel = dialog_logout.findViewById(R.id.txt_cancel);
+        TextView txt_logout = dialog_logout.findViewById(R.id.txt_logout);
         dialog_logout.setCancelable(false);
         dialog_logout.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
@@ -167,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SharedLoginUtils.removeLoginSharedUtils(MainActivity.this);
-                Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
