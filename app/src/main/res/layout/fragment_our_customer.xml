@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/honeydew"
     tools:context=".view.fragment.OurCustomerFragment">
 
     <RelativeLayout
@@ -12,45 +13,53 @@
         android:padding="5dp">
 
         <LinearLayout
+            android:id="@+id/linearlayout_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/linearlayout_search"
-            android:orientation="horizontal"
-            android:background="@drawable/search_shape">
+            android:background="@drawable/search_shape"
+            android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/edt_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/search"
-                android:id="@+id/edt_search"
-                android:drawableEnd="@drawable/ic_vector_search"
                 android:layout_marginEnd="10dp"
                 android:backgroundTint="@color/white"
+                android:drawableEnd="@drawable/ic_vector_search"
+                android:hint="@string/search"
                 android:inputType="text" />
-
 
 
         </LinearLayout>
 
 
-        <android.support.v7.widget.RecyclerView
+        <android.support.v4.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
-            android:id="@+id/recyclerView_ourCustomer"
-            android:layout_below="@+id/linearlayout_search"/>
+            android:id="@+id/swipeRefresh_our_customer"
+            android:layout_below="@+id/linearlayout_search">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView_ourCustomer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </android.support.v4.widget.SwipeRefreshLayout>
 
 
         <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_add_customer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fabSize="mini"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
             android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_vector_fab_add"
             android:layout_marginBottom="10dp"
-            />
+            android:src="@drawable/ic_vector_fab_add"
+            app:fabSize="mini" />
 
     </RelativeLayout>
 </FrameLayout>
