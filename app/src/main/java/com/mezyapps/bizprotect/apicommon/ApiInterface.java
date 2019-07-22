@@ -16,4 +16,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<SuccessModule> licenseKeySend(@Field("key") String key,
                                        @Field("mac") String mac);
+
+    @POST(EndApi.CHECK_LICENSE_KEY)
+    @FormUrlEncoded
+    Call<SuccessModule> checkLicenseKey(@Field("mac") String mac);
 }
