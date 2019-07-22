@@ -1,5 +1,5 @@
 package com.mezyapps.bizprotect.apicommon;
 
 public class BaseApi {
-    public static String BASE_URL="https://shivamtechnology.000webhostapp.com/smartframing/";
+    public static String BASE_URL="http://registermykenan.com/biz_protect/";
 }
