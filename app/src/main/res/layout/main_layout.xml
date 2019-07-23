@@ -29,7 +29,7 @@
                 android:src="@drawable/ic_vector_menu" />
 
             <TextView
-                android:id="@+id/appName_txt"
+                android:id="@+id/text_app_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"

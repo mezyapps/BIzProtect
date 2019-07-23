@@ -4,14 +4,26 @@ import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.apicommon.ApiClient;
 import com.mezyapps.bizprotect.apicommon.ApiInterface;
+import com.mezyapps.bizprotect.model.SuccessModel;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
+import com.mezyapps.bizprotect.utils.SuccessDialog;
+
+import java.net.ProtocolFamily;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PortfolioActivity extends AppCompatActivity {
 
@@ -22,6 +34,8 @@ public class PortfolioActivity extends AppCompatActivity {
     private TextInputLayout textPassword, textPanNumber, textAadharNumber, textMobileNumber, textEmail,
             textAddress, textGstNumber, textPersonName, textCompanyName;
     public static ApiInterface apiInterface;
+    private ImageView ic_back;
+    private SuccessDialog successDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +58,7 @@ public class PortfolioActivity extends AppCompatActivity {
         edt_aadhar_number = findViewById(R.id.edt_aadhar_number);
         edt_gst_no = findViewById(R.id.edt_gst_no);
         btn_create_portfolio = findViewById(R.id.btn_create_portfolio);
+        ic_back = findViewById(R.id.ic_back);
 
 
         textCompanyName = findViewById(R.id.textCompanyName);
@@ -55,6 +70,8 @@ public class PortfolioActivity extends AppCompatActivity {
         textAadharNumber = findViewById(R.id.textAadharNumber);
         textPanNumber = findViewById(R.id.textPanNumber);
         textPassword = findViewById(R.id.textPassword);
+
+        successDialog=new SuccessDialog(PortfolioActivity.this);
     }
 
     private void events() {
@@ -77,40 +94,46 @@ public class PortfolioActivity extends AppCompatActivity {
 
             }
         });
-
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
     }
 
     private void callCreatePortfolio() {
 
-        /*Call<SuccessModule> call = apiInterface.login(mobile_number,password);
+        Call<SuccessModel> call = apiInterface.registrationClient(person_name,company_name,address,gst_number,email,mobile,aadhar_number,pan_number,password);
 
-        call.enqueue(new Callback<SuccessModule>() {
+        call.enqueue(new Callback<SuccessModel>() {
             @Override
-            public void onResponse(Call<SuccessModule> call, Response<SuccessModule> response) {
+            public void onResponse(Call<SuccessModel> call, Response<SuccessModel> response) {
 
                 String str_response = new Gson().toJson(response.body());
                 Log.d("Response >>", str_response);
 
                 try {
                     if (response.isSuccessful()) {
-                        SuccessModule successModule = response.body();
+                        SuccessModel successModel = response.body();
 
                         String message = null, code = null;
-                        if (successModule != null) {
-                          //  message = successModule.getMesaage();
-                            //code = successModule.getCode();
+                        if (successModel != null) {
+                           message = successModel.getMessage();
+                            code = successModel.getCode();
                             if (code.equalsIgnoreCase("1")) {
-                              //  userDetailsModuleArrayList=successModule.getUserDetailsModuleArrayList();
-                                //successDialog.showDialog("Login Successfully");
-
-                                //SharedLoginUtils.putSharedUtils(LoginActivity.this);
-                               // SharedLoginUtils.addUserUtils(LoginActivity.this,userDetailsModuleArrayList);
-                                //
-                            } else {
-                                //errorDialog.showDialog("User Not Registered");
+                                Toast.makeText(PortfolioActivity.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
+                                //successDialog.showDialog("Registration Successfully");
+                                Intent intent=new Intent(PortfolioActivity.this,LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            } else if(code.equalsIgnoreCase("3")) {
+                                Toast.makeText(PortfolioActivity.this, message, Toast.LENGTH_SHORT).show();
                             }
-
+                            else {
+                                Toast.makeText(PortfolioActivity.this, message, Toast.LENGTH_SHORT).show();
+                            }
 
                         } else {
                             Toast.makeText(PortfolioActivity.this, "Response Null", Toast.LENGTH_SHORT).show();
@@ -125,15 +148,11 @@ public class PortfolioActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<SuccessModule> call, Throwable t) {
+            public void onFailure(Call<SuccessModel> call, Throwable t) {
 
             }
-        });*/
+        });
 
-
-        Intent intent=new Intent(PortfolioActivity.this,LoginActivity.class);
-        startActivity(intent);
-        finish();
     }
 
     private boolean validation() {

@@ -19,7 +19,7 @@ import com.google.gson.Gson;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.apicommon.ApiClient;
 import com.mezyapps.bizprotect.apicommon.ApiInterface;
-import com.mezyapps.bizprotect.model.SuccessModule;
+import com.mezyapps.bizprotect.model.SuccessModel;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
 import com.mezyapps.bizprotect.utils.SharedLicenseUtils;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
@@ -155,22 +155,22 @@ public class SplashActivity extends AppCompatActivity {
         }, 3000);
     }
     private void callLicenseApprove() {
-        Call<SuccessModule> call = apiInterface.checkLicenseKey(macAddress);
-        call.enqueue(new Callback<SuccessModule>() {
+        Call<SuccessModel> call = apiInterface.checkLicenseKey(macAddress);
+        call.enqueue(new Callback<SuccessModel>() {
             @Override
-            public void onResponse(Call<SuccessModule> call, Response<SuccessModule> response) {
+            public void onResponse(Call<SuccessModel> call, Response<SuccessModel> response) {
 
                 String str_response = new Gson().toJson(response.body());
                 Log.d("Response >>", str_response);
 
                 try {
                     if (response.isSuccessful()) {
-                        SuccessModule successModule = response.body();
+                        SuccessModel successModel = response.body();
 
                         String message = null, code = null;
-                        if (successModule != null) {
-                            message = successModule.getMessage();
-                            code = successModule.getCode();
+                        if (successModel != null) {
+                            message = successModel.getMessage();
+                            code = successModel.getCode();
                             if (code.equalsIgnoreCase("1")) {
                                 //Toast.makeText(SplashActivity.this, "License Key Send For Approval", Toast.LENGTH_LONG).show();
                                 SharedLicenseUtils.putLicenseSharedUtils(SplashActivity.this);
@@ -195,7 +195,7 @@ public class SplashActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<SuccessModule> call, Throwable t) {
+            public void onFailure(Call<SuccessModel> call, Throwable t) {
 
             }
         });

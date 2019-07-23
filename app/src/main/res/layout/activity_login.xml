@@ -9,7 +9,7 @@
     tools:context=".view.activity.LoginActivity">
 
 
-    <RelativeLayout
+  <!--  <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/app_color">
@@ -24,11 +24,17 @@
             android:textSize="20sp"
             android:textStyle="bold|italic" />
 
-    </RelativeLayout>
+    </RelativeLayout>-->
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/mezyapplogo"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -87,10 +93,20 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:id="@+id/btn_login"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/btn_shape"/>
 
 
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Portfolio"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:id="@+id/btn_signup"
+                android:background="@drawable/btn_shape"/>
         </LinearLayout>
 
 

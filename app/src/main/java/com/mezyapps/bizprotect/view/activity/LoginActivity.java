@@ -4,20 +4,35 @@ import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.mezyapps.bizprotect.R;
+import com.mezyapps.bizprotect.apicommon.ApiClient;
+import com.mezyapps.bizprotect.apicommon.ApiInterface;
+import com.mezyapps.bizprotect.model.ClientProfileModel;
+import com.mezyapps.bizprotect.model.SuccessModel;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
     private TextInputLayout textPhone_Number,textPassword;
     private EditText edt_phone_number,edt_password;
-    private Button btn_login;
+    private Button btn_login,btn_signup;
     private String phone_number,password;
+    public static ApiInterface apiInterface;
+    private ArrayList<ClientProfileModel> clientProfileModelArrayList=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +45,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void find_View_Ids() {
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
         textPhone_Number=findViewById(R.id.textPhone_Number);
         textPassword=findViewById(R.id.textPassword);
         edt_phone_number=findViewById(R.id.edt_phone_number);
         edt_password=findViewById(R.id.edt_password);
         btn_login=findViewById(R.id.btn_login);
+        btn_signup=findViewById(R.id.btn_signup);
 
     }
 
@@ -56,41 +73,52 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+        btn_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(LoginActivity.this,PortfolioActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
     private void callLogin() {
-          /*Call<SuccessModule> call = apiInterface.login(mobile_number,password);
+          Call<SuccessModel> call = apiInterface.login(phone_number,password);
 
-        call.enqueue(new Callback<SuccessModule>() {
+        call.enqueue(new Callback<SuccessModel>() {
             @Override
-            public void onResponse(Call<SuccessModule> call, Response<SuccessModule> response) {
+            public void onResponse(Call<SuccessModel> call, Response<SuccessModel> response) {
 
                 String str_response = new Gson().toJson(response.body());
                 Log.d("Response >>", str_response);
 
                 try {
                     if (response.isSuccessful()) {
-                        SuccessModule successModule = response.body();
-
+                        SuccessModel successModule = response.body();
+                        clientProfileModelArrayList.clear();
                         String message = null, code = null;
                         if (successModule != null) {
-                          //  message = successModule.getMesaage();
-                            //code = successModule.getCode();
+                             message = successModule.getMessage();
+                             code = successModule.getCode();
                             if (code.equalsIgnoreCase("1")) {
-                              //  userDetailsModuleArrayList=successModule.getUserDetailsModuleArrayList();
-                                //successDialog.showDialog("Login Successfully");
 
-                                //SharedLoginUtils.putSharedUtils(LoginActivity.this);
-                               // SharedLoginUtils.addUserUtils(LoginActivity.this,userDetailsModuleArrayList);
-                                //
+                                clientProfileModelArrayList=successModule.getClientProfileModelArrayList();
+
+                                if(clientProfileModelArrayList.size()!=0) {
+                                    SharedLoginUtils.putLoginSharedUtils(LoginActivity.this);
+                                    SharedLoginUtils.addUserUtils(LoginActivity.this, clientProfileModelArrayList);
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
                             } else {
-                                //errorDialog.showDialog("User Not Registered");
+                                Toast.makeText(LoginActivity.this, "User Not Registered", Toast.LENGTH_SHORT).show();
                             }
 
 
                         } else {
-                            Toast.makeText(PortfolioActivity.this, "Response Null", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Response Null", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -102,14 +130,11 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<SuccessModule> call, Throwable t) {
+            public void onFailure(Call<SuccessModel> call, Throwable t) {
 
             }
-        });*/
-        SharedLoginUtils.putLoginSharedUtils(LoginActivity.this);
-        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-        startActivity(intent);
-        finish();
+        });
+
     }
 
     private boolean validation() {

@@ -190,18 +190,18 @@ public class AddCustomerActivity extends AppCompatActivity {
 
     private void addCustomer() {
 
-          /*Call<SuccessModule> call = apiInterface.login(mobile_number,password);
+          /*Call<SuccessModel> call = apiInterface.login(mobile_number,password);
 
-        call.enqueue(new Callback<SuccessModule>() {
+        call.enqueue(new Callback<SuccessModel>() {
             @Override
-            public void onResponse(Call<SuccessModule> call, Response<SuccessModule> response) {
+            public void onResponse(Call<SuccessModel> call, Response<SuccessModel> response) {
 
                 String str_response = new Gson().toJson(response.body());
                 Log.d("Response >>", str_response);
 
                 try {
                     if (response.isSuccessful()) {
-                        SuccessModule successModule = response.body();
+                        SuccessModel successModule = response.body();
 
                         String message = null, code = null;
                         if (successModule != null) {
@@ -232,7 +232,7 @@ public class AddCustomerActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<SuccessModule> call, Throwable t) {
+            public void onFailure(Call<SuccessModel> call, Throwable t) {
 
             }
         });*/

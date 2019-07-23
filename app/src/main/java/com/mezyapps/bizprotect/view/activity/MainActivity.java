@@ -27,10 +27,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mezyapps.bizprotect.R;
+import com.mezyapps.bizprotect.model.ClientProfileModel;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
 import com.mezyapps.bizprotect.view.fragment.BlackListedCustomerFragment;
 import com.mezyapps.bizprotect.view.fragment.HomeFragment;
 import com.mezyapps.bizprotect.view.fragment.OurCustomerFragment;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottom_navigation;
     private RelativeLayout relativeLayout_Dashboard, relativeLayout_ourCustomer, relativeLayout_blocked_customer, relativeLayout_logout;
     private Dialog dialog_logout;
+    private TextView text_app_name;
+    private ArrayList<ClientProfileModel> clientProfileModelArrayList=new ArrayList<>();
 
 
     @Override
@@ -65,7 +70,10 @@ public class MainActivity extends AppCompatActivity {
         relativeLayout_ourCustomer = findViewById(R.id.relativeLayout_ourCustomer);
         relativeLayout_blocked_customer = findViewById(R.id.relativeLayout_blocked_customer);
         relativeLayout_logout = findViewById(R.id.relativeLayout_logout);
+        text_app_name = findViewById(R.id.text_app_name);
 
+        clientProfileModelArrayList=SharedLoginUtils.getUserDetails(MainActivity.this);
+        text_app_name.setText("Welcome "+clientProfileModelArrayList.get(0).getCompany_name());
     }
 
     private void events() {

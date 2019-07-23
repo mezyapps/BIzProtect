@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,9 +20,8 @@ import com.google.gson.Gson;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.apicommon.ApiClient;
 import com.mezyapps.bizprotect.apicommon.ApiInterface;
-import com.mezyapps.bizprotect.model.SuccessModule;
+import com.mezyapps.bizprotect.model.SuccessModel;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
-import com.mezyapps.bizprotect.utils.SharedLicenseUtils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -95,22 +93,22 @@ public class LicenseKeyActivity extends AppCompatActivity {
 
     private void callSendLicenseKey() {
 
-        Call<SuccessModule> call = apiInterface.licenseKeySend(strLicenseKey,macAddress);
-        call.enqueue(new Callback<SuccessModule>() {
+        Call<SuccessModel> call = apiInterface.licenseKeySend(strLicenseKey,macAddress);
+        call.enqueue(new Callback<SuccessModel>() {
             @Override
-            public void onResponse(Call<SuccessModule> call, Response<SuccessModule> response) {
+            public void onResponse(Call<SuccessModel> call, Response<SuccessModel> response) {
 
                 String str_response = new Gson().toJson(response.body());
                 Log.d("Response >>", str_response);
 
                 try {
                     if (response.isSuccessful()) {
-                        SuccessModule successModule = response.body();
+                        SuccessModel successModel = response.body();
 
                         String message = null, code = null;
-                        if (successModule != null) {
-                            message = successModule.getMessage();
-                            code = successModule.getCode();
+                        if (successModel != null) {
+                            message = successModel.getMessage();
+                            code = successModel.getCode();
                             if (code.equalsIgnoreCase("1")) {
                                 Toast.makeText(LicenseKeyActivity.this, "License Key Send For Approval", Toast.LENGTH_LONG).show();
 
@@ -134,16 +132,10 @@ public class LicenseKeyActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<SuccessModule> call, Throwable t) {
+            public void onFailure(Call<SuccessModel> call, Throwable t) {
 
             }
         });
-       /* SharedLicenseUtils.putLicenseSharedUtils(LicenseKeyActivity.this);
-        Intent intent=new Intent(LicenseKeyActivity.this,PortfolioActivity.class);
-        startActivity(intent);
-        finish();*/
-
-
     }
 
     private boolean validation() {

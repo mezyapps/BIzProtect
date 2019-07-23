@@ -39,31 +39,4 @@ public class ApiClient {
         return retrofit;
     }
 
-    public static Retrofit getClientWeather() {
-
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-
-        OkHttpClient client = new OkHttpClient
-                .Builder()
-                .connectTimeout(2, TimeUnit.MINUTES)
-                .readTimeout(2, TimeUnit.MINUTES)
-                .writeTimeout(2, TimeUnit.MINUTES)
-                .build();
-
-
-
-        if (retrofitWeather == null) {
-            retrofitWeather = new Retrofit.Builder()
-                    .baseUrl(LicenseBaseApi.LICENSE_BASE_API)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .client(client)
-                    .build();
-        }
-
-
-
-        return retrofitWeather;
-    }
 }
