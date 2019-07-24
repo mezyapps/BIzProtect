@@ -48,5 +48,17 @@
 
         </android.support.v4.widget.SwipeRefreshLayout>
 
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:id="@+id/iv_no_record_found"
+            android:src="@drawable/no_record_found"/>
+
+
     </RelativeLayout>
 </FrameLayout>

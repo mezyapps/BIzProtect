@@ -123,7 +123,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    loadFragment(new MyBlackListedCustomerFragment());
+                   // loadFragment(new MyBlackListedCustomerFragment());
+                    Intent intent=new Intent(MainActivity.this,MyCustomerListActivity.class);
+                    startActivity(intent);
                 }
 
             }

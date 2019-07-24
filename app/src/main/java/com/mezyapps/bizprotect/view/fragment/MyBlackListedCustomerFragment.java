@@ -8,11 +8,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -49,6 +52,7 @@ public class MyBlackListedCustomerFragment extends Fragment {
     private ArrayList<ClientProfileModel> clientProfileModelArrayList=new ArrayList<>();
     private String client_id;
     private ShowProgressDialog showProgressDialog;
+    private ImageView iv_no_record_found;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,6 +74,7 @@ public class MyBlackListedCustomerFragment extends Fragment {
         fab_add_customer = view.findViewById(R.id.fab_add_customer);
         edt_search = view.findViewById(R.id.edt_search);
         swipeRefresh_our_customer = view.findViewById(R.id.swipeRefresh_our_customer);
+        iv_no_record_found = view.findViewById(R.id.iv_no_record_found);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
         recyclerView_ourCustomer.setLayoutManager(linearLayoutManager);
@@ -114,6 +119,31 @@ public class MyBlackListedCustomerFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        edt_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try {
+                    edt_search.setFocusableInTouchMode(true);
+                    myBlackListedCustomerListAdapter.getFilter().filter(edt_search.getText().toString());
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
     }
 
     private void listOurCustomer() {
@@ -141,14 +171,17 @@ public class MyBlackListedCustomerFragment extends Fragment {
                                 if(myBlackListedCustomerModelArrayList.size()!=0) {
                                     myBlackListedCustomerListAdapter = new MyBlackListedCustomerListAdapter(mContext, myBlackListedCustomerModelArrayList);
                                     recyclerView_ourCustomer.setAdapter(myBlackListedCustomerListAdapter);
+                                    iv_no_record_found.setVisibility(View.GONE);
                                     myBlackListedCustomerListAdapter.notifyDataSetChanged();
                                 }
                                 else
                                 {
-
+                                    iv_no_record_found.setVisibility(View.VISIBLE);
+                                    myBlackListedCustomerListAdapter.notifyDataSetChanged();
                                 }
                             } else {
-                                Toast.makeText(mContext, "No Any Customer", Toast.LENGTH_SHORT).show();
+                                iv_no_record_found.setVisibility(View.VISIBLE);
+                                myBlackListedCustomerListAdapter.notifyDataSetChanged();
                             }
 
 

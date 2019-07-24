@@ -1,7 +1,6 @@
 package com.mezyapps.bizprotect.model;
 
-public class MyBlackListedCustomerModel {
-
+public class MyCustomerModel {
     private String customer_name;
     private String contact_person;
     private String gst_no;

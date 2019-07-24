@@ -7,11 +7,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -42,6 +45,7 @@ public class HomeFragment extends Fragment {
     private SwipeRefreshLayout swipeRefresh_blacklist_customer;
     public static ApiInterface apiInterface;
     private ShowProgressDialog showProgressDialog;
+    private ImageView iv_no_record_found;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,6 +65,7 @@ public class HomeFragment extends Fragment {
         edt_search = view.findViewById(R.id.edt_search);
         recyclerView_blackList = view.findViewById(R.id.recyclerView_blackList);
         swipeRefresh_blacklist_customer = view.findViewById(R.id.swipeRefresh_blacklist_customer);
+        iv_no_record_found = view.findViewById(R.id.iv_no_record_found);
 
         //RecyclerView Assign linearLayout Manager
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(mContext);
@@ -77,13 +82,37 @@ public class HomeFragment extends Fragment {
     }
 
     private void events() {
+        edt_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edt_search.setFocusableInTouchMode(true);
+            }
+        });
 
-       edt_search.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               edt_search.setFocusableInTouchMode(true);
-           }
-       });
+        edt_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try {
+                    edt_search.setFocusableInTouchMode(true);
+                    blackListedCustomerAdapter.getFilter().filter(edt_search.getText().toString());
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
 
        swipeRefresh_blacklist_customer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
            @Override
@@ -125,14 +154,17 @@ public class HomeFragment extends Fragment {
                                 if(blackListCustomerModelArrayList.size()!=0) {
                                     blackListedCustomerAdapter = new BlackListedCustomerAdapter(mContext, blackListCustomerModelArrayList);
                                     recyclerView_blackList.setAdapter(blackListedCustomerAdapter);
+                                    iv_no_record_found.setVisibility(View.GONE);
                                     blackListedCustomerAdapter.notifyDataSetChanged();
                                 }
                                 else
                                 {
-
+                                    iv_no_record_found.setVisibility(View.VISIBLE);
+                                    blackListedCustomerAdapter.notifyDataSetChanged();
                                 }
                             } else {
-                                Toast.makeText(mContext, "No Any Customer", Toast.LENGTH_SHORT).show();
+                                iv_no_record_found.setVisibility(View.VISIBLE);
+                                blackListedCustomerAdapter.notifyDataSetChanged();
                             }
 
 

@@ -12,6 +12,8 @@ public class BlackListCustomerModel  {
     private String status;
     private String description;
     private String client_id;
+    private String inserted_date_time;
+    private String updated_date_time;
 
 
     public String getCustomer_name() {
@@ -100,5 +102,21 @@ public class BlackListCustomerModel  {
 
     public void setClient_id(String client_id) {
         this.client_id = client_id;
+    }
+
+    public String getInserted_date_time() {
+        return inserted_date_time;
+    }
+
+    public void setInserted_date_time(String inserted_date_time) {
+        this.inserted_date_time = inserted_date_time;
+    }
+
+    public String getUpdated_date_time() {
+        return updated_date_time;
+    }
+
+    public void setUpdated_date_time(String updated_date_time) {
+        this.updated_date_time = updated_date_time;
     }
 }

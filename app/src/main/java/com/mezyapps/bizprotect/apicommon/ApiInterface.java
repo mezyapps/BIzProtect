@@ -60,4 +60,9 @@ public interface ApiInterface {
                                             @Field("pan_no") String  pan_no,
                                             @Field("mobile_no") String  mobile_no,
                                             @Field("client_id") String  client_id);
+
+    @POST(EndApi.MY_CUSTOMER)
+    @FormUrlEncoded
+    Call<SuccessModel> myCustomerList(@Field("client_id") String client_id);
+
 }
