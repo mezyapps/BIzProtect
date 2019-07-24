@@ -4,12 +4,12 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/dashboard"
-        android:title="@string/dashboard"/>
+        android:title="@string/all_blacklisted"/>
 
     <item
         android:id="@+id/nav_our_customer"
         android:icon="@drawable/customer_image"
-        android:title="@string/our_customer"/>
+        android:title="@string/my_blacklisted"/>
 
     <item
         android:id="@+id/nav_logout"

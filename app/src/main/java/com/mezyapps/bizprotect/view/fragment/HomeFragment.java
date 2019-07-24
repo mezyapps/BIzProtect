@@ -7,19 +7,28 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.apicommon.ApiClient;
 import com.mezyapps.bizprotect.apicommon.ApiInterface;
 import com.mezyapps.bizprotect.model.BlackListCustomerModel;
+import com.mezyapps.bizprotect.model.SuccessModel;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
+import com.mezyapps.bizprotect.utils.ShowProgressDialog;
 import com.mezyapps.bizprotect.view.adpater.BlackListedCustomerAdapter;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class HomeFragment extends Fragment {
@@ -30,6 +39,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<BlackListCustomerModel> blackListCustomerModelArrayList=new ArrayList<>();
     private SwipeRefreshLayout swipeRefresh_blacklist_customer;
     public static ApiInterface apiInterface;
+    private ShowProgressDialog showProgressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,8 +64,7 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(mContext);
         recyclerView_blackList.setLayoutManager(linearLayoutManager);
         recyclerView_blackList.hasFixedSize();
-
-
+        showProgressDialog=new ShowProgressDialog(mContext);
 
         if (NetworkUtils.isNetworkAvailable(mContext)) {
             listBackListedCustomer();
@@ -63,15 +72,6 @@ public class HomeFragment extends Fragment {
         else {
             NetworkUtils.isNetworkNotAvailable(mContext);
         }
-
-
-
-        for(int i=0;i<=10;i++) {
-            blackListCustomerModelArrayList.add(new BlackListCustomerModel("Nehal Jathar", "1234567890", "BlackListed"));
-        }
-        blackListedCustomerAdapter=new BlackListedCustomerAdapter(mContext,blackListCustomerModelArrayList);
-        recyclerView_blackList.setAdapter(blackListedCustomerAdapter);
-        blackListedCustomerAdapter.notifyDataSetChanged();
     }
 
     private void events() {
@@ -92,12 +92,13 @@ public class HomeFragment extends Fragment {
 
     }
     private void listBackListedCustomer() {
-         /*Call<SuccessModel> call = apiInterface.login(mobile_number,password);
+        showProgressDialog.showDialog();
 
+        Call<SuccessModel> call = apiInterface.allBlackListed();
         call.enqueue(new Callback<SuccessModel>() {
             @Override
             public void onResponse(Call<SuccessModel> call, Response<SuccessModel> response) {
-
+                showProgressDialog.dismissDialog();
                 String str_response = new Gson().toJson(response.body());
                 Log.d("Response >>", str_response);
 
@@ -107,22 +108,26 @@ public class HomeFragment extends Fragment {
 
                         String message = null, code = null;
                         if (successModule != null) {
-                          //  message = successModule.getMesaage();
-                            //code = successModule.getCode();
+                           message = successModule.getMessage();
+                           code = successModule.getCode();
                             if (code.equalsIgnoreCase("1")) {
-                              //  userDetailsModuleArrayList=successModule.getUserDetailsModuleArrayList();
-                                //successDialog.showDialog("Login Successfully");
+                                blackListCustomerModelArrayList=successModule.getBlackListCustomerModelArrayList();
+                                if(blackListCustomerModelArrayList.size()!=0) {
+                                    blackListedCustomerAdapter = new BlackListedCustomerAdapter(mContext, blackListCustomerModelArrayList);
+                                    recyclerView_blackList.setAdapter(blackListedCustomerAdapter);
+                                    blackListedCustomerAdapter.notifyDataSetChanged();
+                                }
+                                else
+                                {
 
-                                //SharedLoginUtils.putSharedUtils(LoginActivity.this);
-                               // SharedLoginUtils.addUserUtils(LoginActivity.this,userDetailsModuleArrayList);
-                                //
+                                }
                             } else {
-                                //errorDialog.showDialog("User Not Registered");
+                                Toast.makeText(mContext, "No Any Customer", Toast.LENGTH_SHORT).show();
                             }
 
 
                         } else {
-                            Toast.makeText(PortfolioActivity.this, "Response Null", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, "Response Null", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -135,9 +140,9 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<SuccessModel> call, Throwable t) {
-
+                showProgressDialog.dismissDialog();
             }
-        });*/
+        });
 
     }
 

@@ -39,9 +39,12 @@ public class BlackListedCustomerAdapter extends RecyclerView.Adapter<BlackListed
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final BlackListCustomerModel blackListCustomerModel=blackListCustomerModelArrayList.get(position);
 
+        String status=blackListCustomerModel.getStatus().trim();
         holder.textName.setText(blackListCustomerModel.getCustomer_name());
         holder.textCustomerFirstName.setText(blackListCustomerModel.getCustomer_name());
-        holder.textBlackList.setText(blackListCustomerModel.getStatus());
+        if(status.equalsIgnoreCase("4")) {
+            holder.textBlackList.setText("BlackListed");
+        }
         holder.textGstNumber.setText(blackListCustomerModel.getGst_no());
 
     }

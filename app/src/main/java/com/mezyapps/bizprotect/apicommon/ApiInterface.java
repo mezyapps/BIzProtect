@@ -37,4 +37,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<SuccessModel> login(@Field("mobile_no") String mobile_no,
                              @Field("password") String password);
+
+
+    @POST(EndApi.ALL_BLACKLISTED)
+    Call<SuccessModel> allBlackListed();
 }

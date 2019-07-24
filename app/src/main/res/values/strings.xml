@@ -8,4 +8,6 @@
     <string name="log_out">Log Out</string>
     <string name="black_listed_customer">Black Listed Customer</string>
     <string name="search">Search</string>
+    <string name="all_blacklisted">All BlackListed</string>
+    <string name="my_blacklisted">My BlackListed</string>
 </resources>
