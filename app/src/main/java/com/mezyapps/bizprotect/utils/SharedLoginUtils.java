@@ -66,4 +66,5 @@ public class SharedLoginUtils {
         clientProfileModelArrayList.add(clientProfileModel);
         return clientProfileModelArrayList;
     }
+
 }

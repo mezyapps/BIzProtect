@@ -11,44 +11,45 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.mezyapps.bizprotect.R;
-import com.mezyapps.bizprotect.model.BlackListCustomerModel;
-import com.mezyapps.bizprotect.model.OurCustomerModel;
+import com.mezyapps.bizprotect.model.MyBlackListedCustomerModel;
 
 import java.util.ArrayList;
 
-public class OurCustomerListAdapter extends RecyclerView.Adapter<OurCustomerListAdapter.MyViewHolder> implements Filterable {
+public class MyBlackListedCustomerListAdapter extends RecyclerView.Adapter<MyBlackListedCustomerListAdapter.MyViewHolder> implements Filterable {
 
     private Context mContext;
-    private  ArrayList<OurCustomerModel> ourCustomerModelArrayList;
-    private  ArrayList<OurCustomerModel> arrayListFiltered;
+    private  ArrayList<MyBlackListedCustomerModel> myBlackListedCustomerModelArrayList;
+    private  ArrayList<MyBlackListedCustomerModel> arrayListFiltered;
 
-    public OurCustomerListAdapter(Context mContext, ArrayList<OurCustomerModel> ourCustomerModelArrayList) {
+    public MyBlackListedCustomerListAdapter(Context mContext, ArrayList<MyBlackListedCustomerModel> myBlackListedCustomerModelArrayList) {
         this.mContext=mContext;
-        this.ourCustomerModelArrayList=ourCustomerModelArrayList;
-        this.arrayListFiltered=ourCustomerModelArrayList;
+        this.myBlackListedCustomerModelArrayList = myBlackListedCustomerModelArrayList;
+        this.arrayListFiltered= myBlackListedCustomerModelArrayList;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_our_customer_adapter,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_my_blacklisted_customer_adapter,parent,false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        final OurCustomerModel ourCustomerModel=ourCustomerModelArrayList.get(position);
-
-        holder.textName.setText(ourCustomerModel.getCustomer_name());
-        holder.textCustomerFirstName.setText(ourCustomerModel.getCustomer_name());
-        holder.textBlackList.setText(ourCustomerModel.getStatus());
-        holder.textGstNumber.setText(ourCustomerModel.getGst_no());
+        final MyBlackListedCustomerModel myBlackListedCustomerModel = myBlackListedCustomerModelArrayList.get(position);
+        String status=myBlackListedCustomerModel.getStatus();
+        holder.textName.setText(myBlackListedCustomerModel.getCustomer_name());
+        holder.textCustomerFirstName.setText(myBlackListedCustomerModel.getCustomer_name());
+        if(status.equalsIgnoreCase("4")) {
+            holder.textBlackList.setText("My BlackListed");
+        }
+        holder.textGstNumber.setText(myBlackListedCustomerModel.getGst_no());
 
     }
 
     @Override
     public int getItemCount() {
-        return ourCustomerModelArrayList.size();
+        return myBlackListedCustomerModelArrayList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -71,32 +72,32 @@ public class OurCustomerListAdapter extends RecyclerView.Adapter<OurCustomerList
             protected FilterResults performFiltering(CharSequence charSequence) {
                 String charString = charSequence.toString().replaceAll("\\s","").toLowerCase().trim();
                 if (charString.isEmpty() || charSequence.equals("")) {
-                    ourCustomerModelArrayList = arrayListFiltered;
+                    myBlackListedCustomerModelArrayList = arrayListFiltered;
                 } else {
-                    ArrayList<OurCustomerModel> filteredList = new ArrayList<>();
-                    for (int i = 0; i < ourCustomerModelArrayList.size(); i++) {
-                        String customer_name=ourCustomerModelArrayList.get(i).getCustomer_name().replaceAll("\\s","").toLowerCase().trim();
+                    ArrayList<MyBlackListedCustomerModel> filteredList = new ArrayList<>();
+                    for (int i = 0; i < myBlackListedCustomerModelArrayList.size(); i++) {
+                        String customer_name= myBlackListedCustomerModelArrayList.get(i).getCustomer_name().replaceAll("\\s","").toLowerCase().trim();
                         //String  address=arrayList.get(i).getAddress().toLowerCase().replaceAll("\\s","").toLowerCase().trim();
                         //String company_name=arrayList.get(i).getCompany_name().replaceAll("\\s","").toLowerCase().trim();
                         if (customer_name.contains(charString)) {
-                            filteredList.add(ourCustomerModelArrayList.get(i));
+                            filteredList.add(myBlackListedCustomerModelArrayList.get(i));
                         }
                     }
                     if (filteredList.size() > 0) {
-                        ourCustomerModelArrayList = filteredList;
+                        myBlackListedCustomerModelArrayList = filteredList;
                     } else {
-                        ourCustomerModelArrayList = arrayListFiltered;
+                        myBlackListedCustomerModelArrayList = arrayListFiltered;
                     }
                 }
 
                 FilterResults filterResults = new FilterResults();
-                filterResults.values = ourCustomerModelArrayList;
+                filterResults.values = myBlackListedCustomerModelArrayList;
                 return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                ourCustomerModelArrayList = (ArrayList<OurCustomerModel>) filterResults.values;
+                myBlackListedCustomerModelArrayList = (ArrayList<MyBlackListedCustomerModel>) filterResults.values;
                 notifyDataSetChanged();
             }
         };

@@ -17,6 +17,7 @@ import com.mezyapps.bizprotect.apicommon.ApiClient;
 import com.mezyapps.bizprotect.apicommon.ApiInterface;
 import com.mezyapps.bizprotect.model.SuccessModel;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
+import com.mezyapps.bizprotect.utils.ShowProgressDialog;
 import com.mezyapps.bizprotect.utils.SuccessDialog;
 
 import java.net.ProtocolFamily;
@@ -36,6 +37,7 @@ public class PortfolioActivity extends AppCompatActivity {
     public static ApiInterface apiInterface;
     private ImageView ic_back;
     private SuccessDialog successDialog;
+    private ShowProgressDialog showProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +72,8 @@ public class PortfolioActivity extends AppCompatActivity {
         textAadharNumber = findViewById(R.id.textAadharNumber);
         textPanNumber = findViewById(R.id.textPanNumber);
         textPassword = findViewById(R.id.textPassword);
-
         successDialog=new SuccessDialog(PortfolioActivity.this);
+        showProgressDialog=new ShowProgressDialog(PortfolioActivity.this);
     }
 
     private void events() {
@@ -104,13 +106,12 @@ public class PortfolioActivity extends AppCompatActivity {
     }
 
     private void callCreatePortfolio() {
-
+        showProgressDialog.showDialog();
         Call<SuccessModel> call = apiInterface.registrationClient(person_name,company_name,address,gst_number,email,mobile,aadhar_number,pan_number,password);
-
         call.enqueue(new Callback<SuccessModel>() {
             @Override
             public void onResponse(Call<SuccessModel> call, Response<SuccessModel> response) {
-
+                showProgressDialog.dismissDialog();
                 String str_response = new Gson().toJson(response.body());
                 Log.d("Response >>", str_response);
 
@@ -149,7 +150,7 @@ public class PortfolioActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SuccessModel> call, Throwable t) {
-
+                showProgressDialog.dismissDialog();
             }
         });
 

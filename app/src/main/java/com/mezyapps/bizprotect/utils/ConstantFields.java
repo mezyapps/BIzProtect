@@ -6,6 +6,7 @@ public class ConstantFields {
     public static final String LOGIN_PREFERENCE="Login_preference";
     public static final String IS_LOGIN="IS_LOGIN";
     public static final String IS_LICENSE_APPROVE="IS_APPROVE";
+    public static final String DEVICE_ID="DEVICE_ID";
 
     public static class  SharedLoginConstant
     {

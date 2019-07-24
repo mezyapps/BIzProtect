@@ -18,6 +18,7 @@ import com.mezyapps.bizprotect.model.ClientProfileModel;
 import com.mezyapps.bizprotect.model.SuccessModel;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
+import com.mezyapps.bizprotect.utils.ShowProgressDialog;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private String phone_number,password;
     public static ApiInterface apiInterface;
     private ArrayList<ClientProfileModel> clientProfileModelArrayList=new ArrayList<>();
+    private ShowProgressDialog showProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         edt_password=findViewById(R.id.edt_password);
         btn_login=findViewById(R.id.btn_login);
         btn_signup=findViewById(R.id.btn_signup);
+        showProgressDialog=new ShowProgressDialog(LoginActivity.this);
 
     }
 
@@ -84,12 +87,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void callLogin() {
-          Call<SuccessModel> call = apiInterface.login(phone_number,password);
-
+        showProgressDialog.showDialog();
+        Call<SuccessModel> call = apiInterface.login(phone_number,password);
         call.enqueue(new Callback<SuccessModel>() {
             @Override
             public void onResponse(Call<SuccessModel> call, Response<SuccessModel> response) {
-
+                showProgressDialog.dismissDialog();
                 String str_response = new Gson().toJson(response.body());
                 Log.d("Response >>", str_response);
 
@@ -131,7 +134,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SuccessModel> call, Throwable t) {
-
+                showProgressDialog.dismissDialog();
             }
         });
 

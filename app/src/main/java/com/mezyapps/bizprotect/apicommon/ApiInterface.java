@@ -41,4 +41,23 @@ public interface ApiInterface {
 
     @POST(EndApi.ALL_BLACKLISTED)
     Call<SuccessModel> allBlackListed();
+
+
+
+    @POST(EndApi.MY_BLACKLISTED)
+    @FormUrlEncoded
+    Call<SuccessModel> myBlackListed(@Field("client_id") String client_id);
+
+
+    @POST(EndApi.CUSTOMER_REGISTRATION)
+    @FormUrlEncoded
+    Call<SuccessModel> registrationCustomer(@Field("name") String name,
+                                            @Field("contact_person") String contact_person,
+                                            @Field("gst_no") String  gst_no,
+                                            @Field("address") String  address,
+                                            @Field("email") String  email,
+                                            @Field("aadhar_no") String  aadhar_no,
+                                            @Field("pan_no") String  pan_no,
+                                            @Field("mobile_no") String  mobile_no,
+                                            @Field("client_id") String  client_id);
 }

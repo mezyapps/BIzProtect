@@ -4,10 +4,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dashboard">Dashboard</string>
-    <string name="our_customer">Our Customer</string>
+    <string name="our_customer">My Customer</string>
     <string name="log_out">Log Out</string>
-    <string name="black_listed_customer">Black Listed Customer</string>
-    <string name="search">Search</string>
+    <string name="black_listed_customer">All BlackListed Customer</string>
+    <string name="search">Search(GST No OR AADHAR NO)</string>
     <string name="all_blacklisted">All BlackListed</string>
     <string name="my_blacklisted">My BlackListed</string>
 </resources>

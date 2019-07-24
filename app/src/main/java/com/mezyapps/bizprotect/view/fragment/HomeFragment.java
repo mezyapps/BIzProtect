@@ -25,6 +25,8 @@ import com.mezyapps.bizprotect.utils.ShowProgressDialog;
 import com.mezyapps.bizprotect.view.adpater.BlackListedCustomerAdapter;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -86,6 +88,13 @@ public class HomeFragment extends Fragment {
        swipeRefresh_blacklist_customer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
            @Override
            public void onRefresh() {
+
+               if (NetworkUtils.isNetworkAvailable(mContext)) {
+                   listBackListedCustomer();
+               }
+               else {
+                   NetworkUtils.isNetworkNotAvailable(mContext);
+               }
                swipeRefresh_blacklist_customer.setRefreshing(false);
            }
        });
@@ -112,6 +121,7 @@ public class HomeFragment extends Fragment {
                            code = successModule.getCode();
                             if (code.equalsIgnoreCase("1")) {
                                 blackListCustomerModelArrayList=successModule.getBlackListCustomerModelArrayList();
+                                Collections.reverse(blackListCustomerModelArrayList);
                                 if(blackListCustomerModelArrayList.size()!=0) {
                                     blackListedCustomerAdapter = new BlackListedCustomerAdapter(mContext, blackListCustomerModelArrayList);
                                     recyclerView_blackList.setAdapter(blackListedCustomerAdapter);

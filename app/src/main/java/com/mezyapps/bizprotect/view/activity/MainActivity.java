@@ -1,6 +1,5 @@
 package com.mezyapps.bizprotect.view.activity;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -17,8 +16,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,9 +26,8 @@ import android.widget.Toast;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.model.ClientProfileModel;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
-import com.mezyapps.bizprotect.view.fragment.BlackListedCustomerFragment;
 import com.mezyapps.bizprotect.view.fragment.HomeFragment;
-import com.mezyapps.bizprotect.view.fragment.OurCustomerFragment;
+import com.mezyapps.bizprotect.view.fragment.MyBlackListedCustomerFragment;
 
 import java.util.ArrayList;
 
@@ -97,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_our_customer:
-                        loadFragment(new OurCustomerFragment());
+                        loadFragment(new MyBlackListedCustomerFragment());
                         break;
 
                     case R.id.nav_logout:
@@ -127,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    loadFragment(new OurCustomerFragment());
+                    loadFragment(new MyBlackListedCustomerFragment());
                 }
 
             }

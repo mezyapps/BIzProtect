@@ -56,14 +56,7 @@ public class SplashActivity extends AppCompatActivity {
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
         is_login = SharedLoginUtils.getLoginSharedUtils(getApplicationContext());
         is_key_approve= SharedLicenseUtils.getLicenseSharedUtils(getApplicationContext());
-
-        date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        //Take Mac Address
-        telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        macAddress = telephonyManager.getDeviceId();
+         macAddress=SharedLicenseUtils.getDeviceId(SplashActivity.this);
     }
     private void events() {
         if(is_key_approve.equalsIgnoreCase("")) {
@@ -176,7 +169,7 @@ public class SplashActivity extends AppCompatActivity {
                                 SharedLicenseUtils.putLicenseSharedUtils(SplashActivity.this);
 
                             } else  if(code.equalsIgnoreCase("3")){
-                                Toast.makeText(SplashActivity.this, message, Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(SplashActivity.this, message, Toast.LENGTH_SHORT).show();
                             }else
                             {
                                 Toast.makeText(SplashActivity.this, message, Toast.LENGTH_LONG).show();

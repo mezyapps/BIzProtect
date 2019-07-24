@@ -14,6 +14,9 @@ public class SuccessModel {
     @SerializedName("list_all_blacklisted")
     private ArrayList<BlackListCustomerModel>  blackListCustomerModelArrayList;
 
+    @SerializedName("list_my_blacklisted")
+    private ArrayList<MyBlackListedCustomerModel> myBlackListedCustomerModelArrayList;
+
     public String getMessage() {
         return message;
     }
@@ -44,5 +47,13 @@ public class SuccessModel {
 
     public void setBlackListCustomerModelArrayList(ArrayList<BlackListCustomerModel> blackListCustomerModelArrayList) {
         this.blackListCustomerModelArrayList = blackListCustomerModelArrayList;
+    }
+
+    public ArrayList<MyBlackListedCustomerModel> getMyBlackListedCustomerModelArrayList() {
+        return myBlackListedCustomerModelArrayList;
+    }
+
+    public void setMyBlackListedCustomerModelArrayList(ArrayList<MyBlackListedCustomerModel> myBlackListedCustomerModelArrayList) {
+        this.myBlackListedCustomerModelArrayList = myBlackListedCustomerModelArrayList;
     }
 }

@@ -3,16 +3,28 @@ package com.mezyapps.bizprotect.view.activity;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.apicommon.ApiClient;
 import com.mezyapps.bizprotect.apicommon.ApiInterface;
+import com.mezyapps.bizprotect.model.ClientProfileModel;
+import com.mezyapps.bizprotect.model.SuccessModel;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
+import com.mezyapps.bizprotect.utils.SharedLoginUtils;
+import com.mezyapps.bizprotect.utils.ShowProgressDialog;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AddCustomerActivity extends AppCompatActivity {
 
@@ -20,12 +32,14 @@ public class AddCustomerActivity extends AppCompatActivity {
             edt_customer_mobile_number,edt_customer_aadhar_number,edt_Customer_pan_number;
     private Button btn_add_new_customer;
 
-    private String customer_name, contact_person_name, address, email, mobile, pan_number, aadhar_number, gst_number;
+    private String customer_name, contact_person_name, address, email, mobile, pan_number, aadhar_number, gst_number,client_id;
 
     private TextInputLayout textCustomerName,textContactPerson,textCustomerGstNumber,textCustomerAddress,textCustomerEmail,
             textCustomerMobileNumber,textCustomerAadharNumber,textCustomerPanNumber;
     public static ApiInterface apiInterface;
     private ImageView ic_back;
+    private ShowProgressDialog showProgressDialog;
+    private ArrayList<ClientProfileModel> clientProfileModelArrayList=new ArrayList<>();
 
 
 
@@ -61,8 +75,11 @@ public class AddCustomerActivity extends AppCompatActivity {
         edt_Customer_pan_number=findViewById(R.id.edt_Customer_pan_number);
 
         btn_add_new_customer=findViewById(R.id.btn_add_new_customer);
+        showProgressDialog=new ShowProgressDialog(AddCustomerActivity.this);
 
 
+        clientProfileModelArrayList= SharedLoginUtils.getUserDetails(AddCustomerActivity.this);
+        client_id=clientProfileModelArrayList.get(0).getClient_id();
 
     }
     private void events() {
@@ -190,12 +207,13 @@ public class AddCustomerActivity extends AppCompatActivity {
 
     private void addCustomer() {
 
-          /*Call<SuccessModel> call = apiInterface.login(mobile_number,password);
+        showProgressDialog.showDialog();
+        Call<SuccessModel> call = apiInterface.registrationCustomer(customer_name,contact_person_name,gst_number,address,email,aadhar_number,pan_number,mobile,client_id);
 
         call.enqueue(new Callback<SuccessModel>() {
             @Override
             public void onResponse(Call<SuccessModel> call, Response<SuccessModel> response) {
-
+                showProgressDialog.dismissDialog();
                 String str_response = new Gson().toJson(response.body());
                 Log.d("Response >>", str_response);
 
@@ -205,22 +223,17 @@ public class AddCustomerActivity extends AppCompatActivity {
 
                         String message = null, code = null;
                         if (successModule != null) {
-                          //  message = successModule.getMesaage();
-                            //code = successModule.getCode();
+                             message = successModule.getMessage();
+                             code = successModule.getCode();
                             if (code.equalsIgnoreCase("1")) {
-                              //  userDetailsModuleArrayList=successModule.getUserDetailsModuleArrayList();
-                                //successDialog.showDialog("Login Successfully");
-
-                                //SharedLoginUtils.putSharedUtils(LoginActivity.this);
-                               // SharedLoginUtils.addUserUtils(LoginActivity.this,userDetailsModuleArrayList);
-                                //
+                                Toast.makeText(AddCustomerActivity.this, "Customer Registration Successfully", Toast.LENGTH_SHORT).show();
                             } else {
-                                //errorDialog.showDialog("User Not Registered");
+                                Toast.makeText(AddCustomerActivity.this, "Customer Registration Unsuccessfully ", Toast.LENGTH_SHORT).show();
                             }
 
 
                         } else {
-                            Toast.makeText(PortfolioActivity.this, "Response Null", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddCustomerActivity.this, "Response Null", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -233,9 +246,9 @@ public class AddCustomerActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SuccessModel> call, Throwable t) {
-
+                showProgressDialog.dismissDialog();
             }
-        });*/
-        Toast.makeText(this, "Customer Add Successfully", Toast.LENGTH_SHORT).show();
+        });
+
     }
 }

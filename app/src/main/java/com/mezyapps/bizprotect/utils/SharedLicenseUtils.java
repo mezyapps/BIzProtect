@@ -20,4 +20,17 @@ public class SharedLicenseUtils {
         editor.commit();
     }
 
+    public static String getDeviceId(Context mContext) {
+        preferences = mContext.getSharedPreferences(ConstantFields.LICENSE_PREFERENCE, mContext.MODE_PRIVATE);
+        return preferences.getString(ConstantFields.DEVICE_ID, "");
+    }
+
+    public static void putDeviceId(Context mContext,String deviceId) {
+        preferences = mContext.getSharedPreferences(ConstantFields.LICENSE_PREFERENCE, mContext.MODE_PRIVATE);
+        editor = preferences.edit();
+        editor.putString(ConstantFields.DEVICE_ID,deviceId);
+        editor.commit();
+    }
+
+
 }
