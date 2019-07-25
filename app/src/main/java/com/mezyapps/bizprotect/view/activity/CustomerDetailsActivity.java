@@ -81,7 +81,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         textMobile_No.setText(myCustomerModel.getMobile_no());
         textAadhar_no.setText(myCustomerModel.getAadhar_no());
         textPan_no.setText(myCustomerModel.getPan_no());
-        customer_id=myCustomerModel.getCustomer_name();
+        customer_id=myCustomerModel.getCustomer_id();
         status=myCustomerModel.getStatus();
 
     }
@@ -137,8 +137,8 @@ public class CustomerDetailsActivity extends AppCompatActivity {
     }
 
     private void callUpdateCustomerStatus() {
-       /* showProgressDialog.showDialog();
-        Call<SuccessModel> call=apiInterface.registrationClient(person_name,company_name,address,gst_number,email,mobile,aadhar_number,pan_number,password);
+        showProgressDialog.showDialog();
+        Call<SuccessModel> call=apiInterface.callUpdateCustomerStatus(client_id,customer_id,status);
         call.enqueue(new Callback<SuccessModel>() {
             @Override
             public void onResponse(Call<SuccessModel> call, Response<SuccessModel> response) {
@@ -155,10 +155,8 @@ public class CustomerDetailsActivity extends AppCompatActivity {
                             message = successModel.getMessage();
                             code = successModel.getCode();
                             if (code.equalsIgnoreCase("1")) {
-                                Toast.makeText(CustomerDetailsActivity.this, "Update Status Successfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CustomerDetailsActivity.this, "Update Customer Status Successfully", Toast.LENGTH_SHORT).show();
                                 //successDialog.showDialog("Registration Successfully");
-                                Intent intent=new Intent(CustomerDetailsActivity.this,LoginActivity.class);
-                                startActivity(intent);
                                 finish();
                             } else {
                                 Toast.makeText(CustomerDetailsActivity.this, message, Toast.LENGTH_SHORT).show();
@@ -180,7 +178,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
             public void onFailure(Call<SuccessModel> call, Throwable t) {
                 showProgressDialog.dismissDialog();
             }
-        });*/
+        });
     }
 
 }

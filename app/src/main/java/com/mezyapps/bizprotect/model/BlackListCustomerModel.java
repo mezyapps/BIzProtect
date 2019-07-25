@@ -1,6 +1,7 @@
 package com.mezyapps.bizprotect.model;
 
 public class BlackListCustomerModel  {
+    private String customer_id;
     private String customer_name;
     private String contact_person;
     private String gst_no;
@@ -118,5 +119,13 @@ public class BlackListCustomerModel  {
 
     public void setUpdated_date_time(String updated_date_time) {
         this.updated_date_time = updated_date_time;
+    }
+
+    public String getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(String customer_id) {
+        this.customer_id = customer_id;
     }
 }

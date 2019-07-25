@@ -150,7 +150,7 @@ public class MyBlackListedCustomerFragment extends Fragment {
                 try {
                     if (response.isSuccessful()) {
                         SuccessModel successModule = response.body();
-
+                        myBlackListedCustomerModelArrayList.clear();
                         String message = null, code = null;
                         if (successModule != null) {
                             message = successModule.getMessage();

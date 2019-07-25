@@ -65,4 +65,12 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<SuccessModel> myCustomerList(@Field("client_id") String client_id);
 
+
+    @POST(EndApi.UPDATE_CUSTOMER_STATUS)
+    @FormUrlEncoded
+    Call<SuccessModel> callUpdateCustomerStatus(@Field("client_id") String client_id,
+                                                @Field("customer_id") String customer_id,
+                                                @Field("status") String status);
+
+
 }

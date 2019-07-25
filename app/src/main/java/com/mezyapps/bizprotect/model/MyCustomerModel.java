@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class MyCustomerModel implements Parcelable {
+    private String customer_id;
     private String customer_name;
     private String contact_person;
     private String gst_no;
@@ -36,7 +37,8 @@ public class MyCustomerModel implements Parcelable {
     };
 
 
-    public MyCustomerModel(String customer_name, String contact_person, String gst_no, String address, String email, String mobile_no, String aadhar_no, String pan_no, String status, String description, String client_id, String inserted_date_time, String updated_date_time) {
+    public MyCustomerModel(String customer_id,String customer_name, String contact_person, String gst_no, String address, String email, String mobile_no, String aadhar_no, String pan_no, String status, String description, String client_id, String inserted_date_time, String updated_date_time) {
+        this.customer_id=customer_id;
         this.customer_name = customer_name;
         this.contact_person = contact_person;
         this.gst_no = gst_no;
@@ -54,6 +56,7 @@ public class MyCustomerModel implements Parcelable {
 
 
     public MyCustomerModel(Parcel source) {
+        this.customer_id=source.readString();
         this.customer_name = source.readString();
         this.contact_person = source.readString();
         this.gst_no = source.readString();
@@ -174,6 +177,14 @@ public class MyCustomerModel implements Parcelable {
         this.updated_date_time = updated_date_time;
     }
 
+    public String getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(String customer_id) {
+        this.customer_id = customer_id;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -181,7 +192,7 @@ public class MyCustomerModel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
+        dest.writeString(this.customer_id);
         dest.writeString(this.customer_name);
         dest.writeString(this.contact_person);
         dest.writeString(this.gst_no);
