@@ -193,6 +193,5 @@ public class MyBlackListedCustomerFragment extends Fragment {
             }
         });
     }
-
-
+    
 }

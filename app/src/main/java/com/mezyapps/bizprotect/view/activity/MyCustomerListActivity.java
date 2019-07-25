@@ -83,7 +83,6 @@ public class MyCustomerListActivity extends AppCompatActivity {
         else {
             NetworkUtils.isNetworkNotAvailable(MyCustomerListActivity.this);
         }
-        swipeRefresh_our_customer.setRefreshing(false);
 
     }
 
@@ -211,6 +210,6 @@ public class MyCustomerListActivity extends AppCompatActivity {
         else {
             NetworkUtils.isNetworkNotAvailable(MyCustomerListActivity.this);
         }
-        swipeRefresh_our_customer.setRefreshing(false);
+
     }
 }
