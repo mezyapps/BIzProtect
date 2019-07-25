@@ -367,7 +367,7 @@
                     android:background="@drawable/btn_shape"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Un Blacklist"
+                    android:text="Remove Blacklist"
                     android:textColor="@color/white"
                     android:textSize="15sp" />
 
