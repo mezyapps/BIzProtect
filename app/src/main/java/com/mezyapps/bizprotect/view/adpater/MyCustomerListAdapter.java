@@ -52,7 +52,7 @@ public class MyCustomerListAdapter extends RecyclerView.Adapter<MyCustomerListAd
         else
         {
             holder.textBlackList.setText("Good Customer");
-            holder.textBlackList.getResources();
+            holder.textBlackList.setTextColor(mContext.getResources().getColor(R.color.gray));
         }
         holder.textGstNumber.setText(myCustomerModel.getGst_no());
         holder.textAadharNumber.setText(myCustomerModel.getAadhar_no());
