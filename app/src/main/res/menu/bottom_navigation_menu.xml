@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/dashboard"
+        android:icon="@drawable/customer_image"
         android:title="@string/all_blacklisted"/>
 
     <item

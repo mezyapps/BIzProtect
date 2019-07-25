@@ -1,19 +1,32 @@
 package com.mezyapps.bizprotect.view.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.mezyapps.bizprotect.R;
+import com.mezyapps.bizprotect.apicommon.ApiClient;
+import com.mezyapps.bizprotect.apicommon.ApiInterface;
 import com.mezyapps.bizprotect.model.ClientProfileModel;
 import com.mezyapps.bizprotect.model.MyBlackListedCustomerModel;
 import com.mezyapps.bizprotect.model.MyCustomerModel;
+import com.mezyapps.bizprotect.model.SuccessModel;
+import com.mezyapps.bizprotect.utils.NetworkUtils;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
+import com.mezyapps.bizprotect.utils.ShowProgressDialog;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CustomerDetailsMyBlackListedActivity extends AppCompatActivity {
 
@@ -23,6 +36,8 @@ public class CustomerDetailsMyBlackListedActivity extends AppCompatActivity {
     private String customer_id, client_id, status;
     private ArrayList<ClientProfileModel> clientProfileModelArrayList = new ArrayList<>();
     private ImageView ic_back;
+    public static ApiInterface apiInterface;
+    private ShowProgressDialog showProgressDialog;
 
 
     @Override
@@ -35,6 +50,7 @@ public class CustomerDetailsMyBlackListedActivity extends AppCompatActivity {
     }
 
     private void find_View_Ids() {
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
         linearlayout_status_unblacklist = findViewById(R.id.linearlayout_status_unblacklist);
         ic_back = findViewById(R.id.ic_back);
         textName = findViewById(R.id.textName);
@@ -47,6 +63,7 @@ public class CustomerDetailsMyBlackListedActivity extends AppCompatActivity {
         textPan_no = findViewById(R.id.textPan_no);
         text_unblacklisted = findViewById(R.id.text_unblacklisted);
 
+        showProgressDialog=new ShowProgressDialog(CustomerDetailsMyBlackListedActivity.this);
 
         clientProfileModelArrayList = SharedLoginUtils.getUserDetails(CustomerDetailsMyBlackListedActivity.this);
         client_id = clientProfileModelArrayList.get(0).getClient_id();
@@ -73,6 +90,13 @@ public class CustomerDetailsMyBlackListedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 status = "1";
+
+                if (NetworkUtils.isNetworkAvailable(CustomerDetailsMyBlackListedActivity.this)) {
+                    callUpdateCustomerStatus();
+                }
+                else {
+                    NetworkUtils.isNetworkNotAvailable(CustomerDetailsMyBlackListedActivity.this);
+                }
             }
         });
 
@@ -85,4 +109,53 @@ public class CustomerDetailsMyBlackListedActivity extends AppCompatActivity {
         });
 
     }
+
+    private void callUpdateCustomerStatus() {
+       /* showProgressDialog.showDialog();
+        Call<SuccessModel> call=apiInterface.registrationClient(person_name,company_name,address,gst_number,email,mobile,aadhar_number,pan_number,password);
+        call.enqueue(new Callback<SuccessModel>() {
+            @Override
+            public void onResponse(Call<SuccessModel> call, Response<SuccessModel> response) {
+                showProgressDialog.dismissDialog();
+                String str_response = new Gson().toJson(response.body());
+                Log.d("Response >>", str_response);
+
+                try {
+                    if (response.isSuccessful()) {
+                        SuccessModel successModel = response.body();
+
+                        String message = null, code = null;
+                        if (successModel != null) {
+                            message = successModel.getMessage();
+                            code = successModel.getCode();
+                            if (code.equalsIgnoreCase("1")) {
+                                Toast.makeText(CustomerDetailsMyBlackListedActivity.this, "Update Status Successfully", Toast.LENGTH_SHORT).show();
+                                //successDialog.showDialog("Registration Successfully");
+                                Intent intent=new Intent(CustomerDetailsMyBlackListedActivity.this,LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                Toast.makeText(CustomerDetailsMyBlackListedActivity.this, message, Toast.LENGTH_SHORT).show();
+                            }
+
+                        } else {
+                            Toast.makeText(CustomerDetailsMyBlackListedActivity.this, "Response Null", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<SuccessModel> call, Throwable t) {
+                showProgressDialog.dismissDialog();
+            }
+        });*/
+    }
+
+
 }

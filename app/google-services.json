@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1043836083565",
+    "firebase_url": "https://bizprotect-b21ef.firebaseio.com",
+    "project_id": "bizprotect-b21ef",
+    "storage_bucket": "bizprotect-b21ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043836083565:android:51f58f27dba4bb53",
+        "android_client_info": {
+          "package_name": "com.mezyapps.bizprotect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1043836083565-n1pqsh5q3d6ir1d7ff5f47emc2kft913.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mezyapps.bizprotect",
+            "certificate_hash": "4e1ee9cf5aab6a95c46e747b692c0baad315c676"
+          }
+        },
+        {
+          "client_id": "1043836083565-3b093g99umb3971hqfufkv31qkfrrn31.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHagz1vSvLBrCrgyUGerf55e4YQhMbP7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1043836083565-3b093g99umb3971hqfufkv31qkfrrn31.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
