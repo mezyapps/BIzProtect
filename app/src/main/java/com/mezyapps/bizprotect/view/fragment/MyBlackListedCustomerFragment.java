@@ -43,7 +43,6 @@ public class MyBlackListedCustomerFragment extends Fragment {
 
     private Context mContext;
     private RecyclerView recyclerView_ourCustomer;
-    private FloatingActionButton fab_add_customer;
     private EditText edt_search;
     private MyBlackListedCustomerListAdapter myBlackListedCustomerListAdapter;
     private ArrayList<MyBlackListedCustomerModel> myBlackListedCustomerModelArrayList = new ArrayList<>();
@@ -71,7 +70,6 @@ public class MyBlackListedCustomerFragment extends Fragment {
     private void find_View_IdS(View view) {
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
         recyclerView_ourCustomer = view.findViewById(R.id.recyclerView_ourCustomer);
-        fab_add_customer = view.findViewById(R.id.fab_add_customer);
         edt_search = view.findViewById(R.id.edt_search);
         swipeRefresh_our_customer = view.findViewById(R.id.swipeRefresh_our_customer);
         iv_no_record_found = view.findViewById(R.id.iv_no_record_found);
@@ -109,14 +107,6 @@ public class MyBlackListedCustomerFragment extends Fragment {
                     NetworkUtils.isNetworkNotAvailable(mContext);
                 }
                 swipeRefresh_our_customer.setRefreshing(false);
-            }
-        });
-
-        fab_add_customer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(mContext, AddCustomerActivity.class);
-                startActivity(intent);
             }
         });
 

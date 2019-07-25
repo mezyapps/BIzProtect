@@ -21,8 +21,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.activity.MyCustomerListActivity"
+        <activity android:name=".view.activity.CustomerDetailsMyBlackListedActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".view.activity.CustomerDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.MyCustomerListActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.AddCustomerActivity"
             android:screenOrientation="portrait" />

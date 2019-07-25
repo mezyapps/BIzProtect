@@ -1,9 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.activity.MyCustomerListActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/app_color">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:padding="5dp"
+            android:id="@+id/ic_back"
+            android:src="@drawable/ic_vector_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/ic_back"
+            android:text="My Customer"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:id="@+id/linearlayout_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search_shape"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edt_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/white"
+                android:drawableEnd="@drawable/ic_vector_search"
+                android:hint="@string/search"
+                android:inputType="text" />
+
+
+        </LinearLayout>
+
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:id="@+id/swipeRefresh_our_customer"
+            android:layout_below="@+id/linearlayout_search">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView_myCustomer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:id="@+id/iv_no_record_found"
+            android:src="@drawable/no_record_found"/>
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_add_customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_vector_fab_add"
+            app:fabSize="mini" />
+
+    </RelativeLayout>
+
+</LinearLayout>

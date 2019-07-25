@@ -1,5 +1,6 @@
 package com.mezyapps.bizprotect.view.activity;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -227,6 +228,9 @@ public class AddCustomerActivity extends AppCompatActivity {
                              code = successModule.getCode();
                             if (code.equalsIgnoreCase("1")) {
                                 Toast.makeText(AddCustomerActivity.this, "Customer Registration Successfully", Toast.LENGTH_SHORT).show();
+                                Intent  intent=new Intent(AddCustomerActivity.this,MyCustomerListActivity.class);
+                                startActivity(intent);
+                                finish();
                             } else {
                                 Toast.makeText(AddCustomerActivity.this, "Customer Registration Unsuccessfully ", Toast.LENGTH_SHORT).show();
                             }

@@ -1,6 +1,8 @@
 package com.mezyapps.bizprotect.view.adpater;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.model.BlackListCustomerModel;
+import com.mezyapps.bizprotect.view.activity.CustomerDetailsActivity;
 
 import java.util.ArrayList;
 
@@ -36,7 +40,7 @@ public class BlackListedCustomerAdapter extends RecyclerView.Adapter<BlackListed
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         final BlackListCustomerModel blackListCustomerModel=blackListCustomerModelArrayList.get(position);
 
         String status=blackListCustomerModel.getStatus().trim();
@@ -48,6 +52,7 @@ public class BlackListedCustomerAdapter extends RecyclerView.Adapter<BlackListed
         holder.textGstNumber.setText(blackListCustomerModel.getGst_no());
         holder.textAadharNumber.setText(blackListCustomerModel.getAadhar_no());
 
+
     }
 
     @Override
@@ -57,6 +62,7 @@ public class BlackListedCustomerAdapter extends RecyclerView.Adapter<BlackListed
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView textName,textGstNumber,textBlackList,textCustomerFirstName,textAadharNumber;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
