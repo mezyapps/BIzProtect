@@ -61,6 +61,20 @@ public interface ApiInterface {
                                             @Field("mobile_no") String  mobile_no,
                                             @Field("client_id") String  client_id);
 
+    @POST(EndApi.UPDATE_CUSTOMER)
+    @FormUrlEncoded
+    Call<SuccessModel> updateCustomer(@Field("name") String name,
+                                            @Field("contact_person") String contact_person,
+                                            @Field("gst_no") String  gst_no,
+                                            @Field("address") String  address,
+                                            @Field("email") String  email,
+                                            @Field("aadhar_no") String  aadhar_no,
+                                            @Field("pan_no") String  pan_no,
+                                            @Field("mobile_no") String  mobile_no,
+                                            @Field("client_id") String  client_id,
+                                            @Field("customer_id") String  customer_id);
+
+
     @POST(EndApi.MY_CUSTOMER)
     @FormUrlEncoded
     Call<SuccessModel> myCustomerList(@Field("client_id") String client_id);

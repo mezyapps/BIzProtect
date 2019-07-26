@@ -192,6 +192,10 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
         fragmentTransaction.commit();
     }
+    public void reLoadHomeFragment()
+    {
+
+    }
 
     @Override
     public void onBackPressed() {

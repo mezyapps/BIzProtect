@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.model.MyBlackListedCustomerModel;
 import com.mezyapps.bizprotect.model.MyCustomerModel;
+import com.mezyapps.bizprotect.view.activity.AddCustomerActivity;
 import com.mezyapps.bizprotect.view.activity.CustomerDetailsActivity;
 import com.mezyapps.bizprotect.view.activity.MyCustomerListActivity;
 
@@ -68,6 +69,16 @@ public class MyCustomerListAdapter extends RecyclerView.Adapter<MyCustomerListAd
             }
         });
 
+        holder.textEditCustomer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext, AddCustomerActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("MYCUSTOMER", (Parcelable) myCustomerModelArrayList.get(position));
+                mContext.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -76,7 +87,7 @@ public class MyCustomerListAdapter extends RecyclerView.Adapter<MyCustomerListAd
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textName,textGstNumber,textBlackList,textCustomerFirstName,textAadharNumber;
+        TextView textName,textGstNumber,textBlackList,textCustomerFirstName,textAadharNumber,textEditCustomer;
         LinearLayout linearlayout_customer_details;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,6 +98,7 @@ public class MyCustomerListAdapter extends RecyclerView.Adapter<MyCustomerListAd
             textCustomerFirstName=itemView.findViewById(R.id.textCustomerFirstName);
             textAadharNumber=itemView.findViewById(R.id.textAadharNumber);
             linearlayout_customer_details=itemView.findViewById(R.id.linearlayout_customer_details);
+            textEditCustomer=itemView.findViewById(R.id.textEditCustomer);
         }
     }
 

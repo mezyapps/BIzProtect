@@ -132,24 +132,37 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:weightSum="2"
-                    android:gravity="center"
-                    android:layout_weight="1">
+                    android:weightSum="3"
+                    android:gravity="center">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.5"
+                        android:layout_weight="0.6"
                         android:text="Status" />
 
 
                     <TextView
                         android:id="@+id/textBlackList"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
+                        android:layout_weight="1.8"
                         android:textColor="@color/colorAccent"
                         android:text="BlackList" />
+
+
+
+
+                    <TextView
+                        android:id="@+id/textEditCustomer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:textSize="18sp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="Edit" />
 
                 </LinearLayout>
 

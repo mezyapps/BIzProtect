@@ -39,6 +39,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
     private ImageView ic_back;
     public static ApiInterface apiInterface;
     private ShowProgressDialog showProgressDialog;
+   // private LinearLayout linearlayout_edit_customer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         textPan_no = findViewById(R.id.textPan_no);
         text_blacklisted = findViewById(R.id.text_blacklisted);
         text_unblacklisted = findViewById(R.id.text_unblacklisted);
+       // linearlayout_edit_customer = findViewById(R.id.linearlayout_edit_customer);
 
         showProgressDialog=new ShowProgressDialog(CustomerDetailsActivity.this);
 

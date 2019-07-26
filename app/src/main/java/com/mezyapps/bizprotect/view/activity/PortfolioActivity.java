@@ -183,14 +183,14 @@ public class PortfolioActivity extends AppCompatActivity {
             textPersonName.setError(null);
             textPersonName.setErrorEnabled(false);
         }
-        if (gst_number.equalsIgnoreCase("") && pan_number.equalsIgnoreCase("")) {
+      /*  if (gst_number.equalsIgnoreCase("") && pan_number.equalsIgnoreCase("")) {
             textGstNumber.setError("Enter GST Number or Pan Number ");
             edt_gst_no.requestFocus();
             return false;
         } else {
             textGstNumber.setError(null);
             textGstNumber.setErrorEnabled(false);
-        }
+        }*/
         if (address.equalsIgnoreCase("")) {
             textAddress.setError("Enter Address");
             edt_address.requestFocus();
