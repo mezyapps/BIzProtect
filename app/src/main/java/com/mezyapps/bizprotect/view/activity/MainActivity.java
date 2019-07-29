@@ -23,6 +23,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.model.ClientProfileModel;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
@@ -45,13 +48,15 @@ public class MainActivity extends AppCompatActivity {
     private Dialog dialog_logout;
     private TextView text_app_name;
     private ArrayList<ClientProfileModel> clientProfileModelArrayList=new ArrayList<>();
+    private AdView adView_banner_add;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+      //  MobileAds.initialize(this,"ca-app-pub-3637958081667905~9680701324");
+        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
         find_View_Ids();
         events();
     }
@@ -67,9 +72,13 @@ public class MainActivity extends AppCompatActivity {
         relativeLayout_blocked_customer = findViewById(R.id.relativeLayout_blocked_customer);
         relativeLayout_logout = findViewById(R.id.relativeLayout_logout);
         text_app_name = findViewById(R.id.text_app_name);
+        adView_banner_add = findViewById(R.id.adView_banner_add);
 
         clientProfileModelArrayList=SharedLoginUtils.getUserDetails(MainActivity.this);
         text_app_name.setText("Welcome "+clientProfileModelArrayList.get(0).getCompany_name());
+
+        AdRequest adRequest=new AdRequest.Builder().addTestDevice("B57854E835A453D442326A4F590004D6").build();
+        adView_banner_add.loadAd(adRequest);
     }
 
     private void events() {
@@ -164,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         dialog_logout.show();
 
         Window window = dialog_logout.getWindow();
-        window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
         txt_cancel.setOnClickListener(new View.OnClickListener() {
             @Override

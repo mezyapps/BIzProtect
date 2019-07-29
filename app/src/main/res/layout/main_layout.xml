@@ -65,6 +65,29 @@
                 app:menu="@menu/bottom_navigation_menu"/>
 
 
+            <!--<com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adView_banner_add"
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/bottom_navigation"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-3637958081667905/9738688871">
+            </com.google.android.gms.ads.AdView>-->
+
+            <com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adView_banner_add"
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/bottom_navigation"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+            </com.google.android.gms.ads.AdView>
+
+
 
         </RelativeLayout>
 

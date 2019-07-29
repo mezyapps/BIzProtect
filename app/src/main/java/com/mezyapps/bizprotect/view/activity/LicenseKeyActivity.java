@@ -33,7 +33,7 @@ public class LicenseKeyActivity extends AppCompatActivity {
 
     private EditText edit_license_number;
     private Button btn_license;
-    private TextView textTechnicalSupport;
+    private TextView textTechnicalSupport,textMacAddress;
     private String strLicenseKey, strMakeCall, macAddress;
     public static ApiInterface apiInterface;
     private String TAG = this.getClass().getSimpleName();
@@ -68,8 +68,12 @@ public class LicenseKeyActivity extends AppCompatActivity {
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
         edit_license_number = findViewById(R.id.edit_license_number);
         btn_license = findViewById(R.id.btn_license);
+        textMacAddress = findViewById(R.id.textMacAddress);
         textTechnicalSupport = findViewById(R.id.textTechnicalSupport);
         showProgressDialog=new ShowProgressDialog(LicenseKeyActivity.this);
+
+        textMacAddress.setText("ID:-"+macAddress);
+
     }
 
     private void events() {
