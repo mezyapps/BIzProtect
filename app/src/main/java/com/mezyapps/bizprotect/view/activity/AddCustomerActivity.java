@@ -158,38 +158,52 @@ public class AddCustomerActivity extends AppCompatActivity {
 
 
         if (customer_name.equalsIgnoreCase("")) {
-            textCustomerName.setError("Enter Customer Name");
+            textCustomerName.setError("Enter Business Name");
             edt_customer_name.requestFocus();
             return false;
         } else {
             textCustomerName.setError(null);
             textCustomerName.setErrorEnabled(false);
         }
-        if (contact_person_name.equalsIgnoreCase("")) {
-            textContactPerson.setError("Enter Contact Person Name");
+       /* if (contact_person_name.equalsIgnoreCase("")) {
+            textContactPerson.setError("Enter Customer Name");
             edt_contact_person.requestFocus();
             return false;
         } else {
             textContactPerson.setError(null);
             textContactPerson.setErrorEnabled(false);
-        }
-      /*  if (gst_number.equalsIgnoreCase("") && pan_number.equalsIgnoreCase("")) {
-            textCustomerGstNumber.setError("Enter GST Number or Pan Number ");
+        }*/
+        if (gst_number.equalsIgnoreCase("") && aadhar_number.equalsIgnoreCase("")) {
+            textCustomerGstNumber.setError("Enter GST Number or Aadhar Number ");
+            textCustomerAadharNumber.setError("Enter GST Number or Aadhar Number ");
+            edt_customer_aadhar_number.requestFocus();
             edt_customer_gst_no.requestFocus();
             return false;
         } else {
             textCustomerGstNumber.setError(null);
             textCustomerGstNumber.setErrorEnabled(false);
-        }*/
-        if (address.equalsIgnoreCase("")) {
+            textCustomerAadharNumber.setError(null);
+            textCustomerAadharNumber.setErrorEnabled(false);
+
+            if (aadhar_number.length() < 12) {
+                textCustomerAadharNumber.setError("Invalid Aadhar Number");
+                edt_customer_aadhar_number.requestFocus();
+                return false;
+            } else {
+                textCustomerAadharNumber.setError(null);
+                textCustomerAadharNumber.setErrorEnabled(false);
+            }
+
+        }
+       /* if (address.equalsIgnoreCase("")) {
             textCustomerAddress.setError("Enter Address");
             edt_customer_address.requestFocus();
             return false;
         } else {
             textCustomerAddress.setError(null);
             textCustomerAddress.setErrorEnabled(false);
-        }
-        if (email.equalsIgnoreCase("")) {
+        }*/
+        /*if (email.equalsIgnoreCase("")) {
             textCustomerEmail.setError("Enter Email");
             edt_customer_email.requestFocus();
             return false;
@@ -204,9 +218,10 @@ public class AddCustomerActivity extends AppCompatActivity {
         } else {
             textCustomerEmail.setError(null);
             textCustomerEmail.setErrorEnabled(false);
-        }
+        }*/
         if (mobile.equalsIgnoreCase("")) {
-            textCustomerMobileNumber.setError("Enter Mobile Number");
+            textCustomerMobileNumber.setError("Enter Mobile Number");  textCustomerAadharNumber.setError(null);
+            textCustomerAadharNumber.setErrorEnabled(false);
             edt_customer_mobile_number.requestFocus();
             return false;
         } else {
@@ -221,13 +236,12 @@ public class AddCustomerActivity extends AppCompatActivity {
             textCustomerMobileNumber.setError(null);
             textCustomerMobileNumber.setErrorEnabled(false);
         }
-        if (aadhar_number.equalsIgnoreCase("")) {
+       /* if (aadhar_number.equalsIgnoreCase("")) {
             textCustomerAadharNumber.setError("Enter Aadhar Number");
             edt_customer_aadhar_number.requestFocus();
             return false;
         } else {
-            textCustomerAadharNumber.setError(null);
-            textCustomerAadharNumber.setErrorEnabled(false);
+
         }
         if (aadhar_number.length() < 12) {
             textCustomerAadharNumber.setError("Invalid Aadhar Number");
@@ -237,7 +251,7 @@ public class AddCustomerActivity extends AppCompatActivity {
             textCustomerAadharNumber.setError(null);
             textCustomerAadharNumber.setErrorEnabled(false);
         }
-
+*/
         return true;
     }
 

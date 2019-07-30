@@ -125,9 +125,6 @@ public class PortfolioActivity extends AppCompatActivity {
                             code = successModel.getCode();
                             if (code.equalsIgnoreCase("1")) {
                                 Toast.makeText(PortfolioActivity.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
-                                //successDialog.showDialog("Registration Successfully");
-                                Intent intent=new Intent(PortfolioActivity.this,LoginActivity.class);
-                                startActivity(intent);
                                 finish();
                             } else if(code.equalsIgnoreCase("3")) {
                                 Toast.makeText(PortfolioActivity.this, message, Toast.LENGTH_SHORT).show();
@@ -175,31 +172,43 @@ public class PortfolioActivity extends AppCompatActivity {
             textCompanyName.setError(null);
             textCompanyName.setErrorEnabled(false);
         }
-        if (person_name.equalsIgnoreCase("")) {
+    /*    if (person_name.equalsIgnoreCase("")) {
             textPersonName.setError("Enter Person Name");
             edt_person_name.requestFocus();
             return false;
         } else {
             textPersonName.setError(null);
             textPersonName.setErrorEnabled(false);
-        }
-      /*  if (gst_number.equalsIgnoreCase("") && pan_number.equalsIgnoreCase("")) {
-            textGstNumber.setError("Enter GST Number or Pan Number ");
+        }*/
+     /*   if (gst_number.equalsIgnoreCase("") && aadhar_number.equalsIgnoreCase("")) {
+            textGstNumber.setError("Enter GST Number or  Aadhar number ");
+            textAadharNumber.setError("Enter GST Number or  Aadhar number ");
             edt_gst_no.requestFocus();
             return false;
         } else {
             textGstNumber.setError(null);
             textGstNumber.setErrorEnabled(false);
+            textAadharNumber.setError(null);
+            textAadharNumber.setErrorEnabled(false);
+
+            if (aadhar_number.length()<12) {
+                textAadharNumber.setError("Invalid Aadhar Number");
+                edt_aadhar_number.requestFocus();
+                return false;
+            } else {
+                textAadharNumber.setError(null);
+                textAadharNumber.setErrorEnabled(false);
+            }
         }*/
-        if (address.equalsIgnoreCase("")) {
+       /* if (address.equalsIgnoreCase("")) {
             textAddress.setError("Enter Address");
             edt_address.requestFocus();
             return false;
         } else {
             textAddress.setError(null);
             textAddress.setErrorEnabled(false);
-        }
-        if (email.equalsIgnoreCase("")) {
+        }*/
+       /* if (email.equalsIgnoreCase("")) {
             textEmail.setError("Enter Email");
             edt_email.requestFocus();
             return false;
@@ -214,7 +223,7 @@ public class PortfolioActivity extends AppCompatActivity {
         } else {
             textEmail.setError(null);
             textEmail.setErrorEnabled(false);
-        }
+        }*/
         if (mobile.equalsIgnoreCase("")) {
             textMobileNumber.setError("Enter Mobile Number");
             edt_mobile_number.requestFocus();
@@ -231,22 +240,15 @@ public class PortfolioActivity extends AppCompatActivity {
             textMobileNumber.setError(null);
             textMobileNumber.setErrorEnabled(false);
         }
-        if (aadhar_number.equalsIgnoreCase("")) {
+       /* if (aadhar_number.equalsIgnoreCase("")) {
             textAadharNumber.setError("Enter Aadhar Number");
             edt_aadhar_number.requestFocus();
             return false;
         } else {
             textAadharNumber.setError(null);
             textAadharNumber.setErrorEnabled(false);
-        }
-        if (aadhar_number.length()<12) {
-            textAadharNumber.setError("Invalid Aadhar Number");
-            edt_aadhar_number.requestFocus();
-            return false;
-        } else {
-            textAadharNumber.setError(null);
-            textAadharNumber.setErrorEnabled(false);
-        }
+        }*/
+
         if (password.equalsIgnoreCase("")) {
             textPassword.setError("Enter password");
             edt_password.requestFocus();

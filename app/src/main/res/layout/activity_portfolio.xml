@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/ic_back"
-            android:text="Portfolio"
+            android:text="Create User"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/white"/>
@@ -86,6 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textGstNumber"
+            android:visibility="gone"
             android:layout_marginTop="10dp">
 
             <EditText
@@ -120,6 +121,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textEmail"
+            android:visibility="gone"
             android:layout_marginTop="10dp">
 
             <EditText
@@ -154,6 +156,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textAadharNumber"
+            android:visibility="gone"
             android:layout_marginTop="10dp">
 
             <EditText
@@ -172,6 +175,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textPanNumber"
+            android:visibility="gone"
             android:layout_marginTop="10dp">
 
             <EditText
