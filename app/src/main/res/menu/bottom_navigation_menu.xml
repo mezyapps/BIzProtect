@@ -3,18 +3,18 @@
 
     <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/customer_image"
+        android:icon="@drawable/ic_vector_blacklisted"
         android:title="@string/all_blacklisted"/>
 
     <item
         android:id="@+id/nav_our_customer"
-        android:icon="@drawable/customer_image"
+        android:icon="@drawable/ic_vector_blacklisted"
         android:title="@string/my_blacklisted"/>
 
     <item
-        android:id="@+id/nav_logout"
-        android:icon="@drawable/logout"
-        android:title="@string/log_out"/>
+        android:id="@+id/nav_my_customer"
+        android:icon="@drawable/customer_image"
+        android:title="@string/add_customer"/>
 
 
 </menu>

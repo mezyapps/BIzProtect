@@ -31,6 +31,7 @@ import com.mezyapps.bizprotect.model.ClientProfileModel;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
 import com.mezyapps.bizprotect.view.fragment.HomeFragment;
 import com.mezyapps.bizprotect.view.fragment.MyBlackListedCustomerFragment;
+import com.mezyapps.bizprotect.view.fragment.MyCustomerFragment;
 
 import java.util.ArrayList;
 
@@ -68,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         bottom_navigation = findViewById(R.id.bottom_navigation);
         relativeLayout_Dashboard = findViewById(R.id.relativeLayout_Dashboard);
         relativeLayout_ourCustomer = findViewById(R.id.relativeLayout_ourCustomer);
-        relativeLayout_ourCustomer = findViewById(R.id.relativeLayout_ourCustomer);
         relativeLayout_blocked_customer = findViewById(R.id.relativeLayout_blocked_customer);
         relativeLayout_logout = findViewById(R.id.relativeLayout_logout);
         text_app_name = findViewById(R.id.text_app_name);
@@ -105,8 +105,12 @@ public class MainActivity extends AppCompatActivity {
                         loadFragment(new MyBlackListedCustomerFragment());
                         break;
 
-                    case R.id.nav_logout:
-                        logoutApplication();
+                    case R.id.nav_my_customer:
+                      //  loadFragment(new MyCustomerFragment());
+                        bottom_navigation.setSelected(false);
+                        Intent intent=new Intent(MainActivity.this,AddCustomerActivity.class);
+                        startActivity(intent);
+
                         break;
 
 
@@ -211,11 +215,12 @@ public class MainActivity extends AppCompatActivity {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
+            bottom_navigation.setSelected(false);
             if (fragmentName.equals(fragmentInstance.getClass().getSimpleName())) {
-                if (fragmentName.equals("HomeFragment")) {
+                if (fragmentName.equals("HomeFragment")||fragmentName.equals("MyBlackListedCustomerFragment")) {
                     doubleBackPressLogic();
-                } else
-                    loadFragment(new HomeFragment());
+                }/* else
+                    loadFragment(new HomeFragment());*/
             }
         }
     }
@@ -239,5 +244,11 @@ public class MainActivity extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        loadFragment(new HomeFragment());
     }
 }

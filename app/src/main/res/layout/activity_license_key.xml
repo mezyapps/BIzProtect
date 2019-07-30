@@ -42,10 +42,10 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter Your License Key"
+                android:hint="@string/enter_your_license_key"
                 android:id="@+id/edit_license_number"
                 android:layout_marginTop="10dp"
-                android:text="M282872874"
+                android:text="@string/key"
                 android:inputType="text"/>
 
             <Button

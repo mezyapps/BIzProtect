@@ -5,9 +5,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dashboard">Dashboard</string>
     <string name="our_customer">My Customer</string>
-    <string name="log_out">Log Out</string>
+    <string name="add_customer">Add Customer</string>
     <string name="black_listed_customer">All BlackListed Customer</string>
     <string name="search">Search(GST No OR AADHAR NO)</string>
     <string name="all_blacklisted">All BlackListed</string>
     <string name="my_blacklisted">My BlackListed</string>
+    <string name="key">M282872874</string>
+    <string name="enter_your_license_key">Enter Your License Key</string>
 </resources>

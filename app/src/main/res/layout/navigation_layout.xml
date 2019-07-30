@@ -191,7 +191,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:visibility="gone"
                             android:padding="5dp">
 
 
@@ -219,7 +218,6 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:visibility="gone"
                             android:background="@color/gray" />
 
 
