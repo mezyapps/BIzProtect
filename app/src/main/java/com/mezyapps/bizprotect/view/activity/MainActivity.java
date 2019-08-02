@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MobileAds.initialize(this,"ca-app-pub-3637958081667905~9680701324");//Live Url
-        //MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");//Demo Url
+       // MobileAds.initialize(this,"ca-app-pub-3637958081667905~9680701324");//Live Url
+        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");//Demo Url
         find_View_Ids();
         events();
     }
@@ -77,11 +77,11 @@ public class MainActivity extends AppCompatActivity {
         clientProfileModelArrayList=SharedLoginUtils.getUserDetails(MainActivity.this);
         text_app_name.setText("Welcome "+clientProfileModelArrayList.get(0).getCompany_name());
 
-       /* AdRequest adRequest=new AdRequest.Builder().addTestDevice("B57854E835A453D442326A4F590004D6").build();
-        adView_banner_add.loadAd(adRequest);*/
-
-        AdRequest adRequest=new AdRequest.Builder().build();
+        AdRequest adRequest=new AdRequest.Builder().addTestDevice("B57854E835A453D442326A4F590004D6").build();
         adView_banner_add.loadAd(adRequest);
+
+       /* AdRequest adRequest=new AdRequest.Builder().build();
+        adView_banner_add.loadAd(adRequest);*/
 
 
     }
@@ -112,10 +112,12 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.nav_my_customer:
                       //  loadFragment(new MyCustomerFragment());
-                        bottom_navigation.setSelected(false);
                         Intent intent=new Intent(MainActivity.this,AddCustomerActivity.class);
                         startActivity(intent);
+                        break;
 
+                    case R.id.nav_my_list_customer:
+                         loadFragment(new MyCustomerFragment());
                         break;
 
 
@@ -209,10 +211,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.framelayout_main, fragment, fragment.toString());
         fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
         fragmentTransaction.commit();
-    }
-    public void reLoadHomeFragment()
-    {
-
     }
 
     @Override

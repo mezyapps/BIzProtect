@@ -77,26 +77,6 @@
              android:src="@drawable/ic_vector_add_customer" />
 
 
-         <LinearLayout
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_below="@+id/linearlayout_search"
-             android:padding="5dp"
-             android:layout_marginTop="10dp"
-             android:id="@+id/linearlayout_add_customer"
-             android:background="@drawable/btn_shape"
-              android:layout_alignParentEnd="true">
-
-             <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="Add customer"
-                 android:textStyle="bold"
-                 android:textColor="@color/white" />
-
-
-         </LinearLayout>
-
      </RelativeLayout>
 
 

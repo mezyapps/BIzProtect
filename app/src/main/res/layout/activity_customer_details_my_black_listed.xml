@@ -157,16 +157,16 @@ tools:context=".view.activity.CustomerDetailsMyBlackListedActivity">
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="Gst No:-"
+                android:text="Mobile No:-"
                 android:textSize="15sp" />
 
 
             <TextView
-                android:id="@+id/textgst_no"
+                android:id="@+id/textMobile_No"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Gst No"
+                android:text="Mobile No"
                 android:textSize="15sp" />
 
 
@@ -223,26 +223,57 @@ tools:context=".view.activity.CustomerDetailsMyBlackListedActivity">
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="Mobile No:-"
+                android:text="Gst No:-"
                 android:textSize="15sp" />
 
 
             <TextView
-                android:id="@+id/textMobile_No"
+                android:id="@+id/textgst_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Mobile No"
+                android:text="Gst No"
                 android:textSize="15sp" />
 
 
         </LinearLayout>
+
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/gray" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Pan No:-"
+                android:textSize="15sp" />
+
+
+            <TextView
+                android:id="@+id/textPan_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pan_no"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -269,44 +300,9 @@ tools:context=".view.activity.CustomerDetailsMyBlackListedActivity">
 
 
         </LinearLayout>
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:visibility="gone"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="Pan No:-"
-                android:textSize="15sp" />
-
-
-            <TextView
-                android:id="@+id/textPan_no"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Pan_no"
-                android:textSize="15sp" />
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:visibility="gone"
             android:background="@color/gray" />
 
         <LinearLayout

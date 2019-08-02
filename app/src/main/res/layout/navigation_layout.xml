@@ -115,12 +115,14 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
+                            android:visibility="gone"
                             android:background="@color/gray" />
 
                         <RelativeLayout
                             android:id="@+id/relativeLayout_ourCustomer"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             android:orientation="horizontal"
                             android:padding="5dp">
 

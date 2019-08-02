@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,7 +47,10 @@ public class AddCustomerActivity extends AppCompatActivity {
     private ArrayList<ClientProfileModel> clientProfileModelArrayList = new ArrayList<>();
     private MyCustomerModel myCustomerModel;
     private TextView textAddTitle;
-
+    private int flag = 0;
+    private RadioButton radioStatusButton,rbGoodCustomer,rbBlackList;
+    private RadioGroup radioGroupStatus;
+    private String status="1"; //Good Customer
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +73,7 @@ public class AddCustomerActivity extends AppCompatActivity {
         textCustomerMobileNumber = findViewById(R.id.textCustomerMobileNumber);
         textCustomerAadharNumber = findViewById(R.id.textCustomerAadharNumber);
         textCustomerPanNumber = findViewById(R.id.textCustomerPanNumber);
-
+        radioGroupStatus=findViewById(R.id.radioGroupStatus);
 
         edt_customer_name = findViewById(R.id.edt_customer_name);
         edt_contact_person = findViewById(R.id.edt_contact_person);
@@ -79,6 +84,8 @@ public class AddCustomerActivity extends AppCompatActivity {
         edt_customer_aadhar_number = findViewById(R.id.edt_customer_aadhar_number);
         edt_Customer_pan_number = findViewById(R.id.edt_Customer_pan_number);
         textAddTitle = findViewById(R.id.textAddTitle);
+        rbGoodCustomer = findViewById(R.id.rbGoodCustomer);
+        rbBlackList = findViewById(R.id.rbBlackList);
 
 
         btn_add_new_customer = findViewById(R.id.btn_add_new_customer);
@@ -99,10 +106,19 @@ public class AddCustomerActivity extends AppCompatActivity {
             edt_customer_mobile_number.setText(myCustomerModel.getMobile_no());
             edt_customer_aadhar_number.setText(myCustomerModel.getAadhar_no());
             edt_Customer_pan_number.setText(myCustomerModel.getPan_no());
-
+            status=myCustomerModel.getStatus();
             btn_add_new_customer.setText("Update Customer");
             customer_id = myCustomerModel.getCustomer_id();
             textAddTitle.setText("Update Customer");
+
+            if(status.equalsIgnoreCase("1"))
+            {
+                rbGoodCustomer.setChecked(true);
+            }
+            else
+            {
+                rbBlackList.setChecked(true);
+            }
 
         }
 
@@ -143,6 +159,21 @@ public class AddCustomerActivity extends AppCompatActivity {
 
             }
         });
+        radioGroupStatus.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                radioStatusButton=findViewById(checkedId);
+                String statusName=radioStatusButton.getText().toString().trim();
+                if(statusName.equalsIgnoreCase("Good Customer"))
+                {
+                    status="1";
+                }
+                else
+                {
+
+                }
+            }
+        });
     }
 
 
@@ -165,7 +196,62 @@ public class AddCustomerActivity extends AppCompatActivity {
             textCustomerName.setError(null);
             textCustomerName.setErrorEnabled(false);
         }
-       /* if (contact_person_name.equalsIgnoreCase("")) {
+
+        if (mobile.equalsIgnoreCase("")) {
+            textCustomerMobileNumber.setError("Enter Mobile Number");
+            edt_customer_mobile_number.requestFocus();
+            return false;
+        } else if(mobile.length()!=10) {
+            textCustomerMobileNumber.setError("Invalid Mobile Number");
+            edt_customer_mobile_number.requestFocus();
+            return false;
+        } else {
+            textCustomerMobileNumber.setError(null);
+            textCustomerMobileNumber.setErrorEnabled(false);
+        }
+        if (gst_number.equalsIgnoreCase("")) {
+            flag++;
+            textCustomerGstNumber.setError("Enter Aadhar Or Pan Or Gst Number");
+            edt_customer_gst_no.requestFocus();
+        } else if (gst_number.length() < 15) {
+            Toast.makeText(this, "Invalid GST Number", Toast.LENGTH_SHORT).show();
+            textCustomerGstNumber.setError(null);
+            textCustomerGstNumber.setErrorEnabled(false);
+            return false;
+        }
+
+        if (aadhar_number.equalsIgnoreCase("")) {
+            flag++;
+            textCustomerAadharNumber.setError("Enter Aadhar Or Pan Or Gst Number");
+            edt_customer_aadhar_number.requestFocus();
+        } else if (aadhar_number.length() < 12) {
+            Toast.makeText(this, "Invalid Aadhar Number", Toast.LENGTH_SHORT).show();
+            textCustomerAadharNumber.setError(null);
+            textCustomerAadharNumber.setErrorEnabled(false);
+            return false;
+        }
+
+        if (pan_number.equalsIgnoreCase("")) {
+            flag++;
+            textCustomerPanNumber.setError("Enter Aadhar Or Pan Or Gst Number");
+            edt_Customer_pan_number.requestFocus();
+        } else if (pan_number.length() < 10) {
+            Toast.makeText(this, "Invalid Pan Number", Toast.LENGTH_SHORT).show();
+            textCustomerPanNumber.setError(null);
+            textCustomerPanNumber.setErrorEnabled(false);
+            return false;
+        }
+
+
+        if(flag==3)
+        {
+            Toast.makeText(this, "Please Enter Aadhar Or Pan Or Gst Number", Toast.LENGTH_SHORT).show();
+            flag=0;
+            return false;
+        }
+
+
+   /* if (contact_person_name.equalsIgnoreCase("")) {
             textContactPerson.setError("Enter Customer Name");
             edt_contact_person.requestFocus();
             return false;
@@ -173,28 +259,7 @@ public class AddCustomerActivity extends AppCompatActivity {
             textContactPerson.setError(null);
             textContactPerson.setErrorEnabled(false);
         }*/
-        if (gst_number.equalsIgnoreCase("") && aadhar_number.equalsIgnoreCase("")) {
-            textCustomerGstNumber.setError("Enter GST Number or Aadhar Number ");
-            textCustomerAadharNumber.setError("Enter GST Number or Aadhar Number ");
-            edt_customer_aadhar_number.requestFocus();
-            edt_customer_gst_no.requestFocus();
-            return false;
-        } else {
-            textCustomerGstNumber.setError(null);
-            textCustomerGstNumber.setErrorEnabled(false);
-            textCustomerAadharNumber.setError(null);
-            textCustomerAadharNumber.setErrorEnabled(false);
 
-            if (aadhar_number.length() < 12) {
-                textCustomerAadharNumber.setError("Invalid Aadhar Number");
-                edt_customer_aadhar_number.requestFocus();
-                return false;
-            } else {
-                textCustomerAadharNumber.setError(null);
-                textCustomerAadharNumber.setErrorEnabled(false);
-            }
-
-        }
        /* if (address.equalsIgnoreCase("")) {
             textCustomerAddress.setError("Enter Address");
             edt_customer_address.requestFocus();
@@ -219,29 +284,14 @@ public class AddCustomerActivity extends AppCompatActivity {
             textCustomerEmail.setError(null);
             textCustomerEmail.setErrorEnabled(false);
         }*/
-        if (mobile.equalsIgnoreCase("")) {
-            textCustomerMobileNumber.setError("Enter Mobile Number");  textCustomerAadharNumber.setError(null);
-            textCustomerAadharNumber.setErrorEnabled(false);
-            edt_customer_mobile_number.requestFocus();
-            return false;
-        } else {
-            textCustomerMobileNumber.setError(null);
-            textCustomerMobileNumber.setErrorEnabled(false);
-        }
-        if (mobile.length() != 10) {
-            textCustomerMobileNumber.setError("Invalid Mobile Number");
-            edt_customer_mobile_number.requestFocus();
-            return false;
-        } else {
-            textCustomerMobileNumber.setError(null);
-            textCustomerMobileNumber.setErrorEnabled(false);
-        }
+
        /* if (aadhar_number.equalsIgnoreCase("")) {
             textCustomerAadharNumber.setError("Enter Aadhar Number");
             edt_customer_aadhar_number.requestFocus();
             return false;
         } else {
-
+             textCustomerAadharNumber.setError(null);
+            textCustomerAadharNumber.setErrorEnabled(false);
         }
         if (aadhar_number.length() < 12) {
             textCustomerAadharNumber.setError("Invalid Aadhar Number");
@@ -250,16 +300,13 @@ public class AddCustomerActivity extends AppCompatActivity {
         } else {
             textCustomerAadharNumber.setError(null);
             textCustomerAadharNumber.setErrorEnabled(false);
-        }
-*/
+        }*/
         return true;
     }
-
-
     private void addCustomer() {
 
         showProgressDialog.showDialog();
-        Call<SuccessModel> call = apiInterface.registrationCustomer(customer_name, contact_person_name, gst_number, address, email, aadhar_number, pan_number, mobile, client_id);
+        Call<SuccessModel> call = apiInterface.registrationCustomer(customer_name, contact_person_name, gst_number, address, email, aadhar_number, pan_number, mobile, client_id,status);
 
         call.enqueue(new Callback<SuccessModel>() {
             @Override
@@ -279,7 +326,10 @@ public class AddCustomerActivity extends AppCompatActivity {
                             if (code.equalsIgnoreCase("1")) {
                                 Toast.makeText(AddCustomerActivity.this, "Customer Registration Successfully", Toast.LENGTH_SHORT).show();
                                 finish();
-                            } else {
+                            } else if(code.equalsIgnoreCase("2")){
+                                Toast.makeText(AddCustomerActivity.this, message, Toast.LENGTH_SHORT).show();
+                            }else
+                            {
                                 Toast.makeText(AddCustomerActivity.this, "Customer Registration Unsuccessfully ", Toast.LENGTH_SHORT).show();
                             }
 
@@ -307,7 +357,7 @@ public class AddCustomerActivity extends AppCompatActivity {
     private void updateCustomer() {
 
         showProgressDialog.showDialog();
-        Call<SuccessModel> call = apiInterface.updateCustomer(customer_name, contact_person_name, gst_number, address, email, aadhar_number, pan_number, mobile, client_id,customer_id);
+        Call<SuccessModel> call = apiInterface.updateCustomer(customer_name, contact_person_name, gst_number, address, email, aadhar_number, pan_number, mobile, client_id, customer_id,status);
 
         call.enqueue(new Callback<SuccessModel>() {
             @Override

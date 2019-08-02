@@ -59,7 +59,8 @@ public interface ApiInterface {
                                             @Field("aadhar_no") String  aadhar_no,
                                             @Field("pan_no") String  pan_no,
                                             @Field("mobile_no") String  mobile_no,
-                                            @Field("client_id") String  client_id);
+                                            @Field("client_id") String  client_id,
+                                            @Field("status") String  status);
 
     @POST(EndApi.UPDATE_CUSTOMER)
     @FormUrlEncoded
@@ -72,7 +73,8 @@ public interface ApiInterface {
                                             @Field("pan_no") String  pan_no,
                                             @Field("mobile_no") String  mobile_no,
                                             @Field("client_id") String  client_id,
-                                            @Field("customer_id") String  customer_id);
+                                            @Field("customer_id") String  customer_id,
+                                            @Field("status") String  status);
 
 
     @POST(EndApi.MY_CUSTOMER)

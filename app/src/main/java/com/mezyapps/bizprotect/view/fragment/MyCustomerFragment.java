@@ -54,7 +54,6 @@ public class MyCustomerFragment extends Fragment {
     private ImageView iv_no_record_found;
     private ArrayList<MyCustomerModel> myCustomerModelArrayList = new ArrayList<>();
     private MyCustomerListAdapter myCustomerListAdapter;
-    private LinearLayout linearlayout_add_customer;
 
 
     @Override
@@ -76,7 +75,6 @@ public class MyCustomerFragment extends Fragment {
         edt_search = view.findViewById(R.id.edt_search);
         swipeRefresh_our_customer = view.findViewById(R.id.swipeRefresh_our_customer);
         iv_no_record_found = view.findViewById(R.id.iv_no_record_found);
-        linearlayout_add_customer=view.findViewById(R.id.linearlayout_add_customer);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
         recyclerView_myCustomer.setLayoutManager(linearLayoutManager);
@@ -137,13 +135,6 @@ public class MyCustomerFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
 
-            }
-        });
-        linearlayout_add_customer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, AddCustomerActivity.class);
-                startActivity(intent);
             }
         });
 

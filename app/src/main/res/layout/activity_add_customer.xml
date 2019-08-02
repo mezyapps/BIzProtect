@@ -78,21 +78,6 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textCustomerGstNumber"
-                android:layout_marginTop="10dp">
-
-                <EditText
-                    android:id="@+id/edt_customer_gst_no"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="GST Number"
-                    android:inputType="text" />
-
-
-            </android.support.design.widget.TextInputLayout>
 
 
             <android.support.design.widget.TextInputLayout
@@ -147,6 +132,42 @@
             </android.support.design.widget.TextInputLayout>
 
 
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textCustomerGstNumber"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/edt_customer_gst_no"
+                    android:layout_width="match_parent"
+                    android:maxLength="15"
+                    android:layout_height="wrap_content"
+                    android:hint="GST Number"
+                    android:inputType="text" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textCustomerPanNumber"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/edt_Customer_pan_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="10"
+                    android:hint="Pan Number"
+                    android:inputType="text" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -165,22 +186,55 @@
             </android.support.design.widget.TextInputLayout>
 
 
-            <android.support.design.widget.TextInputLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:id="@+id/textCustomerPanNumber"
-                android:layout_marginTop="10dp">
+                android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/edt_Customer_pan_number"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status:-"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="20sp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioGroupStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Pan Number"
-                    android:inputType="text" />
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rbGoodCustomer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Good Customer"
+                        android:textColor="@color/black"
+                        android:checked="true"
+                        android:textSize="16sp" />
+
+                    <RadioButton
+                        android:id="@+id/rbBlackList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="BlackList"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                </RadioGroup>
+
+            </LinearLayout>
 
 
-            </android.support.design.widget.TextInputLayout>
+
 
 
             <Button
