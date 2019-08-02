@@ -20,6 +20,7 @@ import com.mezyapps.bizprotect.model.SuccessModel;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
 import com.mezyapps.bizprotect.utils.ShowProgressDialog;
+import com.mezyapps.bizprotect.view.fragment.MyCustomerFragment;
 
 import org.w3c.dom.Text;
 
@@ -159,6 +160,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
                             if (code.equalsIgnoreCase("1")) {
                                 Toast.makeText(CustomerDetailsActivity.this, "Update Customer Status Successfully", Toast.LENGTH_SHORT).show();
                                 //successDialog.showDialog("Registration Successfully");
+                                MyCustomerFragment.isToRefresh = true;
                                 finish();
                             } else {
                                 Toast.makeText(CustomerDetailsActivity.this, message, Toast.LENGTH_SHORT).show();

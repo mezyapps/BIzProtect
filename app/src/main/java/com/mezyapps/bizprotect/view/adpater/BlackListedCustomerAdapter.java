@@ -47,7 +47,7 @@ public class BlackListedCustomerAdapter extends RecyclerView.Adapter<BlackListed
         holder.textName.setText(blackListCustomerModel.getCustomer_name());
         holder.textCustomerFirstName.setText(blackListCustomerModel.getCustomer_name());
         if(status.equalsIgnoreCase("4")) {
-            holder.textBlackList.setText("BlackListed");
+            holder.textBlackList.setText("All BlackListed");
         }
         holder.textGstNumber.setText(blackListCustomerModel.getGst_no());
         holder.textAadharNumber.setText(blackListCustomerModel.getAadhar_no());

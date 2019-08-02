@@ -21,6 +21,8 @@ import com.mezyapps.bizprotect.model.SuccessModel;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
 import com.mezyapps.bizprotect.utils.ShowProgressDialog;
+import com.mezyapps.bizprotect.view.fragment.MyBlackListedCustomerFragment;
+import com.mezyapps.bizprotect.view.fragment.MyCustomerFragment;
 
 import java.util.ArrayList;
 
@@ -130,6 +132,7 @@ public class CustomerDetailsMyBlackListedActivity extends AppCompatActivity {
                             code = successModel.getCode();
                             if (code.equalsIgnoreCase("1")) {
                                 Toast.makeText(CustomerDetailsMyBlackListedActivity.this, "Update Customer Status Successfully", Toast.LENGTH_SHORT).show();
+                                MyBlackListedCustomerFragment.isToRefresh = true;
                                 finish();
                             } else {
                                 Toast.makeText(CustomerDetailsMyBlackListedActivity.this, message, Toast.LENGTH_SHORT).show();

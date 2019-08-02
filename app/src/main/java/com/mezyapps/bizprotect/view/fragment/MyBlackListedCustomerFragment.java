@@ -52,6 +52,7 @@ public class MyBlackListedCustomerFragment extends Fragment {
     private String client_id;
     private ShowProgressDialog showProgressDialog;
     private ImageView iv_no_record_found;
+    public static boolean isToRefresh = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -192,5 +193,18 @@ public class MyBlackListedCustomerFragment extends Fragment {
                 showProgressDialog.dismissDialog();
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (isToRefresh) {
+            isToRefresh = false;
+            if (NetworkUtils.isNetworkAvailable(mContext)) {
+                listOurCustomer();
+            } else {
+                NetworkUtils.isNetworkNotAvailable(mContext);
+            }
+        }
     }
 }

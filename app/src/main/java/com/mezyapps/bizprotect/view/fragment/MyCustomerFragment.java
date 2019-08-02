@@ -3,6 +3,7 @@ package com.mezyapps.bizprotect.view.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -54,6 +55,7 @@ public class MyCustomerFragment extends Fragment {
     private ImageView iv_no_record_found;
     private ArrayList<MyCustomerModel> myCustomerModelArrayList = new ArrayList<>();
     private MyCustomerListAdapter myCustomerListAdapter;
+    public static boolean isToRefresh = false;
 
 
     @Override
@@ -61,7 +63,6 @@ public class MyCustomerFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my_customer, container, false);
         mContext = getActivity();
-
         find_View_IdS(view);
         events();
         return view;
@@ -139,6 +140,7 @@ public class MyCustomerFragment extends Fragment {
         });
 
     }
+
     private void listMyCustomer() {
         showProgressDialog.showDialog();
 
@@ -159,16 +161,14 @@ public class MyCustomerFragment extends Fragment {
                             message = successModule.getMessage();
                             code = successModule.getCode();
                             if (code.equalsIgnoreCase("1")) {
-                                myCustomerModelArrayList=successModule.getMyCustomerModelArrayList();
+                                myCustomerModelArrayList = successModule.getMyCustomerModelArrayList();
                                 Collections.reverse(myCustomerModelArrayList);
-                                if(myCustomerModelArrayList.size()!=0) {
+                                if (myCustomerModelArrayList.size() != 0) {
                                     myCustomerListAdapter = new MyCustomerListAdapter(mContext, myCustomerModelArrayList);
                                     recyclerView_myCustomer.setAdapter(myCustomerListAdapter);
                                     iv_no_record_found.setVisibility(View.GONE);
                                     myCustomerListAdapter.notifyDataSetChanged();
-                                }
-                                else
-                                {
+                                } else {
                                     iv_no_record_found.setVisibility(View.VISIBLE);
                                     myCustomerListAdapter.notifyDataSetChanged();
                                 }
@@ -195,6 +195,20 @@ public class MyCustomerFragment extends Fragment {
                 showProgressDialog.dismissDialog();
             }
         });
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (isToRefresh) {
+            isToRefresh = false;
+            if (NetworkUtils.isNetworkAvailable(mContext)) {
+                listMyCustomer();
+            } else {
+                NetworkUtils.isNetworkNotAvailable(mContext);
+            }
+        }
     }
 
 }

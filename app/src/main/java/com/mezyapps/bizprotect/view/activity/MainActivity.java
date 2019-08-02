@@ -213,6 +213,12 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    public void reloadCustomerList() {
+        bottom_navigation.setSelectedItemId(R.id.nav_my_list_customer);
+        loadFragment(new MyCustomerFragment());
+    }
+
+
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -249,9 +255,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
+    /*@Override
     protected void onRestart() {
         super.onRestart();
-        loadFragment(new HomeFragment());
-    }
+        bottom_navigation.setSelectedItemId(R.id.nav_my_list_customer);
+        loadFragment(new MyCustomerFragment());
+    }*/
 }

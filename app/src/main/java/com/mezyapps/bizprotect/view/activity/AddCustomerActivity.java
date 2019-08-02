@@ -24,6 +24,7 @@ import com.mezyapps.bizprotect.model.SuccessModel;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
 import com.mezyapps.bizprotect.utils.ShowProgressDialog;
+import com.mezyapps.bizprotect.view.fragment.MyCustomerFragment;
 
 import java.util.ArrayList;
 
@@ -170,7 +171,7 @@ public class AddCustomerActivity extends AppCompatActivity {
                 }
                 else
                 {
-
+                    status="4";
                 }
             }
         });
@@ -326,6 +327,7 @@ public class AddCustomerActivity extends AppCompatActivity {
                             if (code.equalsIgnoreCase("1")) {
                                 Toast.makeText(AddCustomerActivity.this, "Customer Registration Successfully", Toast.LENGTH_SHORT).show();
                                 finish();
+
                             } else if(code.equalsIgnoreCase("2")){
                                 Toast.makeText(AddCustomerActivity.this, message, Toast.LENGTH_SHORT).show();
                             }else
@@ -376,6 +378,7 @@ public class AddCustomerActivity extends AppCompatActivity {
                             code = successModule.getCode();
                             if (code.equalsIgnoreCase("1")) {
                                 Toast.makeText(AddCustomerActivity.this, "Customer Update Successfully", Toast.LENGTH_SHORT).show();
+                                 MyCustomerFragment.isToRefresh = true;
                                 finish();
                             } else {
                                 Toast.makeText(AddCustomerActivity.this, "Customer Update Unsuccessfully ", Toast.LENGTH_SHORT).show();
