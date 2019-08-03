@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.model.ClientProfileModel;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     Fragment fragmentInstance;
     FragmentManager fragmentManager;
     private boolean doubleBackToExitPressedOnce = false;
-    private BottomNavigationView bottom_navigation;
+    private BottomNavigationViewEx bottom_navigation;
     private RelativeLayout relativeLayout_Dashboard, relativeLayout_ourCustomer, relativeLayout_blocked_customer, relativeLayout_logout;
     private Dialog dialog_logout;
     private TextView text_app_name;
@@ -83,7 +84,11 @@ public class MainActivity extends AppCompatActivity {
        /* AdRequest adRequest=new AdRequest.Builder().build();
         adView_banner_add.loadAd(adRequest);*/
 
-
+        bottom_navigation.enableAnimation(false);
+        bottom_navigation.enableShiftingMode(false);
+        bottom_navigation.enableItemShiftingMode(false);
+        bottom_navigation.setLargeTextSize(10);
+        bottom_navigation.setTextSize(10);
     }
 
     private void events() {
@@ -239,7 +244,6 @@ public class MainActivity extends AppCompatActivity {
         if (!doubleBackToExitPressedOnce) {
             this.doubleBackToExitPressedOnce = true;
             Toast.makeText(this, "Please click back again to exit !!", Toast.LENGTH_SHORT).show();
-
             new Handler().postDelayed(new Runnable() {
 
                 @Override

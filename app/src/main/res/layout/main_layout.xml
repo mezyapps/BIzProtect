@@ -54,13 +54,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@+id/bottom_navigation"/>
+
+
+
             
-            
-            <android.support.design.widget.BottomNavigationView
+            <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
                 android:layout_width="match_parent"
                 android:layout_alignParentBottom="true"
                 android:layout_height="wrap_content"
                 android:id="@+id/bottom_navigation"
+                app:itemIconTint="@color/gray"
                 android:background="?android:attr/windowBackground"
                 app:menu="@menu/bottom_navigation_menu"/>
 
@@ -84,11 +87,17 @@
                 android:layout_width="match_parent"
                 android:layout_centerHorizontal="true"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/bottom_navigation"
+                android:layout_above="@+id/view_bottom_navigation"
                 ads:adSize="BANNER"
                 ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
             </com.google.android.gms.ads.AdView>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:id="@+id/view_bottom_navigation"
+                android:layout_above="@+id/bottom_navigation"
+                android:background="@color/gray"/>
 
 
         </RelativeLayout>

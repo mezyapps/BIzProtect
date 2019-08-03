@@ -175,6 +175,7 @@ public class AddCustomerActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
 
@@ -212,34 +213,22 @@ public class AddCustomerActivity extends AppCompatActivity {
         }
         if (gst_number.equalsIgnoreCase("")) {
             flag++;
-            textCustomerGstNumber.setError("Enter Aadhar Or Pan Or Gst Number");
-            edt_customer_gst_no.requestFocus();
         } else if (gst_number.length() < 15) {
             Toast.makeText(this, "Invalid GST Number", Toast.LENGTH_SHORT).show();
-            textCustomerGstNumber.setError(null);
-            textCustomerGstNumber.setErrorEnabled(false);
             return false;
         }
 
         if (aadhar_number.equalsIgnoreCase("")) {
             flag++;
-            textCustomerAadharNumber.setError("Enter Aadhar Or Pan Or Gst Number");
-            edt_customer_aadhar_number.requestFocus();
         } else if (aadhar_number.length() < 12) {
             Toast.makeText(this, "Invalid Aadhar Number", Toast.LENGTH_SHORT).show();
-            textCustomerAadharNumber.setError(null);
-            textCustomerAadharNumber.setErrorEnabled(false);
             return false;
         }
 
         if (pan_number.equalsIgnoreCase("")) {
             flag++;
-            textCustomerPanNumber.setError("Enter Aadhar Or Pan Or Gst Number");
-            edt_Customer_pan_number.requestFocus();
         } else if (pan_number.length() < 10) {
             Toast.makeText(this, "Invalid Pan Number", Toast.LENGTH_SHORT).show();
-            textCustomerPanNumber.setError(null);
-            textCustomerPanNumber.setErrorEnabled(false);
             return false;
         }
 
@@ -326,6 +315,7 @@ public class AddCustomerActivity extends AppCompatActivity {
                             code = successModule.getCode();
                             if (code.equalsIgnoreCase("1")) {
                                 Toast.makeText(AddCustomerActivity.this, "Customer Registration Successfully", Toast.LENGTH_SHORT).show();
+                                MyCustomerFragment.isToRefresh = true;
                                 finish();
 
                             } else if(code.equalsIgnoreCase("2")){

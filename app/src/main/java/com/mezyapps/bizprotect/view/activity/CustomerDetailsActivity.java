@@ -160,7 +160,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
                             if (code.equalsIgnoreCase("1")) {
                                 Toast.makeText(CustomerDetailsActivity.this, "Update Customer Status Successfully", Toast.LENGTH_SHORT).show();
                                 //successDialog.showDialog("Registration Successfully");
-                                MyCustomerFragment.isToRefresh = true;
+                                    MyCustomerFragment.isToRefresh = true;
                                 finish();
                             } else {
                                 Toast.makeText(CustomerDetailsActivity.this, message, Toast.LENGTH_SHORT).show();

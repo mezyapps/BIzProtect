@@ -4,6 +4,7 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_vector_blacklisted"
+        android:checked="true"
         android:title="@string/all_blacklisted"/>
 
     <item
@@ -13,15 +14,16 @@
 
 
     <item
+        android:id="@+id/nav_my_list_customer"
+        android:icon="@drawable/customer_image"
+        android:title="@string/our_customer"/>
+
+
+    <item
         android:id="@+id/nav_my_customer"
         android:icon="@drawable/customer_image"
         android:title="@string/add_customer"/>
 
-
-    <item
-        android:id="@+id/nav_my_list_customer"
-        android:icon="@drawable/customer_image"
-        android:title="@string/our_customer"/>
 
 
 
