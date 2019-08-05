@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -47,8 +49,7 @@ public class AddCustomerActivity extends AppCompatActivity {
     private ShowProgressDialog showProgressDialog;
     private ArrayList<ClientProfileModel> clientProfileModelArrayList = new ArrayList<>();
     private MyCustomerModel myCustomerModel;
-    private TextView textAddTitle;
-    private int flag = 0;
+    private TextView textAddTitle,textAadharNumberMsg,textPanNumberMsg,textGstNumberMsg;
     private RadioButton radioStatusButton,rbGoodCustomer,rbBlackList;
     private RadioGroup radioGroupStatus;
     private String status="1"; //Good Customer
@@ -87,6 +88,10 @@ public class AddCustomerActivity extends AppCompatActivity {
         textAddTitle = findViewById(R.id.textAddTitle);
         rbGoodCustomer = findViewById(R.id.rbGoodCustomer);
         rbBlackList = findViewById(R.id.rbBlackList);
+
+        textAadharNumberMsg = findViewById(R.id.textAadharNumberMsg);
+        textPanNumberMsg = findViewById(R.id.textPanNumberMsg);
+        textGstNumberMsg = findViewById(R.id.textGstNumberMsg);
 
 
         btn_add_new_customer = findViewById(R.id.btn_add_new_customer);
@@ -176,9 +181,63 @@ public class AddCustomerActivity extends AppCompatActivity {
             }
         });
 
+        edt_customer_gst_no.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                textGstNumberMsg.setVisibility(View.VISIBLE);
+                textPanNumberMsg.setVisibility(View.GONE);
+                textAadharNumberMsg.setVisibility(View.GONE);
+            }
+        });
+
+        edt_customer_aadhar_number.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                textPanNumberMsg.setVisibility(View.GONE);
+                textGstNumberMsg.setVisibility(View.GONE);
+                textAadharNumberMsg.setVisibility(View.VISIBLE);
+            }
+        });
+
+        edt_Customer_pan_number.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                textGstNumberMsg.setVisibility(View.GONE);
+                textAadharNumberMsg.setVisibility(View.GONE);
+                textPanNumberMsg.setVisibility(View.VISIBLE);
+            }
+        });
     }
-
-
     private boolean validation() {
         customer_name = edt_customer_name.getText().toString().trim();
         contact_person_name = edt_contact_person.getText().toString().trim();
@@ -188,6 +247,7 @@ public class AddCustomerActivity extends AppCompatActivity {
         pan_number = edt_Customer_pan_number.getText().toString();
         aadhar_number = edt_customer_aadhar_number.getText().toString().trim();
         gst_number = edt_customer_gst_no.getText().toString().trim();
+        int flag = 0;
 
 
         if (customer_name.equalsIgnoreCase("")) {
@@ -215,27 +275,31 @@ public class AddCustomerActivity extends AppCompatActivity {
             flag++;
         } else if (gst_number.length() < 15) {
             Toast.makeText(this, "Invalid GST Number", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
-        if (aadhar_number.equalsIgnoreCase("")) {
             flag++;
-        } else if (aadhar_number.length() < 12) {
-            Toast.makeText(this, "Invalid Aadhar Number", Toast.LENGTH_SHORT).show();
             return false;
         }
-
         if (pan_number.equalsIgnoreCase("")) {
             flag++;
         } else if (pan_number.length() < 10) {
             Toast.makeText(this, "Invalid Pan Number", Toast.LENGTH_SHORT).show();
+            flag++;
+            return false;
+        }
+        if (aadhar_number.equalsIgnoreCase("")) {
+            flag++;
+        } else if (aadhar_number.length() < 12) {
+            Toast.makeText(this, "Invalid Aadhar Number", Toast.LENGTH_SHORT).show();
+            flag++;
             return false;
         }
 
 
-        if(flag==3)
+        if(flag>=3)
         {
-            Toast.makeText(this, "Please Enter Aadhar Or Pan Or Gst Number", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Please Enter Aadhar Or Pan Or Gst Number", Toast.LENGTH_SHORT).show();
+            textGstNumberMsg.setVisibility(View.VISIBLE);
+            textAadharNumberMsg.setVisibility(View.GONE);
+            textAadharNumberMsg.setVisibility(View.GONE);
             flag=0;
             return false;
         }

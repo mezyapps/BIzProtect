@@ -57,6 +57,7 @@ public class MyCustomerListAdapter extends RecyclerView.Adapter<MyCustomerListAd
         }
         holder.textGstNumber.setText(myCustomerModel.getGst_no());
         holder.textAadharNumber.setText(myCustomerModel.getAadhar_no());
+        holder.textPanNumber.setText(myCustomerModel.getPan_no());
 
 
         holder.linearlayout_customer_details.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +88,7 @@ public class MyCustomerListAdapter extends RecyclerView.Adapter<MyCustomerListAd
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textName,textGstNumber,textBlackList,textCustomerFirstName,textAadharNumber,textEditCustomer;
+        TextView textName,textGstNumber,textBlackList,textCustomerFirstName,textAadharNumber,textEditCustomer,textPanNumber;
         LinearLayout linearlayout_customer_details;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -99,6 +100,7 @@ public class MyCustomerListAdapter extends RecyclerView.Adapter<MyCustomerListAd
             textAadharNumber=itemView.findViewById(R.id.textAadharNumber);
             linearlayout_customer_details=itemView.findViewById(R.id.linearlayout_customer_details);
             textEditCustomer=itemView.findViewById(R.id.textEditCustomer);
+            textPanNumber=itemView.findViewById(R.id.textPanNumber);
         }
     }
 
@@ -115,7 +117,8 @@ public class MyCustomerListAdapter extends RecyclerView.Adapter<MyCustomerListAd
                     for (int i = 0; i < myCustomerModelArrayList.size(); i++) {
                         String gst_no=myCustomerModelArrayList.get(i).getGst_no().replaceAll("\\s","").toLowerCase().trim();
                         String  aadhar_no=myCustomerModelArrayList.get(i).getAadhar_no().toLowerCase().replaceAll("\\s","").toLowerCase().trim();
-                        if ((gst_no.contains(charString))||(aadhar_no.contains(charString))) {
+                        String  pan_no=myCustomerModelArrayList.get(i).getPan_no().toLowerCase().replaceAll("\\s","").toLowerCase().trim();
+                        if ((gst_no.contains(charString))||(aadhar_no.contains(charString))||(pan_no.contains(charString))) {
                             filteredList.add(myCustomerModelArrayList.get(i));
                         }
                     }

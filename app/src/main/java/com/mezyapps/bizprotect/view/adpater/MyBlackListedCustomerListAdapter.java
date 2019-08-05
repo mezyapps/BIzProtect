@@ -50,6 +50,7 @@ public class MyBlackListedCustomerListAdapter extends RecyclerView.Adapter<MyBla
         }
         holder.textGstNumber.setText(myBlackListedCustomerModel.getGst_no());
         holder.textAadharNumber.setText(myBlackListedCustomerModel.getAadhar_no());
+        holder.textPanNumber.setText(myBlackListedCustomerModel.getPan_no());
 
 
         holder.linearlayout_my_blacklisted_customer.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +70,7 @@ public class MyBlackListedCustomerListAdapter extends RecyclerView.Adapter<MyBla
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textName,textGstNumber,textBlackList,textCustomerFirstName,textAadharNumber;
+        TextView textName,textGstNumber,textBlackList,textCustomerFirstName,textAadharNumber,textPanNumber;
         LinearLayout linearlayout_my_blacklisted_customer;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -80,6 +81,7 @@ public class MyBlackListedCustomerListAdapter extends RecyclerView.Adapter<MyBla
             textCustomerFirstName=itemView.findViewById(R.id.textCustomerFirstName);
             textAadharNumber=itemView.findViewById(R.id.textAadharNumber);
             linearlayout_my_blacklisted_customer=itemView.findViewById(R.id.linearlayout_my_blacklisted_customer);
+            textPanNumber=itemView.findViewById(R.id.textPanNumber);
         }
     }
 
@@ -96,7 +98,8 @@ public class MyBlackListedCustomerListAdapter extends RecyclerView.Adapter<MyBla
                     for (int i = 0; i < myBlackListedCustomerModelArrayList.size(); i++) {
                         String gst_no=myBlackListedCustomerModelArrayList.get(i).getGst_no().replaceAll("\\s","").toLowerCase().trim();
                         String  aadhar_no=myBlackListedCustomerModelArrayList.get(i).getAadhar_no().toLowerCase().replaceAll("\\s","").toLowerCase().trim();
-                        if ((gst_no.contains(charString))||(aadhar_no.contains(charString))) {
+                        String  pan_no=myBlackListedCustomerModelArrayList.get(i).getPan_no().toLowerCase().replaceAll("\\s","").toLowerCase().trim();
+                        if ((gst_no.contains(charString))||(aadhar_no.contains(charString))||(pan_no.contains(charString))) {
                             filteredList.add(myBlackListedCustomerModelArrayList.get(i));
                         }
                     }

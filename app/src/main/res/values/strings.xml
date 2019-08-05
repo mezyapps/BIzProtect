@@ -7,9 +7,25 @@
     <string name="our_customer">Customer List</string>
     <string name="add_customer">Add Customer</string>
     <string name="black_listed_customer">All BlackListed Customer</string>
-    <string name="search">Search(GST No OR AADHAR NO)</string>
+    <string name="search">Search(gst no or aadhar no or pan no)</string>
     <string name="all_blacklisted">All BlackList</string>
     <string name="my_blacklisted">My BlackList</string>
     <string name="key">M282872874</string>
     <string name="enter_your_license_key">Enter Your License Key</string>
+    <string name="warning_msg_gst_pan_aadhar_no">enter gst or aadhar no or pan no</string>
+    <string name="name">Name :-</string>
+    <string name="aadhar_no">Aadhar No :-</string>
+    <string name="gst_no">GST No :-</string>
+    <string name="pan_no">Pan No :-</string>
+    <string name="status">Status :-</string>
+    <string name="done">Done</string>
+    <string name="edit">Edit</string>
+    <string name="busines_name">Busines Name:-</string>
+    <string name="person_name">Person Name:-</string>
+    <string name="address">Address:-</string>
+    <string name="mobile_no">Mobile No:-</string>
+    <string name="blacklist">Blacklist</string>
+    <string name="remove_blacklist">Remove Blacklist</string>
+    <string name="email">Email:-</string>
+    <string name="customer_details">Customer details</string>
 </resources>

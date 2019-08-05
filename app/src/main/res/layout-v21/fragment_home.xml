@@ -29,7 +29,7 @@
                 android:focusableInTouchMode="false"
                 android:textSize="16sp"
                 android:hint="@string/search"
-                android:inputType="textCapCharacters" />
+                android:inputType="text" />
 
 
         </LinearLayout>

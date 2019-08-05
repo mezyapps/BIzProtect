@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/ic_back"
-            android:text="Customer details"
+            android:text="@string/customer_details"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -91,7 +91,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Busines Name:-"
+                    android:text="@string/busines_name"
                     android:textSize="15sp" />
 
 
@@ -100,7 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Name"
+                    android:text="@string/name"
                     android:textSize="15sp" />
 
 
@@ -123,7 +123,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Person Name:-"
+                    android:text="@string/person_name"
                     android:textSize="15sp" />
 
 
@@ -132,7 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Contact Person"
+                    android:text="@string/person_name"
                     android:textSize="15sp" />
 
 
@@ -155,7 +155,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Address:-"
+                    android:text="@string/address"
                     android:textSize="15sp" />
 
 
@@ -164,7 +164,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Address"
+                    android:text="@string/address"
                     android:textSize="15sp" />
 
 
@@ -190,7 +190,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Email:-"
+                    android:text="@string/email"
                     android:textSize="15sp" />
 
 
@@ -199,7 +199,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Email"
+                    android:text="@string/email"
                     android:textSize="15sp" />
 
 
@@ -223,7 +223,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Mobile No:-"
+                    android:text="@string/mobile_no"
                     android:textSize="15sp" />
 
 
@@ -232,7 +232,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Mobile No"
+                    android:text="@string/mobile_no"
                     android:textSize="15sp" />
 
 
@@ -255,7 +255,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Gst No:-"
+                    android:text="@string/gst_no"
                     android:textSize="15sp" />
 
 
@@ -264,7 +264,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Gst No"
+                    android:text="@string/gst_no"
                     android:textSize="15sp" />
 
 
@@ -287,7 +287,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Pan No:-"
+                    android:text="@string/pan_no"
                     android:textSize="15sp" />
 
 
@@ -296,7 +296,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Pan_no"
+                    android:text="@string/pan_no"
                     android:textSize="15sp" />
 
 
@@ -320,7 +320,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Aadhar No:-"
+                    android:text="@string/aadhar_no"
                     android:textSize="15sp" />
 
 
@@ -329,7 +329,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Aadhar No"
+                    android:text="@string/aadhar_no"
                     android:textSize="15sp" />
 
 
@@ -356,7 +356,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Status"
+                    android:text="@string/status"
                     android:textSize="15sp" />
 
 
@@ -368,7 +368,7 @@
                     android:background="@drawable/btn_shape"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Blacklist"
+                    android:text="@string/blacklist"
                     android:textColor="@color/white"
                     android:textSize="15sp" />
 
@@ -390,7 +390,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Status"
+                    android:text="@string/status"
                     android:textSize="15sp" />
 
 
@@ -402,7 +402,7 @@
                     android:background="@drawable/btn_shape"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Remove Blacklist"
+                    android:text="@string/remove_blacklist"
                     android:textColor="@color/white"
                     android:textSize="15sp" />
 

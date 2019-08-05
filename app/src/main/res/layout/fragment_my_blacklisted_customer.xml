@@ -27,7 +27,7 @@
                 android:backgroundTint="@color/white"
                 android:drawableEnd="@drawable/ic_vector_search"
                 android:hint="@string/search"
-                android:inputType="text" />
+                android:inputType="textCapCharacters" />
 
 
         </LinearLayout>
