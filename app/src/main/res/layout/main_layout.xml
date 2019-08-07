@@ -53,51 +53,66 @@
                 android:id="@+id/framelayout_main"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@+id/bottom_navigation"/>
+                android:layout_above="@+id/bottom_banner"/>
 
 
-
-            
-            <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+            <View
                 android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_above="@+id/bottom_banner"
+                android:background="@color/gray"/>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
                 android:layout_alignParentBottom="true"
-                android:layout_height="wrap_content"
-                android:id="@+id/bottom_navigation"
-                app:itemIconTint="@color/gray"
-                android:background="?android:attr/windowBackground"
-                app:menu="@menu/bottom_navigation_menu"/>
+                android:id="@+id/bottom_banner"
+                android:orientation="vertical">
 
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/banner"/>
+
+            </LinearLayout>
+
+
+
+
+
+
+
+            <!--   <com.google.android.gms.ads.AdView
+                   xmlns:ads="http://schemas.android.com/apk/res-auto"
+                   android:id="@+id/adView_banner_add"
+                   android:layout_width="match_parent"
+                   android:layout_centerHorizontal="true"
+                   android:layout_height="wrap_content"
+                   android:layout_above="@+id/bottom_navigation"
+                   ads:adSize="BANNER"
+                   ads:adUnitId="ca-app-pub-3637958081667905/9738688871">
+               </com.google.android.gms.ads.AdView>
+   -->
+
+            <!--Demo-->
             <com.google.android.gms.ads.AdView
                 xmlns:ads="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/adView_banner_add"
                 android:layout_width="match_parent"
                 android:layout_centerHorizontal="true"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/bottom_navigation"
+                android:layout_above="@+id/bottom_banner"
                 ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-3637958081667905/9738688871">
+                android:visibility="gone"
+                ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
             </com.google.android.gms.ads.AdView>
 
 
-            <!--Demo-->
-            <!--<com.google.android.gms.ads.AdView
-                xmlns:ads="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/adView_banner_add"
-                android:layout_width="match_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/view_bottom_navigation"
-                ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
-            </com.google.android.gms.ads.AdView>-->
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:id="@+id/view_bottom_navigation"
-                android:layout_above="@+id/bottom_navigation"
-                android:background="@color/gray"/>
 
 
         </RelativeLayout>

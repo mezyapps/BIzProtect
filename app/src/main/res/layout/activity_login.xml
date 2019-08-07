@@ -9,110 +9,116 @@
     tools:context=".view.activity.LoginActivity">
 
 
-  <!--  <RelativeLayout
+    <!--  <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="?attr/actionBarSize"
+          android:background="@color/app_color">
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerHorizontal="true"
+              android:layout_centerVertical="true"
+              android:text="Login"
+              android:textColor="@color/white"
+              android:textSize="20sp"
+              android:textStyle="bold|italic" />
+
+      </RelativeLayout>-->
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/app_color">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="Login"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold|italic" />
-
-    </RelativeLayout>-->
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/mezyapplogo"/>
+            android:layout_gravity="center"
+            android:src="@drawable/mezyapplogo" />
 
-        <LinearLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:layout_marginTop="40dp"
+            android:elevation="5dp"
             android:padding="5dp"
-            android:layout_centerHorizontal="true">
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="5dp">
 
-
-            <android.support.design.widget.TextInputLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textPhone_Number"
-                android:layout_marginTop="10dp">
+                android:orientation="vertical"
+                android:padding="5dp">
 
-                <EditText
-                    android:id="@+id/edt_phone_number"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textPhone_Number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Phone Number"
-                    android:maxLength="10"
-                    android:drawableStart="@drawable/ic_vector_phone_login"
-                    android:drawablePadding="5dp"
-                    android:inputType="phone" />
+                    android:layout_marginTop="10dp">
+
+                    <EditText
+                        android:id="@+id/edt_phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_vector_phone_login"
+                        android:drawablePadding="5dp"
+                        android:hint="Enter Phone Number"
+                        android:inputType="phone"
+                        android:maxLength="10" />
 
 
-            </android.support.design.widget.TextInputLayout>
+                </android.support.design.widget.TextInputLayout>
 
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textPassword"
-                app:passwordToggleEnabled="true"
-                android:layout_marginTop="10dp">
-
-                <EditText
-                    android:id="@+id/edt_password"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter password"
-                    android:drawablePadding="5dp"
-                    android:drawableStart="@drawable/ic_vector_password"
-                    android:inputType="textPassword"/>
+                    android:layout_marginTop="10dp"
+                    app:passwordToggleEnabled="true">
+
+                    <EditText
+                        android:id="@+id/edt_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_vector_password"
+                        android:drawablePadding="5dp"
+                        android:hint="Enter password"
+                        android:inputType="textPassword" />
 
 
-            </android.support.design.widget.TextInputLayout>
+                </android.support.design.widget.TextInputLayout>
 
 
+                <Button
+                    android:id="@+id/btn_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btn_shape"
+                    android:text="@string/login"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Login"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:id="@+id/btn_login"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/btn_shape"/>
+                <Button
+                    android:id="@+id/btn_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btn_shape"
+                    android:text="Sign In"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Create User"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:id="@+id/btn_signup"
-                android:background="@drawable/btn_shape"/>
-        </LinearLayout>
-
-
-    </RelativeLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

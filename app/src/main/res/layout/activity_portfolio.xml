@@ -28,7 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/ic_back"
-            android:text="Create User"
+            android:text="@string/sign_in"
+            android:textAllCaps="true"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/white"/>
@@ -60,7 +61,7 @@
                 android:id="@+id/edt_company_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Company Name"
+                android:hint="@string/company_name"
                 android:inputType="text" />
 
 
@@ -76,7 +77,7 @@
                 android:id="@+id/edt_person_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Person Name"
+                android:hint="@string/person_name"
                 android:inputType="text" />
 
 
@@ -93,7 +94,7 @@
                 android:id="@+id/edt_gst_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="GST Number"
+                android:hint="@string/gst_number"
                 android:inputType="text" />
 
 
@@ -110,7 +111,7 @@
                 android:id="@+id/edt_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Address"
+                android:hint="@string/address"
                 android:inputType="text" />
 
 
@@ -128,7 +129,7 @@
                 android:id="@+id/edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress" />
 
 
@@ -144,7 +145,7 @@
                 android:id="@+id/edt_mobile_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Mobile Number"
+                android:hint="@string/mobile_number"
                 android:maxLength="10"
                 android:inputType="phone" />
 
@@ -163,7 +164,7 @@
                 android:id="@+id/edt_aadhar_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Aadhar Number"
+                android:hint="@string/aadhar_number"
                 android:maxLength="12"
                 android:inputType="number" />
 
@@ -182,7 +183,7 @@
                 android:id="@+id/edt_pan_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Pan Number"
+                android:hint="@string/pan_number"
                 android:inputType="text" />
 
 
@@ -199,7 +200,7 @@
                 android:id="@+id/edt_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword" />
 
 
@@ -211,7 +212,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_shape"
-            android:text="Submit"
+            android:text="@string/submit"
             android:id="@+id/btn_create_portfolio"
             android:textColor="@color/white"
             android:textStyle="bold|italic" />

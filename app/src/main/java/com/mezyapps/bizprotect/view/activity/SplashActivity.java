@@ -37,7 +37,7 @@ import rx.functions.Action1;
 public class SplashActivity extends AppCompatActivity {
 
     private String is_login="",macAddress,str_order_date,date;
-    private String is_key_approve="";
+    //private String is_key_approve="";
     private Handler handler;
     private TelephonyManager telephonyManager;
     public static ApiInterface apiInterface;
@@ -55,11 +55,11 @@ public class SplashActivity extends AppCompatActivity {
     private void find_View_IdS() {
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
         is_login = SharedLoginUtils.getLoginSharedUtils(getApplicationContext());
-        is_key_approve= SharedLicenseUtils.getLicenseSharedUtils(getApplicationContext());
+        //is_key_approve= SharedLicenseUtils.getLicenseSharedUtils(getApplicationContext());
          macAddress=SharedLicenseUtils.getDeviceId(SplashActivity.this);
     }
     private void events() {
-        if(is_key_approve.equalsIgnoreCase("")) {
+       /* if(is_key_approve.equalsIgnoreCase("")) {
 
             if (NetworkUtils.isNetworkAvailable(SplashActivity.this)) {
                 callLicenseApprove();
@@ -67,7 +67,7 @@ public class SplashActivity extends AppCompatActivity {
                 NetworkUtils.isNetworkNotAvailable(SplashActivity.this);
             }
 
-        }
+        }*/
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkPermissions();
@@ -125,14 +125,6 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-
-                if(is_key_approve.equalsIgnoreCase("")) {
-                    Intent key_intent = new Intent(SplashActivity.this, LicenseKeyActivity.class);
-                    startActivity(key_intent);
-                    finish();
-                }
-                else
-                {
                     if (is_login.equalsIgnoreCase("") || is_login.equalsIgnoreCase("false")) {
                         Intent login_intent = new Intent(SplashActivity.this, LoginActivity.class);
                         startActivity(login_intent);
@@ -144,7 +136,6 @@ public class SplashActivity extends AppCompatActivity {
                     }
                     finish();
                 }
-            }
         }, 3000);
     }
     private void callLicenseApprove() {

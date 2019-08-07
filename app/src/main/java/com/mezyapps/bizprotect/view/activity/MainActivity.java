@@ -26,10 +26,10 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.model.ClientProfileModel;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
+import com.mezyapps.bizprotect.view.fragment.AllBlackListedFragment;
 import com.mezyapps.bizprotect.view.fragment.HomeFragment;
 import com.mezyapps.bizprotect.view.fragment.MyBlackListedCustomerFragment;
 import com.mezyapps.bizprotect.view.fragment.MyCustomerFragment;
@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     Fragment fragmentInstance;
     FragmentManager fragmentManager;
     private boolean doubleBackToExitPressedOnce = false;
-    private BottomNavigationViewEx bottom_navigation;
     private RelativeLayout relativeLayout_Dashboard, relativeLayout_ourCustomer, relativeLayout_blocked_customer, relativeLayout_logout;
     private Dialog dialog_logout;
     private TextView text_app_name;
@@ -57,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MobileAds.initialize(this,"ca-app-pub-3637958081667905~9680701324");//Live Url
-        //MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");//Demo Url
+        //MobileAds.initialize(this,"ca-app-pub-3637958081667905~9680701324");//Live Url
+        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");//Demo Url
         find_View_Ids();
         events();
     }
@@ -67,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         loadFragment(new HomeFragment());
         iv_drawer = findViewById(R.id.iv_drawer);
         drawerLayout = findViewById(R.id.drawer_layout);
-        bottom_navigation = findViewById(R.id.bottom_navigation);
         relativeLayout_Dashboard = findViewById(R.id.relativeLayout_Dashboard);
         relativeLayout_ourCustomer = findViewById(R.id.relativeLayout_ourCustomer);
         relativeLayout_blocked_customer = findViewById(R.id.relativeLayout_blocked_customer);
@@ -78,17 +76,14 @@ public class MainActivity extends AppCompatActivity {
         clientProfileModelArrayList=SharedLoginUtils.getUserDetails(MainActivity.this);
         text_app_name.setText("Welcome "+clientProfileModelArrayList.get(0).getCompany_name());
 
-        /*AdRequest adRequest=new AdRequest.Builder().addTestDevice("B57854E835A453D442326A4F590004D6").build();
-        adView_banner_add.loadAd(adRequest);*/
-
-        AdRequest adRequest=new AdRequest.Builder().build();
+        AdRequest adRequest=new AdRequest.Builder().addTestDevice("B57854E835A453D442326A4F590004D6").build();
         adView_banner_add.loadAd(adRequest);
 
-        bottom_navigation.enableAnimation(false);
-        bottom_navigation.enableShiftingMode(false);
-        bottom_navigation.enableItemShiftingMode(false);
-        bottom_navigation.setLargeTextSize(10);
-        bottom_navigation.setTextSize(10);
+        /*AdRequest adRequest=new AdRequest.Builder().build();
+        adView_banner_add.loadAd(adRequest);
+        */
+
+
     }
 
     private void events() {
@@ -98,37 +93,6 @@ public class MainActivity extends AppCompatActivity {
 
                 drawerLayout.openDrawer(GravityCompat.START);
 
-            }
-        });
-
-        bottom_navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                switch (menuItem.getItemId()) {
-
-                    case R.id.nav_home:
-                        loadFragment(new HomeFragment());
-                        break;
-
-                    case R.id.nav_our_customer:
-                        loadFragment(new MyBlackListedCustomerFragment());
-                        break;
-
-                    case R.id.nav_my_customer:
-                      //  loadFragment(new MyCustomerFragment());
-                        Intent intent=new Intent(MainActivity.this,AddCustomerActivity.class);
-                        startActivity(intent);
-                        break;
-
-                    case R.id.nav_my_list_customer:
-                         loadFragment(new MyCustomerFragment());
-                        break;
-
-
-                }
-
-                return true;
             }
         });
 
@@ -160,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    loadFragment(new HomeFragment());
+                    loadFragment(new AllBlackListedFragment());
                 }
 
             }
@@ -218,10 +182,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public void reloadCustomerList() {
-        bottom_navigation.setSelectedItemId(R.id.nav_my_list_customer);
-        loadFragment(new MyCustomerFragment());
-    }
+
 
 
     @Override
@@ -229,12 +190,11 @@ public class MainActivity extends AppCompatActivity {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
-            bottom_navigation.setSelected(false);
             if (fragmentName.equals(fragmentInstance.getClass().getSimpleName())) {
-                if (fragmentName.equals("HomeFragment")||fragmentName.equals("MyBlackListedCustomerFragment")) {
+                if (fragmentName.equals("HomeFragment")) {
                     doubleBackPressLogic();
-                }/* else
-                    loadFragment(new HomeFragment());*/
+                } else
+                    loadFragment(new HomeFragment());
             }
         }
     }
@@ -259,10 +219,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /*@Override
-    protected void onRestart() {
-        super.onRestart();
-        bottom_navigation.setSelectedItemId(R.id.nav_my_list_customer);
-        loadFragment(new MyCustomerFragment());
-    }*/
 }

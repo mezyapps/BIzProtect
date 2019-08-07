@@ -31,11 +31,11 @@
             android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
-            android:textColor="@color/app_color"
+            android:textColor="@color/app_text_color"
             android:layout_below="@+id/iv_splash_image"
             android:text="Biz Protect"
             android:textStyle="bold|italic"
-            android:textSize="30sp"/>
+            android:textSize="35sp"/>
 
 
 
@@ -44,9 +44,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:textColor="@color/app_text_color"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             android:text="Developed By:-JMD Infotech"/>
 
 

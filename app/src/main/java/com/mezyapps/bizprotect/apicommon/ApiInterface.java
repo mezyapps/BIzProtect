@@ -30,7 +30,9 @@ public interface ApiInterface {
                                           @Field("mobile_no") String mobile_no,
                                           @Field("aadhar_no") String aadhar_no,
                                           @Field("pan_no") String pan_no,
-                                          @Field("password") String password);
+                                          @Field("password") String password,
+                                          @Field("mac") String mac,
+                                          @Field("key") String key);
 
 
     @POST(EndApi.LOGIN)

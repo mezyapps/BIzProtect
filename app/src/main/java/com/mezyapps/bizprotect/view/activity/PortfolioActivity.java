@@ -1,9 +1,14 @@
 package com.mezyapps.bizprotect.view.activity;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +22,7 @@ import com.mezyapps.bizprotect.apicommon.ApiClient;
 import com.mezyapps.bizprotect.apicommon.ApiInterface;
 import com.mezyapps.bizprotect.model.SuccessModel;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
+import com.mezyapps.bizprotect.utils.SharedLicenseUtils;
 import com.mezyapps.bizprotect.utils.ShowProgressDialog;
 import com.mezyapps.bizprotect.utils.SuccessDialog;
 
@@ -38,13 +44,16 @@ public class PortfolioActivity extends AppCompatActivity {
     private ImageView ic_back;
     private SuccessDialog successDialog;
     private ShowProgressDialog showProgressDialog;
+    private String macAddress, strLicenseKey = "M282872874";
+    private TelephonyManager telephonyManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_portfolio);
-
         find_View_Ids();
+        getDeviceId();
         events();
     }
 
@@ -72,8 +81,8 @@ public class PortfolioActivity extends AppCompatActivity {
         textAadharNumber = findViewById(R.id.textAadharNumber);
         textPanNumber = findViewById(R.id.textPanNumber);
         textPassword = findViewById(R.id.textPassword);
-        successDialog=new SuccessDialog(PortfolioActivity.this);
-        showProgressDialog=new ShowProgressDialog(PortfolioActivity.this);
+        successDialog = new SuccessDialog(PortfolioActivity.this);
+        showProgressDialog = new ShowProgressDialog(PortfolioActivity.this);
     }
 
     private void events() {
@@ -84,13 +93,19 @@ public class PortfolioActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (validation()) {
-                    if (NetworkUtils.isNetworkAvailable(PortfolioActivity.this)) {
-                        callCreatePortfolio();
-                    }
-                    else {
-                        NetworkUtils.isNetworkNotAvailable(PortfolioActivity.this);
-                    }
 
+                    if (!(macAddress.equalsIgnoreCase(""))) {
+                        if (NetworkUtils.isNetworkAvailable(PortfolioActivity.this)) {
+
+                            callCreatePortfolio();
+                        } else {
+                            NetworkUtils.isNetworkNotAvailable(PortfolioActivity.this);
+                        }
+                    }
+                    else
+                    {
+                        getDeviceId();
+                    }
 
                 }
 
@@ -107,7 +122,7 @@ public class PortfolioActivity extends AppCompatActivity {
 
     private void callCreatePortfolio() {
         showProgressDialog.showDialog();
-        Call<SuccessModel> call = apiInterface.registrationClient(person_name,company_name,address,gst_number,email,mobile,aadhar_number,pan_number,password);
+        Call<SuccessModel> call = apiInterface.registrationClient(person_name, company_name, address, gst_number, email, mobile, aadhar_number, pan_number, password,macAddress,strLicenseKey);
         call.enqueue(new Callback<SuccessModel>() {
             @Override
             public void onResponse(Call<SuccessModel> call, Response<SuccessModel> response) {
@@ -121,15 +136,14 @@ public class PortfolioActivity extends AppCompatActivity {
 
                         String message = null, code = null;
                         if (successModel != null) {
-                           message = successModel.getMessage();
+                            message = successModel.getMessage();
                             code = successModel.getCode();
                             if (code.equalsIgnoreCase("1")) {
                                 Toast.makeText(PortfolioActivity.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
                                 finish();
-                            } else if(code.equalsIgnoreCase("3")) {
+                            } else if (code.equalsIgnoreCase("3")) {
                                 Toast.makeText(PortfolioActivity.this, message, Toast.LENGTH_SHORT).show();
-                            }
-                            else {
+                            } else {
                                 Toast.makeText(PortfolioActivity.this, message, Toast.LENGTH_SHORT).show();
                             }
 
@@ -257,7 +271,7 @@ public class PortfolioActivity extends AppCompatActivity {
             textPassword.setError(null);
             textPassword.setErrorEnabled(false);
         }
-        if (password.length()<6) {
+        if (password.length() < 6) {
             textPassword.setError("Password Must Contain At Least 6 Characters");
             edt_password.requestFocus();
             return false;
@@ -268,5 +282,15 @@ public class PortfolioActivity extends AppCompatActivity {
 
         return true;
     }
+
+    private void getDeviceId() {
+        //Take Mac Address
+        telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        macAddress = telephonyManager.getDeviceId();
+    }
+
 
 }
