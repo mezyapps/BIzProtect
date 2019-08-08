@@ -379,7 +379,6 @@ public class AddCustomerActivity extends AppCompatActivity {
                             code = successModule.getCode();
                             if (code.equalsIgnoreCase("1")) {
                                 Toast.makeText(AddCustomerActivity.this, "Customer Registration Successfully", Toast.LENGTH_SHORT).show();
-                                MyCustomerFragment.isToRefresh = true;
                                 finish();
 
                             } else if(code.equalsIgnoreCase("2")){

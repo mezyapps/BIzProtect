@@ -44,15 +44,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textColor="@color/app_text_color"
             android:layout_marginBottom="15dp"
-            android:text="Developed By:-JMD Infotech"/>
-
-
-
-
-
+            android:text="Developed By: JMD Infotech"/>
 
 
     </RelativeLayout>

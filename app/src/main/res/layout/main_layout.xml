@@ -67,17 +67,20 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="?attr/actionBarSize"
                 android:layout_alignParentBottom="true"
                 android:id="@+id/bottom_banner"
                 android:orientation="vertical">
 
 
-                <ImageView
+
+                <ViewFlipper
+                    android:id="@+id/viewFlipper_banner_add"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/banner"/>
+                    android:layout_height="match_parent"/>
+
+
+
 
             </LinearLayout>
 

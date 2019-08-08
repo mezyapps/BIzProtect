@@ -44,10 +44,6 @@ public class MyBlackListedCustomerListAdapter extends RecyclerView.Adapter<MyBla
         final MyBlackListedCustomerModel myBlackListedCustomerModel = myBlackListedCustomerModelArrayList.get(position);
         String status=myBlackListedCustomerModel.getStatus();
         holder.textName.setText(myBlackListedCustomerModel.getCustomer_name());
-        holder.textCustomerFirstName.setText(myBlackListedCustomerModel.getCustomer_name());
-        if(status.equalsIgnoreCase("4")) {
-            holder.textBlackList.setText("My BlackListed");
-        }
         holder.textGstNumber.setText(myBlackListedCustomerModel.getGst_no());
         holder.textAadharNumber.setText(myBlackListedCustomerModel.getAadhar_no());
         holder.textPanNumber.setText(myBlackListedCustomerModel.getPan_no());
@@ -70,15 +66,13 @@ public class MyBlackListedCustomerListAdapter extends RecyclerView.Adapter<MyBla
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textName,textGstNumber,textBlackList,textCustomerFirstName,textAadharNumber,textPanNumber;
+        TextView textName,textGstNumber,textAadharNumber,textPanNumber;
         LinearLayout linearlayout_my_blacklisted_customer;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             textName=itemView.findViewById(R.id.textName);
             textGstNumber=itemView.findViewById(R.id.textGstNumber);
-            textBlackList=itemView.findViewById(R.id.textBlackList);
-            textCustomerFirstName=itemView.findViewById(R.id.textCustomerFirstName);
             textAadharNumber=itemView.findViewById(R.id.textAadharNumber);
             linearlayout_my_blacklisted_customer=itemView.findViewById(R.id.linearlayout_my_blacklisted_customer);
             textPanNumber=itemView.findViewById(R.id.textPanNumber);

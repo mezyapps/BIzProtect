@@ -13,20 +13,21 @@
     <string name="key">M282872874</string>
     <string name="enter_your_license_key">Enter Your License Key</string>
     <string name="warning_msg_gst_pan_aadhar_no">enter gst or aadhar no or pan no</string>
-    <string name="name">Name :-</string>
-    <string name="aadhar_no">Aadhar No :-</string>
-    <string name="gst_no">GST No :-</string>
-    <string name="pan_no">Pan No :-</string>
-    <string name="status">Status :-</string>
+    <string name="name">Name : </string>
+    <string name="business">Business : </string>
+    <string name="aadhar_no">Aadhar No : </string>
+    <string name="gst_no">GST No : </string>
+    <string name="pan_no">Pan No : </string>
+    <string name="status">Status : </string>
     <string name="done">Done</string>
     <string name="edit">Edit</string>
-    <string name="busines_name">Busines Name:-</string>
-    <string name="person_name">Person Name:-</string>
-    <string name="address">Address:-</string>
-    <string name="mobile_no">Mobile No:-</string>
+    <string name="busines_name">Busines Name : </string>
+    <string name="person_name">Person Name : </string>
+    <string name="address">Address : </string>
+    <string name="mobile_no">Mobile No : </string>
     <string name="blacklist">Blacklist</string>
     <string name="remove_blacklist">Remove Blacklist</string>
-    <string name="email">Email:-</string>
+    <string name="email">Email : </string>
     <string name="customer_details">Customer details</string>
     <string name="login">Login</string>
     <string name="sign_in">Sign in</string>
@@ -37,4 +38,5 @@
     <string name="gst_number">GST Number</string>
     <string name="aadhar_number">Aadhar Number</string>
     <string name="pan_number">Pan Number</string>
+    <string name="share_application">Share Application</string>
 </resources>

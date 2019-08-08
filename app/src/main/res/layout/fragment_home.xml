@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/alice_blue"
     tools:context=".view.fragment.HomeFragment">
 
 
@@ -16,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="@color/alice_blue"
             android:orientation="vertical">
 
 
@@ -86,7 +85,6 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="0dp"
-                                android:layout_below="@+id/iv_government_schemes"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
@@ -105,7 +103,7 @@
                         android:id="@+id/cardViewsMyBlackList"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginStart="5dp"
                         android:layout_weight="1"
                         android:gravity="center"
                         app:cardCornerRadius="5dp">
@@ -157,7 +155,7 @@
 
 
                     <android.support.v7.widget.CardView
-                        android:id="@+id/cardViewMyGovtSchemes"
+                        android:id="@+id/cardViewMyCustomer"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="5dp"
@@ -175,7 +173,7 @@
 
 
                             <ImageView
-                                android:id="@+id/iv_government_schemes"
+                                android:id="@+id/iv_customer_list"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_gravity="center_horizontal"
@@ -187,7 +185,6 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="0dp"
-                                android:layout_below="@+id/iv_government_schemes"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
@@ -203,7 +200,7 @@
 
 
                     <android.support.v7.widget.CardView
-                        android:id="@+id/cardViewNews"
+                        android:id="@+id/cardView_add_customer"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="5dp"
@@ -221,7 +218,7 @@
 
 
                             <ImageView
-                                android:id="@+id/iv_news"
+                                android:id="@+id/iv_add_customer"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="1.5"
@@ -294,6 +291,7 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
+                    android:visibility="gone"
                     android:layout_marginTop="10dp"
                     app:cardElevation="5dp">
 
@@ -311,6 +309,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:layout_marginBottom="10dp"
                     app:cardElevation="5dp">
 

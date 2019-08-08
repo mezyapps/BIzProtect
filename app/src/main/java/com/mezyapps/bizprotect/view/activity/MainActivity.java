@@ -1,5 +1,6 @@
 package com.mezyapps.bizprotect.view.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -10,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -45,12 +48,13 @@ public class MainActivity extends AppCompatActivity {
     Fragment fragmentInstance;
     FragmentManager fragmentManager;
     private boolean doubleBackToExitPressedOnce = false;
-    private RelativeLayout relativeLayout_Dashboard, relativeLayout_ourCustomer, relativeLayout_blocked_customer, relativeLayout_logout;
+    private RelativeLayout relativeLayout_Dashboard, relativeLayout_ourCustomer, relativeLayout_blocked_customer, relativeLayout_logout,relativeLayout_share;
     private Dialog dialog_logout;
     private TextView text_app_name;
     private ArrayList<ClientProfileModel> clientProfileModelArrayList=new ArrayList<>();
     private AdView adView_banner_add;
-
+    private ViewFlipper viewFlipper_banner_add;
+    private int[] images={R.drawable.image_silder1,R.drawable.image_silder2,R.drawable.image_silder3};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +63,11 @@ public class MainActivity extends AppCompatActivity {
         //MobileAds.initialize(this,"ca-app-pub-3637958081667905~9680701324");//Live Url
         MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");//Demo Url
         find_View_Ids();
+        loadFragment(new HomeFragment());
         events();
     }
 
     private void find_View_Ids() {
-        loadFragment(new HomeFragment());
         iv_drawer = findViewById(R.id.iv_drawer);
         drawerLayout = findViewById(R.id.drawer_layout);
         relativeLayout_Dashboard = findViewById(R.id.relativeLayout_Dashboard);
@@ -72,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
         relativeLayout_logout = findViewById(R.id.relativeLayout_logout);
         text_app_name = findViewById(R.id.text_app_name);
         adView_banner_add = findViewById(R.id.adView_banner_add);
+        viewFlipper_banner_add = findViewById(R.id.viewFlipper_banner_add);
+        relativeLayout_share = findViewById(R.id.relativeLayout_share);
 
         clientProfileModelArrayList=SharedLoginUtils.getUserDetails(MainActivity.this);
         text_app_name.setText("Welcome "+clientProfileModelArrayList.get(0).getCompany_name());
@@ -83,7 +89,20 @@ public class MainActivity extends AppCompatActivity {
         adView_banner_add.loadAd(adRequest);
         */
 
+        for(int i=0;i<images.length;i++)
+        {
+            flipImage(images[i]);
+        }
+    }
 
+    private void flipImage(int image) {
+         ImageView imageView=new ImageView(this);
+         imageView.setBackgroundResource(image);
+         viewFlipper_banner_add.addView(imageView);
+         viewFlipper_banner_add.setFlipInterval(5000);
+         viewFlipper_banner_add.setAutoStart(true);
+
+         viewFlipper_banner_add.setInAnimation(this,android.R.anim.slide_in_left);
     }
 
     private void events() {
@@ -139,6 +158,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        relativeLayout_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+                    shareIntent.setType("text/plain");
+                    shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Biz Protect Application");
+                    String app_url = "https://play.google.com/store/apps/details?id=com.mezyapps.bizprotect";
+                    shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, app_url);
+                    startActivity(Intent.createChooser(shareIntent, "Share via"));
+                }
+            }
+        });
+
     }
 
     private void logoutApplication() {
@@ -172,9 +206,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("SetTextI18n")
     public void loadFragment(Fragment fragment) {
         fragmentInstance = fragment;
         fragmentName = fragment.getClass().getSimpleName();
+        if(fragmentName.equalsIgnoreCase("HomeFragment")) {
+            text_app_name.setText("Welcome "+clientProfileModelArrayList.get(0).getCompany_name());
+        }else if(fragmentName.equalsIgnoreCase("AllBlackListedFragment")) {
+            text_app_name.setText("All BlackListed");
+        }else if(fragmentName.equalsIgnoreCase("MyBlackListedCustomerFragment")) {
+            text_app_name.setText("My BlackListed");
+        }else if(fragmentName.equalsIgnoreCase("MyCustomerFragment")){
+            text_app_name.setText("My Customer List");
+        }
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.framelayout_main, fragment, fragment.toString());

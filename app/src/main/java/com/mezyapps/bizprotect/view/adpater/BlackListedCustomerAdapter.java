@@ -45,10 +45,6 @@ public class BlackListedCustomerAdapter extends RecyclerView.Adapter<BlackListed
 
         String status=blackListCustomerModel.getStatus().trim();
         holder.textName.setText(blackListCustomerModel.getCustomer_name());
-        holder.textCustomerFirstName.setText(blackListCustomerModel.getCustomer_name());
-        if(status.equalsIgnoreCase("4")) {
-            holder.textBlackList.setText("All BlackListed");
-        }
         holder.textGstNumber.setText(blackListCustomerModel.getGst_no());
         holder.textAadharNumber.setText(blackListCustomerModel.getAadhar_no());
         holder.textPanNumber.setText(blackListCustomerModel.getPan_no());
@@ -62,15 +58,13 @@ public class BlackListedCustomerAdapter extends RecyclerView.Adapter<BlackListed
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textName,textGstNumber,textBlackList,textCustomerFirstName,textAadharNumber,textPanNumber;
+        TextView textName,textGstNumber,textAadharNumber,textPanNumber;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             textName=itemView.findViewById(R.id.textName);
             textGstNumber=itemView.findViewById(R.id.textGstNumber);
-            textBlackList=itemView.findViewById(R.id.textBlackList);
-            textCustomerFirstName=itemView.findViewById(R.id.textCustomerFirstName);
             textAadharNumber=itemView.findViewById(R.id.textAadharNumber);
             textPanNumber=itemView.findViewById(R.id.textPanNumber);
         }

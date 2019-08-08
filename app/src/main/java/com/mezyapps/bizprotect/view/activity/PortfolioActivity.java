@@ -44,7 +44,7 @@ public class PortfolioActivity extends AppCompatActivity {
     private ImageView ic_back;
     private SuccessDialog successDialog;
     private ShowProgressDialog showProgressDialog;
-    private String macAddress, strLicenseKey = "M282872874";
+    private String macAddress, strLicenseKey= "M282872874";
     private TelephonyManager telephonyManager;
 
 
