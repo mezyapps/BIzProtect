@@ -181,6 +181,41 @@
                                 android:textSize="14sp" />
 
                         </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/gray" />
+
+                        <RelativeLayout
+                            android:id="@+id/relativeLayout_bill_report"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+
+                            <ImageView
+                                android:id="@+id/iv_bill_report"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:padding="10dp"
+                                android:src="@drawable/ic_bill_report" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginStart="5dp"
+                                android:layout_toEndOf="@+id/iv_bill_report"
+                                android:text="@string/bill_report"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                        </RelativeLayout>
+
+
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"

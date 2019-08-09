@@ -12,6 +12,7 @@
    <!-- #A93CA9 #FF9700-->
     <color name="app_color">#A93CA9</color>
     <color name="app_text_color">#A93CA9</color>
+    <color name="tab_selected">#89B399</color>
 
     <color name="app_top">#FF9700</color>
     <color name="white">#FFFFFF</color>
@@ -58,7 +59,7 @@
     <color name="sandy_brown">#F4A460</color>
     <color name="azure">#F0FFFF</color>
     <color name="honeydew">#F0FFF0</color>
-    <color name="alice_blue">#F0F8FF</color>
+    <color name="app_background">#F0F8FF</color>
     <color name="khaki">#F0E68C</color>
     <color name="light_coral">#F08080</color>
     <color name="pale_goldenrod">#EEE8AA</color>

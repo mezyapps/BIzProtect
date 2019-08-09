@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
     Fragment fragmentInstance;
     FragmentManager fragmentManager;
     private boolean doubleBackToExitPressedOnce = false;
-    private RelativeLayout relativeLayout_Dashboard, relativeLayout_ourCustomer, relativeLayout_blocked_customer, relativeLayout_logout,relativeLayout_share;
+    private RelativeLayout relativeLayout_Dashboard, relativeLayout_ourCustomer,relativeLayout_blocked_customer,
+            relativeLayout_logout,relativeLayout_share,relativeLayout_bill_report;
     private Dialog dialog_logout;
     private TextView text_app_name;
     private ArrayList<ClientProfileModel> clientProfileModelArrayList=new ArrayList<>();
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         adView_banner_add = findViewById(R.id.adView_banner_add);
         viewFlipper_banner_add = findViewById(R.id.viewFlipper_banner_add);
         relativeLayout_share = findViewById(R.id.relativeLayout_share);
+        relativeLayout_bill_report = findViewById(R.id.relativeLayout_bill_report);
 
         clientProfileModelArrayList=SharedLoginUtils.getUserDetails(MainActivity.this);
         text_app_name.setText("Welcome "+clientProfileModelArrayList.get(0).getCompany_name());
@@ -169,6 +171,16 @@ public class MainActivity extends AppCompatActivity {
                     String app_url = "https://play.google.com/store/apps/details?id=com.mezyapps.bizprotect";
                     shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, app_url);
                     startActivity(Intent.createChooser(shareIntent, "Share via"));
+                }
+            }
+        });
+        relativeLayout_bill_report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    Intent intent = new Intent(MainActivity.this,BillReportActivity.class);
+                    startActivity(intent);
                 }
             }
         });

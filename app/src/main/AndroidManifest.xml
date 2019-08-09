@@ -21,22 +21,20 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-
-
-        <!--<meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3637958081667905~9680701324"/>-->
-
-         <!--Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713-->
-
-
+        <activity android:name=".view.activity.BillReportActivity"></activity>
+        <!--
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-3637958081667905~9680701324"/>
+        -->
+        <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
 
-
-        <activity android:name=".view.activity.CustomerDetailsMyBlackListedActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".view.activity.CustomerDetailsMyBlackListedActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.CustomerDetailsActivity"
             android:screenOrientation="portrait" />
