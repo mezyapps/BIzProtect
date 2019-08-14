@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.activity.IncomeExpenseActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/app_color">
+
+
+        <ImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:padding="5dp"
+            android:src="@drawable/ic_vector_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/ic_back"
+            android:text="@string/income_expense"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_card_recycler"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/edit_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:drawableEnd="@drawable/ic_vector_calendar"
+                    android:hint="Date"
+                    android:inputType="date"
+                    android:paddingEnd="10dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+
+                <RadioGroup
+                    android:id="@+id/radioGroupIncomeExpenses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rbIncome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Income"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <RadioButton
+                        android:id="@+id/rbBlackList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:checked="true"
+                        android:text="Expense"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_card_recycler"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/edit_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:hint="Amount"
+                    android:inputType="number"
+                    android:paddingEnd="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_card_recycler"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/edit_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:hint="Description"
+                    android:inputType="text"
+                    android:paddingEnd="10dp" />
+
+            </LinearLayout>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_shape"
+                android:text="save"
+                android:textColor="@color/white" />
+
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+
+
+                <TableRow android:background="#0079D6"
+                    android:padding="5dp">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:maxLines="2"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="Total Income"
+                        android:textColor="@color/white"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:maxLines="2"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:text="Total Expense"
+                        android:textColor="@color/white"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:maxLines="2"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:text="Balance Amount"
+                        android:textColor="@color/white"/>
+
+
+                </TableRow>
+
+                <TableRow android:background="#DAE8FC"
+                    android:padding="5dp">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:maxLines="2"
+                        android:gravity="center"
+                        android:id="@+id/textIncome"
+                        android:textSize="18sp"
+                        android:text="0"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:maxLines="2"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:text="0"
+                        android:id="@+id/textExpense" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:maxLines="2"
+                        android:textStyle="bold"
+                        android:text="0"
+                        android:id="@+id/textBalance"
+                        android:gravity="center" />
+
+
+                </TableRow>
+
+            </TableLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

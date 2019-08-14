@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1043836083565-7h81r40hdvnh3j84olmoioov83l48lj4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mezyapps.bizprotect",
+            "certificate_hash": "3ab277330f24b6ee74dd98c084383bd05a8acab1"
+          }
+        },
+        {
           "client_id": "1043836083565-n1pqsh5q3d6ir1d7ff5f47emc2kft913.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

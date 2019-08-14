@@ -209,7 +209,7 @@
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginStart="5dp"
                                 android:layout_toEndOf="@+id/iv_bill_report"
-                                android:text="@string/bill_report"
+                                android:text="@string/income_expense"
                                 android:textColor="@color/black"
                                 android:textSize="14sp" />
 

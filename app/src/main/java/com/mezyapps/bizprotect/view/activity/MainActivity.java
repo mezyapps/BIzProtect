@@ -5,17 +5,13 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
@@ -25,17 +21,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.model.ClientProfileModel;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
 import com.mezyapps.bizprotect.view.fragment.AllBlackListedFragment;
 import com.mezyapps.bizprotect.view.fragment.HomeFragment;
-import com.mezyapps.bizprotect.view.fragment.MyBlackListedCustomerFragment;
-import com.mezyapps.bizprotect.view.fragment.MyCustomerFragment;
 
 import java.util.ArrayList;
 
@@ -53,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     private Dialog dialog_logout;
     private TextView text_app_name;
     private ArrayList<ClientProfileModel> clientProfileModelArrayList=new ArrayList<>();
-    private AdView adView_banner_add;
     private ViewFlipper viewFlipper_banner_add;
     private int[] images={R.drawable.image_silder1,R.drawable.image_silder2,R.drawable.image_silder3};
 
@@ -61,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //MobileAds.initialize(this,"ca-app-pub-3637958081667905~9680701324");//Live Url
-        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");//Demo Url
         find_View_Ids();
         loadFragment(new HomeFragment());
         events();
@@ -76,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         relativeLayout_blocked_customer = findViewById(R.id.relativeLayout_blocked_customer);
         relativeLayout_logout = findViewById(R.id.relativeLayout_logout);
         text_app_name = findViewById(R.id.text_app_name);
-        adView_banner_add = findViewById(R.id.adView_banner_add);
         viewFlipper_banner_add = findViewById(R.id.viewFlipper_banner_add);
         relativeLayout_share = findViewById(R.id.relativeLayout_share);
         relativeLayout_bill_report = findViewById(R.id.relativeLayout_bill_report);
@@ -84,12 +70,6 @@ public class MainActivity extends AppCompatActivity {
         clientProfileModelArrayList=SharedLoginUtils.getUserDetails(MainActivity.this);
         text_app_name.setText("Welcome "+clientProfileModelArrayList.get(0).getCompany_name());
 
-        AdRequest adRequest=new AdRequest.Builder().addTestDevice("B57854E835A453D442326A4F590004D6").build();
-        adView_banner_add.loadAd(adRequest);
-
-        /*AdRequest adRequest=new AdRequest.Builder().build();
-        adView_banner_add.loadAd(adRequest);
-        */
 
         for(int i=0;i<images.length;i++)
         {
@@ -179,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    Intent intent = new Intent(MainActivity.this,BillReportActivity.class);
+                    Intent intent = new Intent(MainActivity.this, IncomeExpenseActivity.class);
                     startActivity(intent);
                 }
             }

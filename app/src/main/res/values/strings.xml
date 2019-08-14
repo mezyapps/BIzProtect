@@ -39,6 +39,6 @@
     <string name="aadhar_number">Aadhar Number</string>
     <string name="pan_number">Pan Number</string>
     <string name="share_application">Share Application</string>
-    <string name="bill_report">Bill Report</string>
     <string name="balance">Balance :</string>
+    <string name="income_expense">Income/Expense</string>
 </resources>
