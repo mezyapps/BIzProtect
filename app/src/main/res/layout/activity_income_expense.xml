@@ -144,6 +144,7 @@
 
 
             <Button
+                android:id="@+id/btnSave"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -159,8 +160,8 @@
                 android:layout_marginTop="10dp">
 
 
-
-                <TableRow android:background="#0079D6"
+                <TableRow
+                    android:background="#0079D6"
                     android:padding="5dp">
 
 
@@ -168,77 +169,79 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:maxLines="2"
                         android:gravity="center"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
+                        android:maxLines="2"
                         android:text="Total Income"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:maxLines="2"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
                         android:gravity="center"
+                        android:maxLines="2"
                         android:text="Total Expense"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="18sp"
-                        android:maxLines="2"
-                        android:textStyle="bold"
                         android:gravity="center"
+                        android:maxLines="2"
                         android:text="Balance Amount"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
 
                 </TableRow>
 
-                <TableRow android:background="#DAE8FC"
+                <TableRow
+                    android:background="#DAE8FC"
                     android:padding="5dp">
 
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:maxLines="2"
-                        android:gravity="center"
                         android:id="@+id/textIncome"
-                        android:textSize="18sp"
-                        android:text="0"
-                        android:textStyle="bold"/>
-
-                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:maxLines="2"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
                         android:gravity="center"
+                        android:maxLines="3"
                         android:text="0"
-                        android:id="@+id/textExpense" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/textExpense"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="18sp"
-                        android:maxLines="2"
-                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:maxLines="3"
                         android:text="0"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
                         android:id="@+id/textBalance"
-                        android:gravity="center" />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:maxLines="3"
+                        android:text="0"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
 
                 </TableRow>
+
 
             </TableLayout>
 
