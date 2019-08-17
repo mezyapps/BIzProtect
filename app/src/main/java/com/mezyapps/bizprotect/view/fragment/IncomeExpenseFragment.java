@@ -5,12 +5,15 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -18,9 +21,12 @@ import android.widget.Toast;
 
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.database.DatabaseHandler;
+import com.mezyapps.bizprotect.model.DailyReportModel;
 import com.mezyapps.bizprotect.view.activity.IncomeExpenseActivity;
+import com.mezyapps.bizprotect.view.adpater.DailyReportAdapter;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -37,6 +43,7 @@ public class IncomeExpenseFragment extends Fragment {
     String income, expense;
     private TextView textIncome, textExpense, textBalance;
     private View view;
+    private RecyclerView recyclerView_daily;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -59,18 +66,22 @@ public class IncomeExpenseFragment extends Fragment {
         textIncome =view.findViewById(R.id.textIncome);
         textExpense =view.findViewById(R.id.textExpense);
         textBalance =view.findViewById(R.id.textBalance);
+        recyclerView_daily =view.findViewById(R.id.recyclerView_daily);
 
         radioGroupIncomeExpenses =view.findViewById(R.id.radioGroupIncomeExpenses);
         date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
         edit_date.setText(date);
         edit_date.setFocusable(false);
 
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(mContext);
+        recyclerView_daily.setLayoutManager(linearLayoutManager);
+
         income = databaseHandler.getAllIncome(date);
         expense = databaseHandler.getAllExpense(date);
         callCalculation(income, expense);
+        callDailyReport();
 
     }
-
     private void events() {
         edit_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +114,7 @@ public class IncomeExpenseFragment extends Fragment {
                         income = databaseHandler.getAllIncome(date);
                         expense = databaseHandler.getAllExpense(date);
                         callCalculation(income, expense);
+                        callDailyReport();
                     }
 
                 }
@@ -175,9 +187,18 @@ public class IncomeExpenseFragment extends Fragment {
                         income = databaseHandler.getAllIncome(date);
                         expense = databaseHandler.getAllExpense(date);
                         callCalculation(income, expense);
+                        callDailyReport();
 
                     }
                 }, mYear, mMonth, mDay);
         datePickerDialog.show();
+    }
+
+    private void callDailyReport() {
+        ArrayList<DailyReportModel> dailyReportModelArrayList=new ArrayList<>();
+        dailyReportModelArrayList=databaseHandler.getDailyReport(date);
+        DailyReportAdapter dailyReportAdapter=new DailyReportAdapter(mContext,dailyReportModelArrayList);
+        recyclerView_daily.setAdapter(dailyReportAdapter);
+        dailyReportAdapter.notifyDataSetChanged();
     }
 }

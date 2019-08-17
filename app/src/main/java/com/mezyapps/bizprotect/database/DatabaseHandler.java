@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.mezyapps.bizprotect.model.DailyReportModel;
+import com.mezyapps.bizprotect.model.MonthlyReportModel;
+
 import java.util.ArrayList;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -119,5 +122,52 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         // return contact list
         return sumIncome;
+    }
+
+    public ArrayList<MonthlyReportModel> getMonthlyReport()
+    {
+       ArrayList<MonthlyReportModel> monthlyReportModelArrayList=new ArrayList<>();
+
+        String selectQuery = "SELECT  * FROM  IncomeExpenseTable";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                MonthlyReportModel monthlyReportModel=new MonthlyReportModel();
+                monthlyReportModel.setId(cursor.getString(0));
+                monthlyReportModel.setDate(cursor.getString(1));
+                monthlyReportModel.setIncome_amount(cursor.getString(2));
+                monthlyReportModel.setExpense_amount(cursor.getString(3));
+                monthlyReportModelArrayList.add(monthlyReportModel);
+            } while (cursor.moveToNext());
+        }
+      return  monthlyReportModelArrayList;
+    }
+
+    public ArrayList<DailyReportModel> getDailyReport(String Date)
+    {
+        ArrayList<DailyReportModel> dailyReportModelArrayList=new ArrayList<>();
+
+        String selectQuery = "SELECT  * FROM  IncomeExpenseTable WHERE Date='"+Date+"'";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                DailyReportModel dailyReportModel=new DailyReportModel();
+                dailyReportModel.setId(cursor.getString(0));
+                dailyReportModel.setDate(cursor.getString(1));
+                dailyReportModel.setIncome_amount(cursor.getString(2));
+                dailyReportModel.setExpense_amount(cursor.getString(3));
+                dailyReportModel.setDescription(cursor.getString(4));
+                dailyReportModelArrayList.add(dailyReportModel);
+            } while (cursor.moveToNext());
+        }
+        return  dailyReportModelArrayList;
     }
 }

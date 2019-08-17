@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/nav_my_list_customer"
+        android:icon="@drawable/ic_vector_montly_report"
+        android:title="Monthly Report"/>
+
+
+    <item
+        android:id="@+id/nav_my_customer"
+        android:icon="@drawable/ic_vector_yearly_report"
+        android:title="Yearly Report"/>
+
+
+</menu>
