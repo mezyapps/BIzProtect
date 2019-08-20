@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 import com.mezyapps.bizprotect.R;
+import com.mezyapps.bizprotect.database.DatabaseHandler;
 import com.mezyapps.bizprotect.model.ClientProfileModel;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
 import com.mezyapps.bizprotect.view.fragment.AllBlackListedFragment;
@@ -191,6 +192,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SharedLoginUtils.removeLoginSharedUtils(MainActivity.this);
+                DatabaseHandler databaseHandler=new DatabaseHandler(MainActivity.this);
+                databaseHandler.deleteTable();
+                SharedLoginUtils.removeBackUpStatus(MainActivity.this);
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();

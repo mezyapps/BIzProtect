@@ -90,5 +90,18 @@ public interface ApiInterface {
                                                 @Field("customer_id") String customer_id,
                                                 @Field("status") String status);
 
+    @POST(EndApi.INCOME_EXPENSES)
+    @FormUrlEncoded
+    Call<SuccessModel> addIncomeExpense(@Field("client_id") String client_id,
+                                        @Field("date") String date,
+                                        @Field("amount") String amount,
+                                        @Field("description") String description,
+                                        @Field("status") String status);
+
+
+    @POST(EndApi.BACK_UP_DATA)
+    @FormUrlEncoded
+    Call<SuccessModel> getIncomeExpenseBackUp(@Field("client_id") String client_id);
+
 
 }

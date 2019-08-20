@@ -14,13 +14,14 @@ import android.widget.ViewFlipper;
 
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.view.activity.AddCustomerActivity;
+import com.mezyapps.bizprotect.view.activity.IncomeExpenseActivity;
 import com.mezyapps.bizprotect.view.activity.MainActivity;
 
 
 public class HomeFragment extends Fragment {
 
     private Context mContext;
-    private CardView cardViewAllBlackList, cardViewsMyBlackList, cardViewMyCustomer, cardView_add_customer;
+    private CardView cardViewAllBlackList, cardViewsMyBlackList, cardViewMyCustomer, cardView_add_customer,cardViewIncomeExpense;
     private ImageView iv_main_advertisement, iv_advertisement_one, iv_advertisement_two, iv_advertisement_three, iv_advertisement_four;
     private ViewFlipper viewFlipper_main_add;
     private int[] images={R.drawable.advertisement1,R.drawable.advertisement2,R.drawable.advertisement3};
@@ -44,6 +45,7 @@ public class HomeFragment extends Fragment {
         cardViewMyCustomer = view.findViewById(R.id.cardViewMyCustomer);
         cardView_add_customer = view.findViewById(R.id.cardView_add_customer);
         viewFlipper_main_add = view.findViewById(R.id.viewFlipper_main_add);
+        cardViewIncomeExpense = view.findViewById(R.id.cardViewIncomeExpense);
 
         //iv_main_advertisement = view.findViewById(R.id.iv_main_advertisement);
         iv_advertisement_one = view.findViewById(R.id.iv_advertisement_one);
@@ -93,6 +95,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, AddCustomerActivity.class);
+                startActivity(intent);
+            }
+        });
+        cardViewIncomeExpense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, IncomeExpenseActivity.class);
                 startActivity(intent);
             }
         });

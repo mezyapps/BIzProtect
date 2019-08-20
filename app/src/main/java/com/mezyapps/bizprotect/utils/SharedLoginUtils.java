@@ -62,9 +62,52 @@ public class SharedLoginUtils {
         clientProfileModel.setAadhar_no(preferences.getString(ConstantFields.SharedLoginConstant.AADHAR_NUMBER, ""));
         clientProfileModel.setGst_no(preferences.getString(ConstantFields.SharedLoginConstant.GST_NUMBER, ""));
         clientProfileModel.setPan_no(preferences.getString(ConstantFields.SharedLoginConstant.PAN_NUMBER, ""));
-
         clientProfileModelArrayList.add(clientProfileModel);
         return clientProfileModelArrayList;
     }
+
+    public static void putCurrentDate(Context mContext,String date) {
+        preferences = mContext.getSharedPreferences(ConstantFields.LOGIN_PREFERENCE, mContext.MODE_PRIVATE);
+        editor = preferences.edit();
+        editor.putString(ConstantFields.CURRENT_DATE_CHECK, date);
+        editor.commit();
+    }
+    public static String getCurrentDate(Context mContext) {
+        preferences = mContext.getSharedPreferences(ConstantFields.LOGIN_PREFERENCE, mContext.MODE_PRIVATE);
+        return preferences.getString(ConstantFields.CURRENT_DATE_CHECK, "");
+    }
+
+
+    public static void putBackUpDateTime(Context mContext,String dateTime) {
+        preferences = mContext.getSharedPreferences(ConstantFields.LOGIN_PREFERENCE, mContext.MODE_PRIVATE);
+        editor = preferences.edit();
+        editor.putString(ConstantFields.BACK_UP_DATE_TIME, dateTime);
+        editor.commit();
+    }
+    public static String getBackupDateTime(Context mContext) {
+        preferences = mContext.getSharedPreferences(ConstantFields.LOGIN_PREFERENCE, mContext.MODE_PRIVATE);
+        return preferences.getString(ConstantFields.BACK_UP_DATE_TIME, "");
+    }
+
+
+    public static String getBackUpStatus(Context mContext) {
+        preferences = mContext.getSharedPreferences(ConstantFields.LOGIN_PREFERENCE, mContext.MODE_PRIVATE);
+        return preferences.getString(ConstantFields.BACK_UP_STATUS, "");
+    }
+
+    public static void putBackUpStatus(Context mContext) {
+        preferences = mContext.getSharedPreferences(ConstantFields.LOGIN_PREFERENCE, mContext.MODE_PRIVATE);
+        editor = preferences.edit();
+        editor.putString(ConstantFields.BACK_UP_STATUS, "true");
+        editor.commit();
+    }
+
+    public static void removeBackUpStatus(Context mContext) {
+        preferences = mContext.getSharedPreferences(ConstantFields.LOGIN_PREFERENCE, mContext.MODE_PRIVATE);
+        editor = preferences.edit();
+        editor.putString(ConstantFields.BACK_UP_STATUS, "false");
+        editor.commit();
+    }
+
 
 }

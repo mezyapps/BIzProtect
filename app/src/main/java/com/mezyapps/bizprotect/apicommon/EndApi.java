@@ -12,5 +12,7 @@ public class EndApi extends BaseApi {
  public static final String MY_BLACKLISTED="ws_list_my_blacklisted.php";
  public static final String MY_CUSTOMER="ws_list_my_customer.php";
  public static final String UPDATE_CUSTOMER_STATUS="ws_update_customer_status.php";
+ public static final String INCOME_EXPENSES="ws_add_income_expense.php";
+ public static final String BACK_UP_DATA="ws_getupdated_backup.php";
 
 }

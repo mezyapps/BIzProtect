@@ -24,9 +24,9 @@ public class TabViewBillReportAdapter extends FragmentPagerAdapter {
             case 0:
                 IncomeExpenseFragment incomeExpenseFragment = new IncomeExpenseFragment();
                 return incomeExpenseFragment;
-            case 1:
+           /* case 1:
                 IncomeExpenseReportFragment incomeExpenseReportFragment = new IncomeExpenseReportFragment();
-                return incomeExpenseReportFragment;
+                return incomeExpenseReportFragment;*/
             default:
                 return null;
         }

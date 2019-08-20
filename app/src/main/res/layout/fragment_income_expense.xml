@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".view.fragment.IncomeExpenseFragment">
 
@@ -20,33 +21,51 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_card_recycler"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:id="@+id/linearlayout_backup">
 
-                <EditText
-                    android:id="@+id/edit_date"
-                    android:layout_width="match_parent"
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/white"
-                    android:drawableEnd="@drawable/ic_vector_calendar"
-                    android:hint="Date"
-                    android:inputType="date"
-                    android:paddingEnd="10dp" />
+                    android:text="Last BackUp"
+                    android:textSize="15sp"
+                    android:id="@+id/textBackup"
+                    android:textColor="@color/app_text_color"/>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/gray"/>
+
 
             </LinearLayout>
+
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:weightSum="3">
 
+                <EditText
+                    android:id="@+id/edit_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Date"
+                    android:cursorVisible="false"
+                    android:layout_weight="2"
+                    android:inputType="date"
+                    android:paddingEnd="10dp" />
 
                 <RadioGroup
                     android:id="@+id/radioGroupIncomeExpenses"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <RadioButton
@@ -80,48 +99,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/shape_card_recycler"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <EditText
                     android:id="@+id/edit_amount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/white"
                     android:hint="Amount"
+                    android:layout_weight="1"
                     android:inputType="number"
                     android:paddingEnd="10dp" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/shape_card_recycler"
-                android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/edit_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/white"
                     android:hint="Description"
                     android:inputType="text"
+                    android:layout_weight="1"
                     android:paddingEnd="10dp" />
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_vector_right_icon"
+                    android:id="@+id/fabSave"
+                    app:fabSize="mini"/>
 
             </LinearLayout>
 
-
-            <Button
-                android:id="@+id/btnSave"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/btn_shape"
-                android:text="save"
-                android:textColor="@color/white" />
 
 
             <TableLayout
@@ -219,18 +228,29 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="@color/app_text_color"
+                        android:textStyle="bold"
+                        android:text="Daily Income/Expense Report"/>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:background="#0079D6"
+                        android:layout_marginTop="10dp"
                         android:weightSum="3">
 
 

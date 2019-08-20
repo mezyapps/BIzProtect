@@ -20,6 +20,10 @@ public class SuccessModel {
     @SerializedName("list_my_customer")
     private ArrayList<MyCustomerModel> myCustomerModelArrayList;
 
+    @SerializedName("back_up")
+    private ArrayList<OnlineDataBackUpModel> onlineDataBackUpModelArrayList;
+
+
     public String getMessage() {
         return message;
     }
@@ -66,5 +70,13 @@ public class SuccessModel {
 
     public void setMyCustomerModelArrayList(ArrayList<MyCustomerModel> myCustomerModelArrayList) {
         this.myCustomerModelArrayList = myCustomerModelArrayList;
+    }
+
+    public ArrayList<OnlineDataBackUpModel> getOnlineDataBackUpModelArrayList() {
+        return onlineDataBackUpModelArrayList;
+    }
+
+    public void setOnlineDataBackUpModelArrayList(ArrayList<OnlineDataBackUpModel> onlineDataBackUpModelArrayList) {
+        this.onlineDataBackUpModelArrayList = onlineDataBackUpModelArrayList;
     }
 }
