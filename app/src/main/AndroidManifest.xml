@@ -22,7 +22,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.activity.IncomeExpenseActivity"></activity>
+        <activity
+            android:name=".view.activity.BlackListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.IncomeExpenseActivity"
+            android:screenOrientation="portrait" />
         <!--
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -33,7 +38,6 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~3347511713" />
 
-
         <service
             android:name=".notification.MyFirebaseMessagingService"
             tools:ignore="ExportedService">
@@ -42,11 +46,9 @@
             </intent-filter>
         </service>
 
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/mezyapplogo" />
-
 
         <activity
             android:name=".view.activity.CustomerDetailsMyBlackListedActivity"
@@ -84,10 +86,9 @@
 
         <receiver android:name=".broadcast_receivers_utils.NetworkBroadcastReceivers">
             <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>

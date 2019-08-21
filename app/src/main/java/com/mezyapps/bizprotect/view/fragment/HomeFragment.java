@@ -2,7 +2,6 @@ package com.mezyapps.bizprotect.view.fragment;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -14,6 +13,7 @@ import android.widget.ViewFlipper;
 
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.view.activity.AddCustomerActivity;
+import com.mezyapps.bizprotect.view.activity.BlackListActivity;
 import com.mezyapps.bizprotect.view.activity.IncomeExpenseActivity;
 import com.mezyapps.bizprotect.view.activity.MainActivity;
 
@@ -21,7 +21,7 @@ import com.mezyapps.bizprotect.view.activity.MainActivity;
 public class HomeFragment extends Fragment {
 
     private Context mContext;
-    private CardView cardViewAllBlackList, cardViewsMyBlackList, cardViewMyCustomer, cardView_add_customer,cardViewIncomeExpense;
+    private CardView cardViewAllBlackList, cardViewMyCustomer, cardView_add_customer,cardViewIncomeExpense;
     private ImageView iv_main_advertisement, iv_advertisement_one, iv_advertisement_two, iv_advertisement_three, iv_advertisement_four;
     private ViewFlipper viewFlipper_main_add;
     private int[] images={R.drawable.advertisement1,R.drawable.advertisement2,R.drawable.advertisement3};
@@ -41,7 +41,6 @@ public class HomeFragment extends Fragment {
 
     private void find_View_IdS(View view) {
         cardViewAllBlackList = view.findViewById(R.id.cardViewAllBlackList);
-        cardViewsMyBlackList = view.findViewById(R.id.cardViewsMyBlackList);
         cardViewMyCustomer = view.findViewById(R.id.cardViewMyCustomer);
         cardView_add_customer = view.findViewById(R.id.cardView_add_customer);
         viewFlipper_main_add = view.findViewById(R.id.viewFlipper_main_add);
@@ -76,13 +75,8 @@ public class HomeFragment extends Fragment {
         cardViewAllBlackList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) mContext).loadFragment(new AllBlackListedFragment());
-            }
-        });
-        cardViewsMyBlackList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity) mContext).loadFragment(new MyBlackListedCustomerFragment());
+                Intent intent=new Intent(mContext, BlackListActivity.class);
+                startActivity(intent);
             }
         });
         cardViewMyCustomer.setOnClickListener(new View.OnClickListener() {

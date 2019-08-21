@@ -485,7 +485,7 @@ public class IncomeExpenseFragment extends Fragment {
                                 for (int i = 0; i < onlineDataBackUpModelArrayList.size(); i++) {
                                     String date = onlineDataBackUpModelArrayList.get(i).getDate();
                                     String income_amt = onlineDataBackUpModelArrayList.get(i).getIncome_Amount();
-                                    String expense_amount = onlineDataBackUpModelArrayList.get(i).getIncome_Amount();
+                                    String expense_amount = onlineDataBackUpModelArrayList.get(i).getExpense_Amount();
                                     String description = onlineDataBackUpModelArrayList.get(i).getDescription();
                                     String status = onlineDataBackUpModelArrayList.get(i).getStatus();
                                     String amount="";

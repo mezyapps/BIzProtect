@@ -93,7 +93,7 @@
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
                                 android:layout_weight="0.5"
-                                android:text="@string/all_blacklisted"
+                                android:text="@string/blacklisted"
                                 android:textSize="16sp" />
 
 
@@ -101,61 +101,6 @@
 
 
                     </android.support.v7.widget.CardView>
-
-
-                    <android.support.v7.widget.CardView
-                        android:id="@+id/cardViewsMyBlackList"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="5dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        app:cardCornerRadius="5dp">
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:padding="10dp"
-                            android:weightSum="2">
-
-
-                            <ImageView
-                                android:id="@+id/iv_my_blacklist"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1.5"
-                                android:padding="10dp"
-                                android:src="@drawable/blacklist_my" />
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="0dp"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:layout_weight="0.5"
-                                android:text="@string/my_blacklisted"
-                                android:textSize="16sp" />
-
-
-                        </LinearLayout>
-
-
-                    </android.support.v7.widget.CardView>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="135dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
 
 
                     <android.support.v7.widget.CardView
@@ -203,11 +148,21 @@
                     </android.support.v7.widget.CardView>
 
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="135dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+
                     <android.support.v7.widget.CardView
                         android:id="@+id/cardView_add_customer"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
                         android:layout_weight="1"
                         android:gravity="center"
                         app:cardCornerRadius="5dp">
@@ -247,20 +202,11 @@
                     </android.support.v7.widget.CardView>
 
 
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="135dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-
                     <android.support.v7.widget.CardView
                         android:id="@+id/cardViewIncomeExpense"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_weight="1"
                         android:gravity="center"
                         app:cardCornerRadius="5dp">
@@ -278,7 +224,6 @@
                                 android:id="@+id/iv_income_expense"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_weight="1.5"
                                 android:padding="10dp"
                                 android:src="@drawable/ic_bill_report"/>
@@ -287,7 +232,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="0dp"
-                                android:layout_gravity="center_horizontal"
+                                android:layout_gravity="center"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
                                 android:layout_weight="0.5"
@@ -299,9 +244,6 @@
 
 
                     </android.support.v7.widget.CardView>
-
-
-
 
 
                 </LinearLayout>

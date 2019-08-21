@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <item
         android:id="@+id/nav_my_list_customer"
-        android:icon="@drawable/ic_vector_montly_report"
-        android:title="Monthly Report"/>
+        android:icon="@drawable/blacklist"
+        android:title="@string/all_blacklisted"/>
 
 
     <item
         android:id="@+id/nav_my_customer"
-        android:icon="@drawable/ic_vector_yearly_report"
-        android:title="Yearly Report"/>
-
-
+        android:icon="@drawable/blacklist_my"
+        android:title="@string/my_blacklisted"/>
 </menu>

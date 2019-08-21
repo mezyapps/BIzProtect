@@ -40,5 +40,6 @@
     <string name="pan_number">Pan Number</string>
     <string name="share_application">Share Application</string>
     <string name="balance">Balance :</string>
-    <string name="income_expense">Daily Income/Expense</string>
+    <string name="income_expense">Income/Expense</string>
+    <string name="blacklisted">BlackListed</string>
 </resources>
