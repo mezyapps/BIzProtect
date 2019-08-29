@@ -9,10 +9,9 @@ import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.NotificationCompat;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
 import android.util.Log;
-import android.widget.RemoteViews;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -56,23 +55,19 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
 
         mContext = this;
 
-        String title = null, description = null, redirectId = null, date = null, time = null;
-        try {
-            JSONObject json = new JSONObject(remoteMessage.getData().get("data"));
-            description = json.getString("description");
-            //redirectId = json.getString("redirect_id");
+
+        String title = null, description = null,image=null;
+
+        description=remoteMessage.getNotification().getBody();
+        title=remoteMessage.getNotification().getTitle();
+        image=remoteMessage.getNotification().getIcon();
 
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-
-        sendNotification(title, description, redirectId, date, time);
+        sendNotification(title, description);
 
     }
 
-    private void sendNotification(String title, String description, String redirectId, String date, String time) {
+    private void sendNotification(String title, String description) {
 
 
         final String NOTIFICATION_CHANNEL_ID = "10001";
@@ -85,11 +80,10 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         intent = new Intent(this, MainActivity.class);
         intent.putExtra("TITLE", title);
         intent.putExtra("DESCRIPTION", description);
-        intent.putExtra("REDIRECT_ID", redirectId);
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-      PendingIntent  pendingIntent=PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent  pendingIntent=PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_ONE_SHOT);
         //PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         //RemoteViews notificationSmall = new RemoteViews(getPackageName(), R.layout.notificaton_small);

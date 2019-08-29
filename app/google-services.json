@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1043836083565-ubd6tnsqnsp5p501j7mu29kdir8a15qh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mezyapps.bizprotect",
+            "certificate_hash": "32eef84a158c91d9c250eb8f27aa3fa3dff75d8c"
+          }
+        },
+        {
           "client_id": "1043836083565-7h81r40hdvnh3j84olmoioov83l48lj4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -49,7 +57,8 @@
             }
           ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-3637958081667905~9680701324"
     }
   ],
   "configuration_version": "1"

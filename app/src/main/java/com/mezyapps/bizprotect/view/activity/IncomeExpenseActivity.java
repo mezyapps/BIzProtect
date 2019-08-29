@@ -1,23 +1,15 @@
 package com.mezyapps.bizprotect.view.activity;
 
-import android.app.DatePickerDialog;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.apicommon.ApiClient;
@@ -32,7 +24,6 @@ import com.mezyapps.bizprotect.view.adpater.TabViewBillReportAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -46,6 +37,7 @@ public class IncomeExpenseActivity extends AppCompatActivity {
     private ViewPager viewPager_bill_report;
     private ArrayList<ClientProfileModel> clientProfileModelArrayList = new ArrayList<>();
     private String client_id;
+    //private AdView adView_banner_add;
 
     public static ApiInterface apiInterface;
 
@@ -53,6 +45,9 @@ public class IncomeExpenseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_income_expense);
+
+        //  MobileAds.initialize(this,"ca-app-pub-3637958081667905~9680701324");
+        //MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
 
         find_View_Ids();
         events();
@@ -64,6 +59,7 @@ public class IncomeExpenseActivity extends AppCompatActivity {
         viewPager_bill_report=findViewById(R.id.viewPager_bill_report);
         iv_dataBackUp=findViewById(R.id.iv_dataBackUp);
         ic_back=findViewById(R.id.ic_back);
+        //adView_banner_add = findViewById(R.id.adView_banner_add);
 
         tabLayout_bill_report.addTab(tabLayout_bill_report.newTab().setText("Add Income/Expense"));
       //  tabLayout_bill_report.addTab(tabLayout_bill_report.newTab().setText("Report"));
@@ -76,6 +72,11 @@ public class IncomeExpenseActivity extends AppCompatActivity {
         clientProfileModelArrayList = SharedLoginUtils.getUserDetails(IncomeExpenseActivity.this);
         client_id = clientProfileModelArrayList.get(0).getClient_id();
 
+       /* AdRequest adRequest=new AdRequest.Builder().addTestDevice("B57854E835A453D442326A4F590004D6").build();
+        adView_banner_add.loadAd(adRequest);
+*/
+        /*AdRequest adRequest=new AdRequest.Builder().build();
+        adView_banner_add.loadAd(adRequest);*/
     }
 
     private void events() {

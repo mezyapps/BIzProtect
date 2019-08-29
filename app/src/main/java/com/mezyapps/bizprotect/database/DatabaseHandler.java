@@ -55,49 +55,49 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    /*insert income And Expense*/
-    public boolean addIncomeExpense(String amount, String date, String status, String description,String synStatus) {
-        SQLiteDatabase db = this.getWritableDatabase();
+		/*insert income And Expense*/
+		public boolean addIncomeExpense(String amount, String date, String status, String description,String synStatus) {
+			SQLiteDatabase db = this.getWritableDatabase();
 
-        if (status.equalsIgnoreCase("1")) {
-            ContentValues valuesExpense = new ContentValues();
-            valuesExpense.put(DATE, date);
-            valuesExpense.put(EXPENSE_AMOUNT, amount);
-            valuesExpense.put(INCOME_AMOUNT, 0);
-            valuesExpense.put(STATUS, status);
-            valuesExpense.put(DESCRIPTION, description);
-            valuesExpense.put(SYNC_STATUS, synStatus);
+			if (status.equalsIgnoreCase("1")) {
+				ContentValues valuesExpense = new ContentValues();
+				valuesExpense.put(DATE, date);
+				valuesExpense.put(EXPENSE_AMOUNT, amount);
+				valuesExpense.put(INCOME_AMOUNT, 0);
+				valuesExpense.put(STATUS, status);
+				valuesExpense.put(DESCRIPTION, description);
+				valuesExpense.put(SYNC_STATUS, synStatus);
 
 
-            // Inserting Row
-            long result = db.insert(TABLE_NAME, null, valuesExpense);
-            if (result == -1) {
-                db.close(); // Closing database connection
-                return false;
-            } else {
-                db.close(); // Closing database connection
-                return true;
-            }
-        } else {
-            ContentValues valuesIncome = new ContentValues();
-            valuesIncome.put(DATE, date);
-            valuesIncome.put(EXPENSE_AMOUNT, 0);
-            valuesIncome.put(INCOME_AMOUNT, amount);
-            valuesIncome.put(STATUS, status);
-            valuesIncome.put(DESCRIPTION, description);
-            valuesIncome.put(SYNC_STATUS, synStatus);
+				// Inserting Row
+				long result = db.insert(TABLE_NAME, null, valuesExpense);
+				if (result == -1) {
+					db.close(); // Closing database connection
+					return false;
+				} else {
+					db.close(); // Closing database connection
+					return true;
+				}
+			} else {
+				ContentValues valuesIncome = new ContentValues();
+				valuesIncome.put(DATE, date);
+				valuesIncome.put(EXPENSE_AMOUNT, 0);
+				valuesIncome.put(INCOME_AMOUNT, amount);
+				valuesIncome.put(STATUS, status);
+				valuesIncome.put(DESCRIPTION, description);
+				valuesIncome.put(SYNC_STATUS, synStatus);
 
-            // Inserting Row
-            long result = db.insert(TABLE_NAME, null, valuesIncome);
-            if (result == -1) {
-                db.close(); // Closing database connection
-                return false;
-            } else {
-                db.close(); // Closing database connection
-                return true;
-            }
-        }
-    }
+				// Inserting Row
+				long result = db.insert(TABLE_NAME, null, valuesIncome);
+				if (result == -1) {
+					db.close(); // Closing database connection
+					return false;
+				} else {
+					db.close(); // Closing database connection
+					return true;
+				}
+			}
+		}
 
     /*Get All Income*/
     public String getAllIncome(String Date) {

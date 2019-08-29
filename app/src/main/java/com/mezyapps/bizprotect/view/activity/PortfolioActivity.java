@@ -2,11 +2,10 @@ package com.mezyapps.bizprotect.view.activity;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.textfield.TextInputLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -22,11 +21,8 @@ import com.mezyapps.bizprotect.apicommon.ApiClient;
 import com.mezyapps.bizprotect.apicommon.ApiInterface;
 import com.mezyapps.bizprotect.model.SuccessModel;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
-import com.mezyapps.bizprotect.utils.SharedLicenseUtils;
 import com.mezyapps.bizprotect.utils.ShowProgressDialog;
 import com.mezyapps.bizprotect.utils.SuccessDialog;
-
-import java.net.ProtocolFamily;
 
 import retrofit2.Call;
 import retrofit2.Callback;

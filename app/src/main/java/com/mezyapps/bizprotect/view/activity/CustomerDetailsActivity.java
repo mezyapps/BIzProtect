@@ -1,7 +1,6 @@
 package com.mezyapps.bizprotect.view.activity;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,8 +20,6 @@ import com.mezyapps.bizprotect.utils.NetworkUtils;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
 import com.mezyapps.bizprotect.utils.ShowProgressDialog;
 import com.mezyapps.bizprotect.view.fragment.MyCustomerFragment;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,6 @@
 package com.mezyapps.bizprotect.view.activity;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,13 +15,11 @@ import com.mezyapps.bizprotect.apicommon.ApiClient;
 import com.mezyapps.bizprotect.apicommon.ApiInterface;
 import com.mezyapps.bizprotect.model.ClientProfileModel;
 import com.mezyapps.bizprotect.model.MyBlackListedCustomerModel;
-import com.mezyapps.bizprotect.model.MyCustomerModel;
 import com.mezyapps.bizprotect.model.SuccessModel;
 import com.mezyapps.bizprotect.utils.NetworkUtils;
 import com.mezyapps.bizprotect.utils.SharedLoginUtils;
 import com.mezyapps.bizprotect.utils.ShowProgressDialog;
 import com.mezyapps.bizprotect.view.fragment.MyBlackListedCustomerFragment;
-import com.mezyapps.bizprotect.view.fragment.MyCustomerFragment;
 
 import java.util.ArrayList;
 
