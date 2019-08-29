@@ -2,6 +2,7 @@ package com.mezyapps.bizprotect.view.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -9,10 +10,6 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -26,6 +23,11 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.apicommon.ApiClient;
@@ -72,6 +74,10 @@ public class IncomeExpenseFragment extends Fragment {
     private LinearLayout linearlayout_backup;
     private ArrayList<OnlineDataBackUpModel> onlineDataBackUpModelArrayList = new ArrayList<>();
 
+    //Dialog Restore BackUp
+    private Dialog dialog_back_restore;
+    private TextView txt_yes,txt_no;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -102,6 +108,12 @@ public class IncomeExpenseFragment extends Fragment {
         recyclerView_daily = view.findViewById(R.id.recyclerView_daily);
         radioGroupIncomeExpenses = view.findViewById(R.id.radioGroupIncomeExpenses);
 
+        dialog_back_restore = new Dialog(mContext);
+        dialog_back_restore.setContentView(R.layout.dialog_restore_back);
+        txt_yes = dialog_back_restore.findViewById(R.id.txt_yes);
+        txt_no = dialog_back_restore.findViewById(R.id.txt_no);
+        dialog_back_restore.setCancelable(false);
+
         clientProfileModelArrayList = SharedLoginUtils.getUserDetails(mContext);
         client_id = clientProfileModelArrayList.get(0).getClient_id();
 
@@ -114,12 +126,7 @@ public class IncomeExpenseFragment extends Fragment {
         //Backup Local DataBase
         backupStatus = SharedLoginUtils.getBackUpStatus(mContext);
         if (backupStatus == null || backupStatus.equalsIgnoreCase("") || backupStatus.equalsIgnoreCase("false")) {
-
-            if (NetworkUtils.isNetworkAvailable(mContext)) {
-                getAllBackUpInLocalDatabase();
-            } else {
-                NetworkUtils.isNetworkNotAvailable(mContext);
-            }
+            dialog_back_restore.show();
         }
 
         if (sharedPreferenceDate != null) {
@@ -226,6 +233,27 @@ public class IncomeExpenseFragment extends Fragment {
 
             }
         };
+
+        txt_yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (NetworkUtils.isNetworkAvailable(mContext)) {
+                    databaseHandler.deleteTable();
+                    getAllBackUpInLocalDatabase();
+                } else {
+                    NetworkUtils.isNetworkNotAvailable(mContext);
+                }
+            }
+        });
+        txt_no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_back_restore.dismiss();
+            }
+        });
+
+
     }
 
     private void callCalculation(String income, String expense) {
@@ -498,6 +526,7 @@ public class IncomeExpenseFragment extends Fragment {
                                 {
                                     Toast.makeText(mContext, "Backup Successfully Restore ", Toast.LENGTH_SHORT).show();
                                     SharedLoginUtils.putBackUpStatus(mContext);
+                                    dialog_back_restore.dismiss();
                                 }
 
                             } else {

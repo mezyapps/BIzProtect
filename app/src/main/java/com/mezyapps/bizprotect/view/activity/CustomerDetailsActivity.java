@@ -1,6 +1,5 @@
 package com.mezyapps.bizprotect.view.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +8,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.gson.Gson;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.apicommon.ApiClient;
@@ -28,7 +32,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CustomerDetailsActivity extends AppCompatActivity {
-
     private MyCustomerModel myCustomerModel;
     private TextView textName, textContact_Person, textAddress, textgst_no, textEmail, textMobile_No, textAadhar_no, textPan_no, text_blacklisted, text_unblacklisted;
     private LinearLayout linearlayout_status_blacklist, linearlayout_status_unblacklist;
@@ -38,11 +41,15 @@ public class CustomerDetailsActivity extends AppCompatActivity {
     public static ApiInterface apiInterface;
     private ShowProgressDialog showProgressDialog;
    // private LinearLayout linearlayout_edit_customer;
+   private AdView adView_banner_add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_details);
+
+
+        MobileAds.initialize(this,"ca-app-pub-3637958081667905~9680701324");
 
         find_View_Ids();
         events();
@@ -65,6 +72,8 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         text_unblacklisted = findViewById(R.id.text_unblacklisted);
        // linearlayout_edit_customer = findViewById(R.id.linearlayout_edit_customer);
 
+        adView_banner_add = findViewById(R.id.adView_banner_add);
+
         showProgressDialog=new ShowProgressDialog(CustomerDetailsActivity.this);
 
         clientProfileModelArrayList= SharedLoginUtils.getUserDetails(CustomerDetailsActivity.this);
@@ -83,6 +92,10 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         textPan_no.setText(myCustomerModel.getPan_no());
         customer_id=myCustomerModel.getCustomer_id();
         status=myCustomerModel.getStatus();
+
+
+        AdRequest adRequest=new AdRequest.Builder().build();
+        adView_banner_add.loadAd(adRequest);
 
     }
 

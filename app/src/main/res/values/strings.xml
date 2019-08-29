@@ -42,4 +42,9 @@
     <string name="balance">Balance :</string>
     <string name="income_expense">Income/Expense</string>
     <string name="blacklisted">BlackListed</string>
+
+
+    <string name="banner_ad1">ca-app-pub-3637958081667905/6993823612</string>
+    <string name="banner_ad2">ca-app-pub-3637958081667905~9680701324</string>
+
 </resources>
