@@ -4,14 +4,14 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
-import android.os.Handler;
-import androidx.core.app.ActivityCompat;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 import com.mezyapps.bizprotect.R;
@@ -36,6 +36,7 @@ public class SplashActivity extends AppCompatActivity {
     public static ApiInterface apiInterface;
     private String TAG=this.getClass().getSimpleName();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,7 @@ public class SplashActivity extends AppCompatActivity {
         is_login = SharedLoginUtils.getLoginSharedUtils(getApplicationContext());
         //is_key_approve= SharedLicenseUtils.getLicenseSharedUtils(getApplicationContext());
          macAddress=SharedLicenseUtils.getDeviceId(SplashActivity.this);
+
     }
     private void events() {
        /* if(is_key_approve.equalsIgnoreCase("")) {
@@ -177,5 +179,4 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
     }
-
 }
