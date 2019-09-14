@@ -82,11 +82,6 @@
             android:name=".view.activity.MainActivity"
             android:screenOrientation="portrait" />
 
-        <receiver android:name=".broadcast_receivers_utils.NetworkBroadcastReceivers">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>
