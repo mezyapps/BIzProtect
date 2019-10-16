@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
 
 
     <LinearLayout
@@ -48,41 +49,49 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <FrameLayout
                 android:id="@+id/framelayout_main"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <!--<FrameLayout
+                android:id="@+id/framelayout_main"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@+id/bottom_banner"/>
+                android:layout_above="@+id/bottom_navigation_add" />-->
 
 
-            <View
+            <!--  <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="?attr/actionBarSize"
+                  android:layout_alignParentBottom="true"
+                  android:id="@+id/bottom_banner"
+                  android:orientation="vertical">
+
+
+
+                  <ViewFlipper
+                      android:id="@+id/viewFlipper_banner_add"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"/>
+
+
+
+
+              </LinearLayout>-->
+
+        <!--    <com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/bottom_navigation_add"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_above="@+id/bottom_banner"
-                android:background="@color/gray"/>
-
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                ads:adSize="BANNER"
                 android:layout_alignParentBottom="true"
-                android:id="@+id/bottom_banner"
-                android:orientation="vertical">
+                ads:adUnitId="ca-app-pub-3940256099942544/6300978111"/>-->
 
 
 
-                <ViewFlipper
-                    android:id="@+id/viewFlipper_banner_add"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-
-
-
-
-            </LinearLayout>
         </RelativeLayout>
 
 

@@ -10,9 +10,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.google.gson.Gson;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.apicommon.ApiClient;
@@ -41,16 +38,14 @@ public class CustomerDetailsActivity extends AppCompatActivity {
     public static ApiInterface apiInterface;
     private ShowProgressDialog showProgressDialog;
    // private LinearLayout linearlayout_edit_customer;
-   private AdView adView_banner_add;
+  // private AdView adView_banner_add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_details);
 
-
-        MobileAds.initialize(this,"ca-app-pub-3637958081667905~9680701324");
-
+       // MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
         find_View_Ids();
         events();
     }
@@ -72,7 +67,7 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         text_unblacklisted = findViewById(R.id.text_unblacklisted);
        // linearlayout_edit_customer = findViewById(R.id.linearlayout_edit_customer);
 
-        adView_banner_add = findViewById(R.id.adView_banner_add);
+       // adView_banner_add = findViewById(R.id.adView_banner_add);
 
         showProgressDialog=new ShowProgressDialog(CustomerDetailsActivity.this);
 
@@ -94,8 +89,12 @@ public class CustomerDetailsActivity extends AppCompatActivity {
         status=myCustomerModel.getStatus();
 
 
-        AdRequest adRequest=new AdRequest.Builder().build();
-        adView_banner_add.loadAd(adRequest);
+       /* AdRequest adRequest=new AdRequest.Builder().addTestDevice("EA935C5980439BBAE926C776B1C83FAB").build();
+        adView_banner_add.loadAd(adRequest);*/
+
+       /* AdRequest adRequest=new AdRequest.Builder().build();
+        adView_banner_add.loadAd(adRequest);*/
+
 
     }
 

@@ -24,17 +24,17 @@
                 android:layout_height="200dp"
                 android:orientation="vertical">
 
-               <!-- <ImageView
+                <ImageView
                     android:id="@+id/iv_main_advertisement"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
-                    android:src="@drawable/advertisement1" />-->
+                    android:src="@drawable/advertisement1" />
 
-                <ViewFlipper
+             <!--   <ViewFlipper
                     android:id="@+id/viewFlipper_main_add"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"/>-->
 
 
             </LinearLayout>

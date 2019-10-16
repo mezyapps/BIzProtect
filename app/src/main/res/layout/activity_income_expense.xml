@@ -58,7 +58,7 @@
             android:layout_above="@+id/adView_banner_add"/>
 
 
-        <com.google.android.gms.ads.AdView
+       <!-- <com.google.android.gms.ads.AdView
             xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/adView_banner_add"
             android:layout_width="match_parent"
@@ -66,8 +66,7 @@
             android:layout_centerHorizontal="true"
             ads:adSize="BANNER"
             android:layout_alignParentBottom="true"
-            android:visibility="gone"
-            ads:adUnitId="@string/banner_ad2"/>
+            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"/>-->
 
 
     </RelativeLayout>

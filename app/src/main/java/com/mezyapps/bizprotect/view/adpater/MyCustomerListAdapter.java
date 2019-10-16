@@ -3,8 +3,6 @@ package com.mezyapps.bizprotect.view.adpater;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +11,10 @@ import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.ads.InterstitialAd;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.model.MyCustomerModel;
 import com.mezyapps.bizprotect.view.activity.AddCustomerActivity;
@@ -25,6 +27,7 @@ public class MyCustomerListAdapter extends RecyclerView.Adapter<MyCustomerListAd
     private Context mContext;
     private ArrayList<MyCustomerModel> myCustomerModelArrayList;
     private  ArrayList<MyCustomerModel> arrayListFiltered;
+    private InterstitialAd interstitialAd;
 
     public MyCustomerListAdapter(Context mContext, ArrayList<MyCustomerModel> myCustomerModelArrayList) {
         this.mContext=mContext;
@@ -60,10 +63,47 @@ public class MyCustomerListAdapter extends RecyclerView.Adapter<MyCustomerListAd
         holder.linearlayout_customer_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+              /*  interstitialAd = new InterstitialAd(mContext);
+               interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+                //interstitialAd.setAdUnitId("ca-app-pub-3637958081667905/2218078426");
+                AdRequest adRequest=new AdRequest.Builder().addTestDevice("EA935C5980439BBAE926C776B1C83FAB").build();
+               // AdRequest adRequest=new AdRequest.Builder().build();
+                interstitialAd.loadAd(adRequest);
+
+
+                interstitialAd.setAdListener(new AdListener(){
+
+                    @Override
+                    public void onAdLoaded() {
+                       if(interstitialAd.isLoaded())
+                       {
+                           interstitialAd.show();
+                       }
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(int i) {
+                        Intent intent=new Intent(mContext, CustomerDetailsActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("MYCUSTOMER", (Parcelable) myCustomerModelArrayList.get(position));
+                        mContext.startActivity(intent);
+                    }
+
+                    @Override
+                    public void onAdClosed() {
+                        Intent intent=new Intent(mContext, CustomerDetailsActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("MYCUSTOMER", (Parcelable) myCustomerModelArrayList.get(position));
+                        mContext.startActivity(intent);
+                    }
+                });*/
+
                 Intent intent=new Intent(mContext, CustomerDetailsActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("MYCUSTOMER", (Parcelable) myCustomerModelArrayList.get(position));
                 mContext.startActivity(intent);
+
             }
         });
 

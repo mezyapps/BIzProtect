@@ -11,9 +11,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.mezyapps.bizprotect.R;
@@ -42,7 +39,7 @@ public class IncomeExpenseActivity extends AppCompatActivity {
     private ViewPager viewPager_bill_report;
     private ArrayList<ClientProfileModel> clientProfileModelArrayList = new ArrayList<>();
     private String client_id;
-    private AdView adView_banner_add;
+    //private AdView adView_banner_add;
 
     public static ApiInterface apiInterface;
 
@@ -51,7 +48,7 @@ public class IncomeExpenseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_income_expense);
 
-        MobileAds.initialize(this,"ca-app-pub-3637958081667905~9680701324");
+        //MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713" );
 
         find_View_Ids();
         events();
@@ -63,7 +60,7 @@ public class IncomeExpenseActivity extends AppCompatActivity {
         viewPager_bill_report=findViewById(R.id.viewPager_bill_report);
         iv_dataBackUp=findViewById(R.id.iv_dataBackUp);
         ic_back=findViewById(R.id.ic_back);
-        adView_banner_add = findViewById(R.id.adView_banner_add);
+        //adView_banner_add = findViewById(R.id.adView_banner_add);
 
         tabLayout_bill_report.addTab(tabLayout_bill_report.newTab().setText("Add Income/Expense"));
       //  tabLayout_bill_report.addTab(tabLayout_bill_report.newTab().setText("Report"));
@@ -76,9 +73,9 @@ public class IncomeExpenseActivity extends AppCompatActivity {
         clientProfileModelArrayList = SharedLoginUtils.getUserDetails(IncomeExpenseActivity.this);
         client_id = clientProfileModelArrayList.get(0).getClient_id();
 
-
-        AdRequest adRequest=new AdRequest.Builder().build();
-        adView_banner_add.loadAd(adRequest);
+       /* AdRequest adRequest=new AdRequest.Builder().addTestDevice("EA935C5980439BBAE926C776B1C83FAB").build();
+        //AdRequest adRequest=new AdRequest.Builder().build();
+        adView_banner_add.loadAd(adRequest);*/
     }
 
     private void events() {

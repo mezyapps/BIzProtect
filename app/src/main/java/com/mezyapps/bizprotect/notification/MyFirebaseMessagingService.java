@@ -9,17 +9,16 @@ import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
+import android.util.Log;
+
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
-import android.util.Log;
+import androidx.core.content.ContextCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.view.activity.MainActivity;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Random;
 
@@ -100,6 +99,7 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
                 .setAutoCancel(true)
                 .setSound(uri)
                 .setVibrate(v)
+                .setColor(ContextCompat.getColor(mContext, R.color.app_color))
                 .setChannelId(NOTIFICATION_CHANNEL_ID)
                 .setContentIntent(pendingIntent);
 
@@ -118,10 +118,11 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
     private void setupChannels() {
 
         NotificationChannel adminChannel;
-        adminChannel = new NotificationChannel(CHANNEL_ID, "NOTIFICATION_CHANNEL_NAME", NotificationManager.IMPORTANCE_LOW);
+        adminChannel = new NotificationChannel(CHANNEL_ID, "NOTIFICATION_CHANNEL_NAME", NotificationManager.IMPORTANCE_HIGH);
         adminChannel.enableLights(true);
         adminChannel.setLightColor(Color.RED);
         adminChannel.enableVibration(true);
+        adminChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
         builder.setChannelId(CHANNEL_ID);
 
         if (notificationManager != null) {

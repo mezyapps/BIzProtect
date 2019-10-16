@@ -14,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ViewFlipper;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -23,6 +22,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.mezyapps.bizprotect.R;
 import com.mezyapps.bizprotect.database.DatabaseHandler;
 import com.mezyapps.bizprotect.model.ClientProfileModel;
@@ -46,15 +46,18 @@ public class MainActivity extends AppCompatActivity {
     private Dialog dialog_logout;
     private TextView text_app_name;
     private ArrayList<ClientProfileModel> clientProfileModelArrayList=new ArrayList<>();
-    private ViewFlipper viewFlipper_banner_add;
-    private int[] images={R.drawable.image_silder1,R.drawable.image_silder2,R.drawable.image_silder3};
+    // private ViewFlipper viewFlipper_banner_add;
+    //private int[] images={R.drawable.image_silder1,R.drawable.image_silder2,R.drawable.image_silder3};
 
+   // AdView bottom_navigation_add;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         find_View_Ids();
         loadFragment(new HomeFragment());
+        FirebaseMessaging.getInstance().subscribeToTopic("BizProtect");
         events();
     }
 
@@ -66,21 +69,27 @@ public class MainActivity extends AppCompatActivity {
         relativeLayout_blocked_customer = findViewById(R.id.relativeLayout_blocked_customer);
         relativeLayout_logout = findViewById(R.id.relativeLayout_logout);
         text_app_name = findViewById(R.id.text_app_name);
-        viewFlipper_banner_add = findViewById(R.id.viewFlipper_banner_add);
+        //viewFlipper_banner_add = findViewById(R.id.viewFlipper_banner_add);
         relativeLayout_share = findViewById(R.id.relativeLayout_share);
         relativeLayout_bill_report = findViewById(R.id.relativeLayout_bill_report);
+       // bottom_navigation_add = findViewById(R.id.bottom_navigation_add);
 
         clientProfileModelArrayList=SharedLoginUtils.getUserDetails(MainActivity.this);
         text_app_name.setText("Welcome "+clientProfileModelArrayList.get(0).getCompany_name());
 
 
-        for(int i=0;i<images.length;i++)
+    /*    for(int i=0;i<images.length;i++)
         {
             flipImage(images[i]);
-        }
+        }*/
+/*
+        MobileAds.initialize(MainActivity.this,"ca-app-pub-3940256099942544~3347511713");
+        AdRequest adRequest=new AdRequest.Builder().addTestDevice("EA935C5980439BBAE926C776B1C83FAB").build();
+        //AdRequest adRequest=new AdRequest.Builder().build();
+        bottom_navigation_add.loadAd(adRequest);*/
     }
 
-    private void flipImage(int image) {
+   /* private void flipImage(int image) {
          ImageView imageView=new ImageView(this);
          imageView.setBackgroundResource(image);
          viewFlipper_banner_add.addView(imageView);
@@ -88,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
          viewFlipper_banner_add.setAutoStart(true);
 
          viewFlipper_banner_add.setInAnimation(this,android.R.anim.slide_in_left);
-    }
+    }*/
 
     private void events() {
         iv_drawer.setOnClickListener(new View.OnClickListener() {
